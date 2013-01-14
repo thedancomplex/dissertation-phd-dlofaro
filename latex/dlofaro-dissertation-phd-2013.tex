@@ -1,0 +1,60 @@
+\documentclass[12pt, letterpaper]{drexelthesis}
+\usepackage{graphicx}% needed for including graphics e.g. EPS, PS
+\usepackage{subfigure}% subcaptions for subfigures
+\usepackage{subfigmat}% matrices of similar subfigures, aka small mulitples
+\usepackage{afterpage}
+\usepackage{dcolumn}%   decimal-aligned tabular math columns
+	\newcolumntype{d}{D{=}{=}{4,4}}
+\usepackage{amssymb}
+\usepackage[square]{natbib}
+\usepackage{ifthen}
+\usepackage{rotating}
+
+\tolerance=300
+
+\author{Daniel Marc Lofaro}
+\degree{Doctor of Philosophy}
+\degreearea{Electrical and Computer Engineering Engineering}
+\advisor{Paul Oh}
+\title{Archetecture for High Degree of Freedom Complex Control Systems }
+\gmonth{June}
+%\gyear{2006} % default year is the current year
+
+%\includeonly{chapter1}
+
+\begin{document} 
+
+	\doublespacing
+	\maketitle 
+
+\begin{preliminary}
+	\sloppy
+	\copyrightpage
+	\include{dedications}
+	\include{acknowledgments}
+	\mytableofcontents
+	\mylistoftables
+	\mylistoffigures
+	\include{abstract}
+\end{preliminary}
+
+\begin{thesis}
+	\fussy
+	\include{chapter1} %Introduction
+	\include{chapter2} %Experimental Setup, Methodology, and Limitations
+	\include{chapter3} %Experimental Results
+	\include{chapter4} %Numerical Results
+	\include{chapter5} %Discussion
+	\include{chapter6} %Conclusion 
+
+	\singlespacing
+	\bibliographystyle{apa}
+  \addcontentsline{toc}{chapter}{BIBLIOGRAPHY}
+	\bibliography{Reflist}
+
+	\addcontentsline{toc}{chapter}{APPENDIX~A: COPYRIGHT INFORMATION}
+	\appendix
+	\include{copyrights} 
+\end{thesis}
+
+\end{document}
