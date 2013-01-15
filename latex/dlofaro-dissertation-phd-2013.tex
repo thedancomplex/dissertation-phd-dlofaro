@@ -6,7 +6,7 @@
 \usepackage{dcolumn}%   decimal-aligned tabular math columns
 	\newcolumntype{d}{D{=}{=}{4,4}}
 \usepackage{amssymb}
-\usepackage[square]{natbib}
+\usepackage[square, comma, sort&compress]{natbib}
 \usepackage{ifthen}
 \usepackage{rotating}
 
@@ -50,7 +50,8 @@
 	\singlespacing
 	\bibliographystyle{apa}
   \addcontentsline{toc}{chapter}{BIBLIOGRAPHY}
-	\bibliography{Reflist}
+	\bibliography{./srm/throwing.bib,./pitch/throwing.bib}
+%	\bibliography{Reflist}
 
 	\addcontentsline{toc}{chapter}{APPENDIX~A: COPYRIGHT INFORMATION}
 	\appendix
