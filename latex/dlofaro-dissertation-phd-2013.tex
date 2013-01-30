@@ -6,7 +6,9 @@
 \usepackage{dcolumn}%   decimal-aligned tabular math columns
 	\newcolumntype{d}{D{=}{=}{4,4}}
 \usepackage{amssymb}
-\usepackage[square, comma, sort&compress]{natbib}
+%\usepackage[square, comma, sort&compress]{natbib}
+\usepackage[square,sort,comma,numbers,sort&compress]{natbib}
+%\usepackage[square]{natbib}
 \usepackage{ifthen}
 \usepackage{rotating}
 
@@ -30,32 +32,34 @@
 \begin{preliminary}
 	\sloppy
 	\copyrightpage
-	\include{dedications}
-	\include{acknowledgments}
+
+%%	\include{dedications}
+%%	\include{acknowledgments}
 	\mytableofcontents
 	\mylistoftables
 	\mylistoffigures
-	\include{abstract}
+%%	\include{abstract}
 \end{preliminary}
 
 \begin{thesis}
 	\fussy
 	\include{chapter1} %Introduction
-	\include{chapter2} %Experimental Setup, Methodology, and Limitations
-	\include{chapter3} %Experimental Results
-	\include{chapter4} %Numerical Results
-	\include{chapter5} %Discussion
-	\include{chapter6} %Conclusion 
+%%	\include{chapter2} %Experimental Setup, Methodology, and Limitations
+%%	\include{chapter3} %Experimental Results
+%%	\include{chapter4} %Numerical Results
+%%	\include{chapter5} %Discussion
+%%	\include{chapter6} %Conclusion 
 
 	\singlespacing
-	\bibliographystyle{apa}
+%	\bibliographystyle{apa}
+	\bibliographystyle{ieeetr}
   \addcontentsline{toc}{chapter}{BIBLIOGRAPHY}
 	\bibliography{./srm/throwing.bib,./pitch/throwing.bib}
 %	\bibliography{Reflist}
 
-	\addcontentsline{toc}{chapter}{APPENDIX~A: COPYRIGHT INFORMATION}
+%%	\addcontentsline{toc}{chapter}{APPENDIX~A: COPYRIGHT INFORMATION}
 	\appendix
-	\include{copyrights} 
+%%	\include{copyrights} 
 \end{thesis}
 
 \end{document}
