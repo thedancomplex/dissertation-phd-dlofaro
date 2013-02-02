@@ -1,0 +1,70 @@
+% !TEX spellcheck = en
+%% document class file for the preparation of a paper
+%% for the International Conference ICCAS 2007
+%% global option 'fleqn' ensures equations flush left.
+%% set '10pt' and 'twocolumn' options.
+
+\documentclass[fleqn,10pt,twocolumn]{ICCAS2012}
+\usepackage{amsmath}
+
+%%%%%%% set heading and page number heare %%%%%%%%%%
+%\setcounter{page}{101}
+\begin{document}
+
+\title{A $n$-dimensional Convex Hull Approach for Fault Detection and Mitigation for High Degree of Freedom Robots Humanoid Robots}
+
+\author{Kevin Lynch${}^{1}$, Daniel M. Lofaro${}^{2}$ and Paul Oh${}^{3}$}
+
+\affils{  	${}^{1}$Department of Computer Science, \\
+		${}^{2}$Department of Electrical and Computer Engineering, \\
+		${}^{3}$Department of Mechanical Engineering,\\
+Drexel University, Philadelphia, PA, USA\\
+kml43@cs.drexel.edu, dml46@drexel.edu, paul@coe.drexel.edu\\
+        }
+\thanks{*This project was supported by the Drexel Autonomous Systems Lab (DASL) and by a National Science Foundation - Partnerships for International Research and Education grant (\#0730206). \\ 
+*Hubo was designed and created by our partner Dr. Jun-Ho Oh, Department of Mechanical Engineering, Korean Advanced Institute of Science and Technology, Daejeon, South Korea.}% <-this %
+
+%\thanks{ \noindent
+%   This paper is supported by my funding agencies.
+%  }
+\abstract{
+\input{abstract.tex}
+}
+
+\keywords{
+    Humanoid Robotics, Fault Detection, Error Mitigation, $n$-dimensional Convex Hull
+}
+
+\maketitle
+
+%-----------------------------------------------------------------------
+\input{introduction.tex}
+
+\input{background.tex}
+
+\input{methodology.tex}
+\input{expectedResults.tex}
+%\input{testing.tex}
+%\input{mitigation.tex}
+
+
+%%%%%%%%%%%%%%%%% BIBLIOGRAPHY IN THE LaTeX file !!!!! %%%%%%%%%%%%%%%%%%%%%%
+%%---------------------------------------------------------------------------%%
+%
+%\begin{thebibliography}{99}
+
+
+%\bibliographystyle{plain}
+%\bibliography{mit}
+
+\bibliographystyle{IEEEtran}
+%\bibliographystyle{plain}
+\bibliography{mit}{}
+
+
+%\end{thebibliography}
+
+%
+%%--------------------------------------------------------------------%%
+
+\end{document}
