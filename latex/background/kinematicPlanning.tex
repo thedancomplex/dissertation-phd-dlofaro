@@ -1,0 +1,21 @@
+Kinematic planning focuses on creating and testing valid trajectories for series kinematic manipulators.
+The focus of this research is on high degree of freedom (DOF), high-gain, position controlled mechanisms.
+The works are chosen as it pertains to end-effector velocity control.
+Throwing and hitting are examples of end-effector velocity control.  
+The goal is to have the end-effector moving at a specific rate in a specific direction.
+In most cases it demands whole-body coordination to achieve a desired end-effector velocity.  
+Whole-body coordination is different for planted robots and un-planted robots.  
+
+
+\noindent \textit{Planted robots} are robots where the base is attached to the ground or the base is significantly more massive then the manipulator.
+Planted robots do not have to worry about balance consternates. 
+
+\noindent \textit{Un-planted robots} are robots that have an manipulator that is not significantly ligher then the base.  
+In addition the robot is not physically attached to the ground.
+This results in the robot needing to satisfy balance constraints.
+In the static case if the robot satisfies the zero moment point (ZMP) criteria it will remain stable~\cite{5686276}.
+When the manipulator moves quickly, as in the case of pitching or throwing, such upper-body motions if not coordinated with the lower-body, can cause the humanoid to lose balance.  
+
+
+
+%The goal of this work is to show the creation of collision free trajectories for end-effector velocity control, the first step in our overarching goal of creating a system with the ability to throw objects and retain balance.  Towards this, Section~\ref{sec:selfCollision} will discuss our method of detecting self collisions.  Section~\ref{sec:rarea} describes the creation of the robot's sparse reachable map (SRM), a map in $R^3$ of the reachable points. through setting random values to the robot in joint space that takes into account joint limitations and self collisions.  Section~\ref{sec:trajGen} shows the creation of a throwing trajectory in $R^3$ and placing it withing the robot's reachable area using the SRM.  Section~\ref{sec:ik} explains the inverse kinematics used to convert the throwing trajectory in $R^3$ to joint space for this high degree of freedom humanoid robot.  Section~\ref{sec:trap} describes the creation of the approach from the initial pose to the starting pose of the throwing trajectory using a variant of trapezoidal motion control to keep within the actuators' physical limitations.  Section~\ref{sec:exp} features experiments to demonstrate the successful execution of this paper's goal.  Section~\ref{sec:conc} concludes the paper and comments on future work.
