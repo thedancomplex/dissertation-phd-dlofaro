@@ -1,0 +1,17 @@
+Tradeoffs: 
+last paragrapn:
+because of ach's high speed low latancy
+
+in fig 2. remember to state that ist is high gain pos control again
+
+in paragrapn 2:
+say something more spesific about how the multi process design is helpful and why ach it's self is more ideal for that.
+
+Add ROS on fig 2 instead of regular thing
+
+in the 4th paragraph: make things more clear about the time periods.  
+we want the hubo ach demon to run a fixed rate.  must be ok for others to run at different rates
+
+add my own picture
+
+correct spelling of perdue 

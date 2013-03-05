@@ -1,0 +1,184 @@
+This is BibTeX, Version 0.99d (TeX Live 2012)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: dlofaro-dissertation-phd-2013.aux
+A level-1 auxiliary file: chapter1.aux
+The style file: ieeetr.bst
+Database file #1: ./srm/throwing.bib.bib
+Database file #2: ./pitch/throwing.bib.bib
+Repeated entry---line 1 of file ./pitch/throwing.bib.bib
+ : @inproceedings{5686315
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 9 of file ./pitch/throwing.bib.bib
+ : @article{JooH2011438
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 50 of file ./pitch/throwing.bib.bib
+ : @inproceedings{509405
+ :                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 58 of file ./pitch/throwing.bib.bib
+ : @article{Lynch97dynamicnonprehensile
+ :                                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 65 of file ./pitch/throwing.bib.bib
+ : @inproceedings{5152525
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 73 of file ./pitch/throwing.bib.bib
+ : @inproceedings{509335
+ :                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 81 of file ./pitch/throwing.bib.bib
+ : @article {springerlink:10.1007/s10015-006-0401-0
+ :                                                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 90 of file ./pitch/throwing.bib.bib
+ : @inproceedings{4651142
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 117 of file ./pitch/throwing.bib.bib
+ : @article{4309277
+ :                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 168 of file ./pitch/throwing.bib.bib
+ : @inproceedings{5686325
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 175 of file ./pitch/throwing.bib.bib
+ : @inproceedings{5686276
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 184 of file ./pitch/throwing.bib.bib
+ : @inproceedings{5379582
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 194 of file ./pitch/throwing.bib.bib
+ : @inproceedings{schaal01/BIRG
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 206 of file ./pitch/throwing.bib.bib
+ : @inproceedings{6094892
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 214 of file ./pitch/throwing.bib.bib
+ : @inproceedings{6094757
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 223 of file ./pitch/throwing.bib.bib
+ : @inproceedings{5649335
+ :                       ,
+I'm skipping whatever remains of this entry
+Database file #3: ./mitigation/mit.bib.bib
+Repeated entry---line 402 of file ./mitigation/mit.bib.bib
+ : @inproceedings{5686315
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 415 of file ./mitigation/mit.bib.bib
+ : @article{JooH2011438
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 477 of file ./mitigation/mit.bib.bib
+ : @inproceedings{509405
+ :                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 490 of file ./mitigation/mit.bib.bib
+ : @article{Lynch97dynamicnonprehensile
+ :                                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 499 of file ./mitigation/mit.bib.bib
+ : @inproceedings{5152525
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 512 of file ./mitigation/mit.bib.bib
+ : @inproceedings{509335
+ :                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 525 of file ./mitigation/mit.bib.bib
+ : @article {springerlink:10.1007/s10015-006-0401-0
+ :                                                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 541 of file ./mitigation/mit.bib.bib
+ : @inproceedings{4651142
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 586 of file ./mitigation/mit.bib.bib
+ : @article{4309277
+ :                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 668 of file ./mitigation/mit.bib.bib
+ : @inproceedings{5686325
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 681 of file ./mitigation/mit.bib.bib
+ : @inproceedings{5686276
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 695 of file ./mitigation/mit.bib.bib
+ : @inproceedings{5379582
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 710 of file ./mitigation/mit.bib.bib
+ : @inproceedings{schaal01/BIRG
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 727 of file ./mitigation/mit.bib.bib
+ : @inproceedings{6094892
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 740 of file ./mitigation/mit.bib.bib
+ : @inproceedings{6094757
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 754 of file ./mitigation/mit.bib.bib
+ : @inproceedings{5649335
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 864 of file ./mitigation/mit.bib.bib
+ : @inproceedings{5686325
+ :                       ,
+I'm skipping whatever remains of this entry
+Database file #4: ./hubo-ach.bib.bib
+Warning--I didn't find a database entry for "hubofirst"
+You've used 18 entries,
+            1876 wiz_defined-function locations,
+            593 strings with 7149 characters,
+and the built_in function-call counts, 6644 in all, are:
+= -- 651
+> -- 207
+< -- 0
++ -- 76
+- -- 58
+* -- 459
+:= -- 835
+add.period$ -- 18
+call.type$ -- 18
+change.case$ -- 18
+chr.to.int$ -- 0
+cite$ -- 18
+duplicate$ -- 373
+empty$ -- 656
+format.name$ -- 58
+if$ -- 1680
+int.to.chr$ -- 0
+int.to.str$ -- 18
+missing$ -- 18
+newline$ -- 57
+num.names$ -- 18
+pop$ -- 96
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 296
+stack$ -- 0
+substring$ -- 588
+swap$ -- 180
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 54
+width$ -- 20
+write$ -- 173
+(There were 33 error messages)
