@@ -2,7 +2,16 @@ This is BibTeX, Version 0.99d (TeX Live 2012)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: dlofaro-dissertation-phd-2013.aux
 A level-1 auxiliary file: chapter1.aux
+A level-1 auxiliary file: chapter2.aux
+A level-1 auxiliary file: chapter3.aux
+A level-1 auxiliary file: chapter4.aux
+A level-1 auxiliary file: chapter5.aux
 The style file: ieeetr.bst
+I couldn't open database file ./hubo-ach/hubo-ach.bib.bib
+---line 25 of file dlofaro-dissertation-phd-2013.aux
+ : \bibdata{./srm/throwing.bib,./pitch/throwing.bib,./mitigation/mit.bib,./hubo-ach/hubo-ach.bib
+ :                                                                                              ,./hubo-ach/bibtech.bib}
+I'm skipping whatever remains of this command
 Database file #1: ./srm/throwing.bib.bib
 Database file #2: ./pitch/throwing.bib.bib
 Repeated entry---line 1 of file ./pitch/throwing.bib.bib
@@ -41,6 +50,10 @@ Repeated entry---line 117 of file ./pitch/throwing.bib.bib
  : @article{4309277
  :                 ,
 I'm skipping whatever remains of this entry
+Repeated entry---line 132 of file ./pitch/throwing.bib.bib
+ : @inproceedings{4048118
+ :                       ,
+I'm skipping whatever remains of this entry
 Repeated entry---line 168 of file ./pitch/throwing.bib.bib
  : @inproceedings{5686325
  :                       ,
@@ -67,6 +80,46 @@ Repeated entry---line 214 of file ./pitch/throwing.bib.bib
 I'm skipping whatever remains of this entry
 Repeated entry---line 223 of file ./pitch/throwing.bib.bib
  : @inproceedings{5649335
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 230 of file ./pitch/throwing.bib.bib
+ : @inproceedings{dlofaro-srm
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 238 of file ./pitch/throwing.bib.bib
+ : @article{Fleisig1996
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 249 of file ./pitch/throwing.bib.bib
+ : @article{barrentiine1998
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 257 of file ./pitch/throwing.bib.bib
+ : @article{Mochizuki1998
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 265 of file ./pitch/throwing.bib.bib
+ : @article{Akira1999
+ :                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 287 of file ./pitch/throwing.bib.bib
+ : @conference{Polland2002
+ :                        ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 294 of file ./pitch/throwing.bib.bib
+ : @inproceedings{1545060
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 301 of file ./pitch/throwing.bib.bib
+ : @article{5756898
+ :                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 327 of file ./pitch/throwing.bib.bib
+ : @article{Vukobratovic19721
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 334 of file ./pitch/throwing.bib.bib
+ : @inproceedings{5379574
  :                       ,
 I'm skipping whatever remains of this entry
 Database file #3: ./mitigation/mit.bib.bib
@@ -106,6 +159,10 @@ Repeated entry---line 586 of file ./mitigation/mit.bib.bib
  : @article{4309277
  :                 ,
 I'm skipping whatever remains of this entry
+Repeated entry---line 612 of file ./mitigation/mit.bib.bib
+ : @inproceedings{4048118
+ :                       ,
+I'm skipping whatever remains of this entry
 Repeated entry---line 668 of file ./mitigation/mit.bib.bib
  : @inproceedings{5686325
  :                       ,
@@ -138,47 +195,49 @@ Repeated entry---line 864 of file ./mitigation/mit.bib.bib
  : @inproceedings{5686325
  :                       ,
 I'm skipping whatever remains of this entry
-Database file #4: ./hubo-ach.bib.bib
 Warning--I didn't find a database entry for "hubofirst"
-You've used 18 entries,
+Warning--I didn't find a database entry for "jaemiHuboSRM"
+Warning--I didn't find a database entry for "Quigley09"
+Warning--empty title in lofaroURAI
+You've used 29 entries,
             1876 wiz_defined-function locations,
-            593 strings with 7149 characters,
-and the built_in function-call counts, 6644 in all, are:
-= -- 651
-> -- 207
+            672 strings with 9443 characters,
+and the built_in function-call counts, 10262 in all, are:
+= -- 986
+> -- 364
 < -- 0
-+ -- 76
-- -- 58
-* -- 459
-:= -- 835
-add.period$ -- 18
-call.type$ -- 18
-change.case$ -- 18
++ -- 132
+- -- 103
+* -- 726
+:= -- 1324
+add.period$ -- 29
+call.type$ -- 29
+change.case$ -- 28
 chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 373
-empty$ -- 656
-format.name$ -- 58
-if$ -- 1680
+cite$ -- 30
+duplicate$ -- 565
+empty$ -- 995
+format.name$ -- 103
+if$ -- 2578
 int.to.chr$ -- 0
-int.to.str$ -- 18
-missing$ -- 18
-newline$ -- 57
-num.names$ -- 18
-pop$ -- 96
+int.to.str$ -- 29
+missing$ -- 29
+newline$ -- 90
+num.names$ -- 29
+pop$ -- 143
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 296
+skip$ -- 441
 stack$ -- 0
-substring$ -- 588
-swap$ -- 180
+substring$ -- 850
+swap$ -- 267
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 54
-width$ -- 20
-write$ -- 173
-(There were 33 error messages)
+warning$ -- 1
+while$ -- 83
+width$ -- 31
+write$ -- 276
+(There were 46 error messages)

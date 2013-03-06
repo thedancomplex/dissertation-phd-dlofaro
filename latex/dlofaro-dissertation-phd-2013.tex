@@ -12,6 +12,40 @@
 \usepackage{ifthen}
 \usepackage{rotating}
 
+
+
+
+
+\usepackage{tikz}
+\usepackage{flushend}
+\usepackage[algoruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{graphicx}        % standard LaTeX graphics tool
+\usepackage[TABTOPCAP]{subfigure}
+\usepackage{enumerate}
+\usepackage{fancybox}
+%added two new packages
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{lettrine}
+
+\usepackage[linkbordercolor={1 1 1},citebordercolor={1 1
+  1},urlbordercolor={0.0 0.0
+  0.0},urlcolor=blue,colorlinks=true,linkcolor=black,citecolor=black]{hyperref}
+\usepackage[squaren]{SIunits}
+\usetikzlibrary{matrix,calc,shapes}
+\usepackage{fancyhdr}
+
+\definecolor{nodecolor}{RGB}{238,232,170} % light goldenrod
+\definecolor{bgcolor}{rgb}{0.9,0.9,1.0} % light blue
+\definecolor{sectcolor}{rgb}{0.0,0.0,0.5} % dark blue
+
+
+
+
+
+
+
+
 \tolerance=300
 
 \author{Daniel Marc Lofaro}
@@ -44,6 +78,10 @@
 \begin{thesis}
 	\fussy
 	\include{chapter1} %Introduction
+	\include{chapter2}
+	\include{chapter3}
+	\include{chapter4}
+	\include{chapter5}
 %%	\include{chapter2} %Experimental Setup, Methodology, and Limitations
 %%	\include{chapter3} %Experimental Results
 %%	\include{chapter4} %Numerical Results
@@ -54,7 +92,7 @@
 %	\bibliographystyle{apa}
 	\bibliographystyle{ieeetr}
   \addcontentsline{toc}{chapter}{BIBLIOGRAPHY}
-	\bibliography{./srm/throwing.bib,./pitch/throwing.bib,./mitigation/mit.bib,./hubo-ach.bib}
+	\bibliography{./srm/throwing.bib,./pitch/throwing.bib,./mitigation/mit.bib,./hubo-ach/hubo-ach.bib,./hubo-ach/bibtech.bib}
 %	\bibliography{Reflist}
 
 %%	\addcontentsline{toc}{chapter}{APPENDIX~A: COPYRIGHT INFORMATION}

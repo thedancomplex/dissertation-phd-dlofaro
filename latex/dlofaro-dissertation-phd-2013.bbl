@@ -1,11 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{jaemiHuboSRM}
-D.~M. Lofaro, R.~Ellenberg, P.~Oh, and J.-H. Oh, ``Humanoid throwing: Design of
-  collision-free trajectories with sparse reachable maps,'' in {\em Intelligent
-  Robots and Systems (IROS), 2012 IEEE/RSJ International Conference on}, oct.
-  2012.
-
 \bibitem{5686325}
 R.~Ellenberg, R.~Sherbert, P.~Oh, A.~Alspach, R.~Gross, and J.~Oh, ``A common
   interface for humanoid simulation and hardware,'' in {\em Humanoid Robots
@@ -29,6 +23,11 @@ W.~Mori, J.~Ueda, and T.~Ogasawara, ``1-dof dynamic pitching robot that
   Contact models and motion planning,'' in {\em Robotics and Automation, 2009.
   ICRA '09. IEEE Int'l Conference on}, pp.~1655 --1661, May 2009.
 
+\bibitem{4651142}
+T.~Senoo, A.~Namiki, and M.~Ishikawa, ``High-speed throwing motion based on
+  kinetic chain approach,'' in {\em Intelligent Robots and Systems, 2008. IROS
+  2008. IEEE/RSJ Int'l Conference on}, pp.~3206 --3211, Sept 2008.
+
 \bibitem{509405}
 N.~Kato, K.~Matsuda, and T.~Nakamura, ``Adaptive control for a throwing motion
   of a 2 dof robot,'' in {\em Advanced Motion Control, 1996. AMC '96-MIE.
@@ -50,11 +49,6 @@ T.~Nakamura, ``Search guided by skill in motion planning using dynamic
 A.~Sato, O.~Sato, N.~Takahashi, and M.~Kono, ``Trajectory for saving energy of
   a direct-drive manipulator in throwing motion,'' {\em Artificial Life and
   Robotics}, vol.~11, pp.~61--66, 2007.
-
-\bibitem{4651142}
-T.~Senoo, A.~Namiki, and M.~Ishikawa, ``High-speed throwing motion based on
-  kinetic chain approach,'' in {\em Intelligent Robots and Systems, 2008. IROS
-  2008. IEEE/RSJ Int'l Conference on}, pp.~3206 --3211, Sept 2008.
 
 \bibitem{6094757}
 S.~Haddadin, K.~Krieger, M.~Kunze, and A.~Albu-Schaffer, ``Exploiting potential
@@ -97,5 +91,69 @@ M.~Vukobratovic, ``How to control artificial anthropomorphic systems,'' {\em
 \bibitem{zmp35}
 M.~Vukobratovic and B.~Borovac, ``Zero-moment point - thirty five years of its
   life,'' {\em I. J. Humanoid Robotics}, vol.~1, no.~1, pp.~157--173, 2004.
+
+\bibitem{dlofaro-srm}
+D.~Lofaro, R.~Ellenberg, P.~Oh, and J.~Oh, ``Humanoid throwing: Design of
+  collision-free trajectories with sparse reachable maps,'' in {\em Intelligent
+  Robots and Systems (IROS), 2012 IEEE/RSJ Int'l Conference on}, Oct 2012.
+
+\bibitem{Vukobratovic19721}
+M.~Vukobratovic and J.~Stepanenko, ``On the stability of anthropomorphic
+  systems,'' {\em Mathematical Biosciences}, vol.~15, no.~1–2, pp.~1 -- 37,
+  1972.
+
+\bibitem{5379574}
+B.-K. Cho, S.-S. Park, and J.~ho~Oh, ``Controllers for running in the humanoid
+  robot, hubo,'' in {\em Humanoid Robots, 2009. Humanoids 2009. 9th IEEE-RAS
+  Int'l Conference on}, pp.~385 --390, Dec 2009.
+
+\bibitem{Fleisig1996}
+S.~Fleisig, R.~F. Escamilla, J.~R. Andrews, T.~Matsuo, Y.~Satterwhite, and
+  S.~W. Barrentine, ``Kinematic and kinetic comparison between baseball
+  pitching and football passing,'' {\em Journal of Applied Biomechanics},
+  vol.~12, pp.~207--224, 1996.
+
+\bibitem{barrentiine1998}
+W.~Barrentine, T.~Matsuo, R.~F. Escamilla, G.~S. Fleisig, and J.~R. Andrews,
+  ``Kinematic analysis of the wrist and forearm during baseball pitching,''
+  {\em Journal of Applied Biomechanics}, vol.~14, pp.~24--39, Jan 1998.
+
+\bibitem{Mochizuki1998}
+Y.~Mochizuki, T.~Matsumoto, S.~Inokuchi, and K.~Omura, ``Computer simulation of
+  the effect of ball mass and shape to upper limb in baseball pitching,'' {\em
+  Theoretical and Applied Mechanics}, vol.~47, pp.~283--292, 1998.
+
+\bibitem{Akira1999}
+A.~Uesaki, Y.~Mochizuki, T.~Matsuo, K.~Hashizume, K.~Omura, and S.~Inokuchi,
+  ``Computer simulation for dynamics analysis of pedaling motion on lower limbs
+  in a racing cycle,'' {\em Theoretical and Applied Mechanics}, vol.~48,
+  pp.~197--205, 1999.
+
+\bibitem{1545060}
+Q.~Huang, Z.~Peng, W.~Zhang, L.~Zhang, and K.~Li, ``Design of humanoid
+  complicated dynamic motion based on human motion capture,'' in {\em
+  Intelligent Robots and Systems, 2005. (IROS 2005). 2005 IEEE/RSJ Int'l
+  Conference on}, pp.~3536 -- 3541, Aug 2005.
+
+\bibitem{Polland2002}
+S.Pollard, J.~Hondgins, M.J.Riley, and C.~Atkeson, ``Adapting human motion for
+  the control of a humanoid robot,'' in {\em In Proc. of IEEE Int'l Conference
+  on Robotics and Automation}, 2002.
+
+\bibitem{5756898}
+S.~Gaertner, M.~Do, T.~Asfour, R.~Dillmann, C.~Simonidis, and W.~Seemann,
+  ``Generation of human-like motion for humanoid robots based on marker-based
+  motion capture data,'' {\em Robotics (ISR), 2010 41st Int'l Symposium on and
+  2010 6th German Conference on Robotics (ROBOTIK)}, pp.~1 --8, Jun 2010.
+
+\bibitem{lofaroURAI}
+D.~Lofaro and P.~Oh in {\em Humanoid Throws Inaugural Pitch at Major League
+  Baseball Game: Challenges, Approach, Implementation and Lessons Learned},
+  nov. 2012.
+
+\bibitem{4048118}
+W.~A. Wolovich and H.~Elliott, ``A computational technique for inverse
+  kinematics,'' in {\em Decision and Control, 1984. The 23rd IEEE Conference
+  on}, vol.~23, pp.~1359 --1363, dec. 1984.
 
 \end{thebibliography}
