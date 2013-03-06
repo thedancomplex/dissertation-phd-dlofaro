@@ -92,6 +92,36 @@ M.~Vukobratovic, ``How to control artificial anthropomorphic systems,'' {\em
 M.~Vukobratovic and B.~Borovac, ``Zero-moment point - thirty five years of its
   life,'' {\em I. J. Humanoid Robotics}, vol.~1, no.~1, pp.~157--173, 2004.
 
+\bibitem{diankovThesis}
+R.~Diankov, {\em Automated Construction of Robotic Manipulation Programs}.
+\newblock PhD thesis, Carnegie Mellon University, Robotics Institute, Aug 2010.
+
+\bibitem{100034}
+Z.-Y. Ying, Y.-G. Xi, and Z.-H. Zhang, ``Test of the reachability of a robot to
+  an object,'' in {\em Robotics and Automation, 1989. Proceedings., 1989 IEEE
+  Int'l Conference on}, pp.~490 --494 vol.1, May 1989.
+
+\bibitem{springerlink:101007}
+Z.~Xue and R.~Dillmann, ``Efficient grasp planning with reachability
+  analysis,'' in {\em Intelligent Robotics and Applications} (H.~Liu, H.~Ding,
+  Z.~Xiong, and X.~Zhu, eds.), vol.~6424 of {\em Lecture Notes in Computer
+  Science}, pp.~26--37, Springer Berlin / Heidelberg, 2010.
+
+\bibitem{1570152}
+R.~Geraerts and M.~Overmars, ``Reachability analysis of sampling based
+  planners,'' in {\em Robotics and Automation, 2005. ICRA 2005. Proceedings of
+  the 2005 IEEE Int'l Conference on}, pp.~404 -- 410, Apr 2005.
+
+\bibitem{4813913}
+M.~Vande~Weghe, D.~Ferguson, and S.~Srinivasa, ``Randomized path planning for
+  redundant manipulators without inverse kinematics,'' in {\em Humanoid Robots,
+  2007 7th IEEE-RAS Int'l Conference on}, pp.~477 --482, 29 2007-dec. 1 2007.
+
+\bibitem{4048118}
+W.~A. Wolovich and H.~Elliott, ``A computational technique for inverse
+  kinematics,'' in {\em Decision and Control, 1984. The 23rd IEEE Conference
+  on}, vol.~23, pp.~1359 --1363, dec. 1984.
+
 \bibitem{dlofaro-srm}
 D.~Lofaro, R.~Ellenberg, P.~Oh, and J.~Oh, ``Humanoid throwing: Design of
   collision-free trajectories with sparse reachable maps,'' in {\em Intelligent
@@ -150,10 +180,5 @@ S.~Gaertner, M.~Do, T.~Asfour, R.~Dillmann, C.~Simonidis, and W.~Seemann,
 D.~Lofaro and P.~Oh in {\em Humanoid Throws Inaugural Pitch at Major League
   Baseball Game: Challenges, Approach, Implementation and Lessons Learned},
   nov. 2012.
-
-\bibitem{4048118}
-W.~A. Wolovich and H.~Elliott, ``A computational technique for inverse
-  kinematics,'' in {\em Decision and Control, 1984. The 23rd IEEE Conference
-  on}, vol.~23, pp.~1359 --1363, dec. 1984.
 
 \end{thebibliography}

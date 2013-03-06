@@ -22,6 +22,22 @@ Repeated entry---line 9 of file ./pitch/throwing.bib.bib
  : @article{JooH2011438
  :                     ,
 I'm skipping whatever remains of this entry
+Repeated entry---line 16 of file ./pitch/throwing.bib.bib
+ : @phdthesis{diankovThesis
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 24 of file ./pitch/throwing.bib.bib
+ :  @inproceedings{100034
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 31 of file ./pitch/throwing.bib.bib
+ : @incollection {springerlink:101007
+ :                                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 42 of file ./pitch/throwing.bib.bib
+ : @inproceedings{1570152
+ :                       ,
+I'm skipping whatever remains of this entry
 Repeated entry---line 50 of file ./pitch/throwing.bib.bib
  : @inproceedings{509405
  :                      ,
@@ -49,6 +65,10 @@ I'm skipping whatever remains of this entry
 Repeated entry---line 117 of file ./pitch/throwing.bib.bib
  : @article{4309277
  :                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 124 of file ./pitch/throwing.bib.bib
+ : @inproceedings{4813913
+ :                       ,
 I'm skipping whatever remains of this entry
 Repeated entry---line 132 of file ./pitch/throwing.bib.bib
  : @inproceedings{4048118
@@ -131,6 +151,22 @@ Repeated entry---line 415 of file ./mitigation/mit.bib.bib
  : @article{JooH2011438
  :                     ,
 I'm skipping whatever remains of this entry
+Repeated entry---line 428 of file ./mitigation/mit.bib.bib
+ : @phdthesis{diankovThesis
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 436 of file ./mitigation/mit.bib.bib
+ :  @inproceedings{100034
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 449 of file ./mitigation/mit.bib.bib
+ : @incollection {springerlink:101007
+ :                                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 464 of file ./mitigation/mit.bib.bib
+ : @inproceedings{1570152
+ :                       ,
+I'm skipping whatever remains of this entry
 Repeated entry---line 477 of file ./mitigation/mit.bib.bib
  : @inproceedings{509405
  :                      ,
@@ -158,6 +194,10 @@ I'm skipping whatever remains of this entry
 Repeated entry---line 586 of file ./mitigation/mit.bib.bib
  : @article{4309277
  :                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 599 of file ./mitigation/mit.bib.bib
+ : @inproceedings{4813913
+ :                       ,
 I'm skipping whatever remains of this entry
 Repeated entry---line 612 of file ./mitigation/mit.bib.bib
  : @inproceedings{4048118
@@ -199,45 +239,45 @@ Warning--I didn't find a database entry for "hubofirst"
 Warning--I didn't find a database entry for "jaemiHuboSRM"
 Warning--I didn't find a database entry for "Quigley09"
 Warning--empty title in lofaroURAI
-You've used 29 entries,
+You've used 34 entries,
             1876 wiz_defined-function locations,
-            672 strings with 9443 characters,
-and the built_in function-call counts, 10262 in all, are:
-= -- 986
-> -- 364
+            705 strings with 10463 characters,
+and the built_in function-call counts, 11964 in all, are:
+= -- 1150
+> -- 420
 < -- 0
-+ -- 132
-- -- 103
-* -- 726
-:= -- 1324
-add.period$ -- 29
-call.type$ -- 29
-change.case$ -- 28
++ -- 152
+- -- 118
+* -- 848
+:= -- 1542
+add.period$ -- 35
+call.type$ -- 34
+change.case$ -- 32
 chr.to.int$ -- 0
-cite$ -- 30
-duplicate$ -- 565
-empty$ -- 995
-format.name$ -- 103
-if$ -- 2578
+cite$ -- 35
+duplicate$ -- 659
+empty$ -- 1168
+format.name$ -- 118
+if$ -- 3006
 int.to.chr$ -- 0
-int.to.str$ -- 29
-missing$ -- 29
-newline$ -- 90
-num.names$ -- 29
-pop$ -- 143
+int.to.str$ -- 34
+missing$ -- 33
+newline$ -- 106
+num.names$ -- 36
+pop$ -- 170
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 441
+skip$ -- 510
 stack$ -- 0
-substring$ -- 850
-swap$ -- 267
+substring$ -- 990
+swap$ -- 309
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 83
-width$ -- 31
-write$ -- 276
-(There were 46 error messages)
+while$ -- 97
+width$ -- 36
+write$ -- 324
+(There were 56 error messages)
