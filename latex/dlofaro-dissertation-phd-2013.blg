@@ -1,5 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2012)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: dlofaro-dissertation-phd-2013.aux
 A level-1 auxiliary file: chapter1.aux
 A level-1 auxiliary file: chapter2.aux
@@ -8,7 +7,7 @@ A level-1 auxiliary file: chapter4.aux
 A level-1 auxiliary file: chapter5.aux
 The style file: ieeetr.bst
 I couldn't open database file ./hubo-ach/hubo-ach.bib.bib
----line 25 of file dlofaro-dissertation-phd-2013.aux
+---line 22 of file dlofaro-dissertation-phd-2013.aux
  : \bibdata{./srm/throwing.bib,./pitch/throwing.bib,./mitigation/mit.bib,./hubo-ach/hubo-ach.bib
  :                                                                                              ,./hubo-ach/bibtech.bib}
 I'm skipping whatever remains of this command
