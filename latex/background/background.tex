@@ -1,2 +1,33 @@
 The idea for a Control Archetecture for High Degree of Freedom Complex Systems stems from a gap in physical implimentation of control algerithms for robot hardware.
-Though 
+
+The simplest approach to developing robot software is to intergrate all functionality in one program.  
+This functionality includes the following controllers:
+\begin{itemize}
+\item Hardware Control
+\item Perception
+\item Planning
+\item Kinimatics
+\item etc.
+\end{itemize}
+
+If all of this functionality is in one process then it has the bennifit of freedom of inter process comunication latency.
+However being in one process also means that if one of the controllers laggs or faults it cause the entire controller to lag or fault.
+This is of great concern if a non-prority controller such as vision processing faults causing a priority controller such as a ballance controller, to fail.
+This will cause the robot to fall.
+How is this fixed?
+One solution and my proposed solution is to use inter-process comunicatoin (IPC).
+Inter-process comunication is a method of exchanging data between multiple processies.
+Typical POSIX methods (cite here) give you the \textbf{oldest} information first and have locks on the memroy when processies are writing to it.
+Robots work in the physical world. 
+More recent information is more important to it then older.
+In most cases it is acceptiable to know the most recent data and never read any of the older data.
+This would happen if your sensors update at a faster rate then that of the robot.
+Typically robot actuiators have a bandwidth much much lower then that of a mondern conputer.
+If sensor informatio is shared using traditional shared memory over POSIX methods the controller would have to read the older information before it reaches the information it is most interested in, the newest data.
+This is called head of line blocking (look up).
+
+It is desired to make a multi-process controller that can share data between multiple processies with low-latency and no head of line blocking.
+There are a few IPCs that offer no head of line blocking and low-latency.  
+After much research (inserte examples here) it was found that the Ach IPC wuld best fit my needs.
+
+
