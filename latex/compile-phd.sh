@@ -1,3 +1,4 @@
+rm *.bbl
 rm *.aux
 rm *.log
 rm *.blg
