@@ -264,7 +264,7 @@
 }
 
 
-\newcommand{\degree}[1]{\ifx\empty#1\else\gdef\@degree{#1}\fi}
+\newcommand{\degreecollege}[1]{\ifx\empty#1\else\gdef\@degreecollege{#1}\fi}
 \newcommand{\degreearea}[1]{\ifx\empty#1\else\gdef\@degreearea{#1}\fi}
 \renewcommand{\author}[1]{\ifx\empty#1\else\gdef\@author{#1}\fi}
 \newcommand{\advisor}[1]{\ifx\empty#1\else\gdef\@advisor{#1}\fi}
@@ -272,7 +272,7 @@
 \newcommand{\gyear}[1]{\ifx\empty#1\else\gdef\@gyear{#1}\fi}
 \newcommand{\gmonth}[1]{\ifx\empty#1\else\gdef\@gmonth{#1}\fi}
 
-\global\def\@degree{\mbox{}}
+\global\def\@degreecollege{\mbox{}}
 \global\def\@degreearea{\mbox{}}
 \global\def\@author{\mbox{}}
 \global\def\@advisor{\mbox{}}
@@ -312,7 +312,7 @@
         in partial fulfillment of the \\
 				requirements for the degree \\
 				of \\
-				{\@degree} in {\@degreearea} \\
+				{\@degreecollege} in {\@degreearea} \\
         {\@gmonth} {\@gyear} \\
       \end{doublespace}
     \end{minipage}
