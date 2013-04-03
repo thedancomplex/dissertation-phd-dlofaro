@@ -5,6 +5,17 @@ N.~Dantam, D.~Lofaro, A.~Hereid, P.~Oh, A.~Ames, and M.~Stilman, ``Reliable
   software for humanoid robots,'' in {\em IEEE Robotics and Automation
   Magazine}, 2013.
 
+\bibitem{5686325}
+R.~Ellenberg, R.~Sherbert, P.~Oh, A.~Alspach, R.~Gross, and J.~Oh, ``A common
+  interface for humanoid simulation and hardware,'' in {\em Humanoid Robots
+  (Humanoids), 2010 10th IEEE-RAS Int'l Conference on}, pp.~587 --592, Dec
+  2010.
+
+\bibitem{5379582}
+R.~Ellenberg, D.~Grunberg, P.~Oh, and Y.~Kim, ``Using miniature humanoids as
+  surrogate research platforms,'' in {\em Humanoid Robots, 2009. Humanoids
+  2009. 9th IEEE-RAS Int'l Conference on}, pp.~175 --180, Dec 2009.
+
 \bibitem{5686847}
 D.~Lofaro, P.~Oh, J.~Oh, and Y.~Kim, ``Interactive musical participation with
   humanoid robots through the use of novel musical tempo and beat tracking
@@ -63,34 +74,6 @@ N.~Alunni, C.~Phillips-Graffin, H.~Suay, D.~Lofaro, and D.~Berenson, ``Toward a
   communication,'' in {\em IEEE International Conference on Technologies for
   Practical Robot Applications}, 2013.
 
-\bibitem{5686325}
-R.~Ellenberg, R.~Sherbert, P.~Oh, A.~Alspach, R.~Gross, and J.~Oh, ``A common
-  interface for humanoid simulation and hardware,'' in {\em Humanoid Robots
-  (Humanoids), 2010 10th IEEE-RAS Int'l Conference on}, pp.~587 --592, Dec
-  2010.
-
-\bibitem{5379582}
-R.~Ellenberg, D.~Grunberg, P.~Oh, and Y.~Kim, ``Using miniature humanoids as
-  surrogate research platforms,'' in {\em Humanoid Robots, 2009. Humanoids
-  2009. 9th IEEE-RAS Int'l Conference on}, pp.~175 --180, Dec 2009.
-
-\bibitem{5686276}
-Y.~Jun, R.~Ellenberg, and P.~Oh, ``Realization of miniature humanoid for
-  obstacle avoidance with real-time zmp preview control used for full-sized
-  humanoid,'' in {\em Humanoid Robots (Humanoids), 2010 10th IEEE-RAS Int'l
-  Conference on}, pp.~46 --51, Dec 2010.
-
-\bibitem{5152525}
-W.~Mori, J.~Ueda, and T.~Ogasawara, ``1-dof dynamic pitching robot that
-  independently controls velocity, angular velocity, and direction of a ball:
-  Contact models and motion planning,'' in {\em Robotics and Automation, 2009.
-  ICRA '09. IEEE Int'l Conference on}, pp.~1655 --1661, May 2009.
-
-\bibitem{4651142}
-T.~Senoo, A.~Namiki, and M.~Ishikawa, ``High-speed throwing motion based on
-  kinetic chain approach,'' in {\em Intelligent Robots and Systems, 2008. IROS
-  2008. IEEE/RSJ Int'l Conference on}, pp.~3206 --3211, Sept 2008.
-
 \bibitem{509405}
 N.~Kato, K.~Matsuda, and T.~Nakamura, ``Adaptive control for a throwing motion
   of a 2 dof robot,'' in {\em Advanced Motion Control, 1996. AMC '96-MIE.
@@ -101,6 +84,12 @@ N.~Kato, K.~Matsuda, and T.~Nakamura, ``Adaptive control for a throwing motion
 K.~M. Lynch and M.~T. Mason, ``Dynamic nonprehensile manipulation:
   Controllability, planning, and experiments,'' {\em Int'l Journal of Robotics
   Research}, vol.~18, pp.~64--92, 1997.
+
+\bibitem{5152525}
+W.~Mori, J.~Ueda, and T.~Ogasawara, ``1-dof dynamic pitching robot that
+  independently controls velocity, angular velocity, and direction of a ball:
+  Contact models and motion planning,'' in {\em Robotics and Automation, 2009.
+  ICRA '09. IEEE Int'l Conference on}, pp.~1655 --1661, May 2009.
 
 \bibitem{509335}
 T.~Nakamura, ``Search guided by skill in motion planning using dynamic
@@ -113,33 +102,10 @@ A.~Sato, O.~Sato, N.~Takahashi, and M.~Kono, ``Trajectory for saving energy of
   a direct-drive manipulator in throwing motion,'' {\em Artificial Life and
   Robotics}, vol.~11, pp.~61--66, 2007.
 
-\bibitem{6094757}
-S.~Haddadin, K.~Krieger, M.~Kunze, and A.~Albu-Schaffer, ``Exploiting potential
-  energy storage for cyclic manipulation: An analysis for elastic dribbling
-  with an anthropomorphic robot,'' in {\em Intelligent Robots and Systems
-  (IROS), 2011 IEEE/RSJ Int'l Conference on}, pp.~1789 --1796, Sept 2011.
-
-\bibitem{6094892}
-Z.~Wang, C.~H. Lampert, K.~Mulling, B.~Scholkopf, and J.~Peters, ``Learning
-  anticipation policies for robot table tennis,'' in {\em Intelligent Robots
-  and Systems (IROS), 2011 IEEE/RSJ Int'l Conference on}, pp.~332 --337, Dec
-  2011.
-
-\bibitem{schaal01/BIRG}
-S.~Schaal, S.~Vijayakumar, S.~D'Souza, A.~Ijspeert, and J.~Nakanishi,
-  ``Real-time statistical learning for robotics and human augmentation,'' in
-  {\em Int'l {S}ymposium of {R}obotics {R}esearch ({ISRR}01)}, pp.~117--124,
-  Springer, 2001.
-
-\bibitem{5649335}
-J.-S. Hu, M.-C. Chien, Y.-J. Chang, S.-H. Su, and C.-Y. Kai, ``A ball-throwing
-  robot with visual feedback,'' in {\em Intelligent Robots and Systems (IROS),
-  2010 IEEE/RSJ Int'l Conference on}, pp.~2511 --2512, Oct 2010.
-
-\bibitem{5686315}
-J.~Kim, ``Motion planning of optimal throw for whole-body humanoid,'' in {\em
-  Humanoid Robots (Humanoids), 2010 10th IEEE-RAS Int'l Conference on}, pp.~21
-  --26, Dec 2010.
+\bibitem{4651142}
+T.~Senoo, A.~Namiki, and M.~Ishikawa, ``High-speed throwing motion based on
+  kinetic chain approach,'' in {\em Intelligent Robots and Systems, 2008. IROS
+  2008. IEEE/RSJ Int'l Conference on}, pp.~3206 --3211, Sept 2008.
 
 \bibitem{JooH2011438}
 J.~H. and Kim, ``Optimization of throwing motion planning for whole-body
@@ -150,10 +116,6 @@ J.~H. and Kim, ``Optimization of throwing motion planning for whole-body
 M.~Vukobratovic, ``How to control artificial anthropomorphic systems,'' {\em
   Systems, Man and Cybernetics, IEEE Transactions on}, vol.~3, pp.~497 --507,
   sept. 1973.
-
-\bibitem{zmp35}
-M.~Vukobratovic and B.~Borovac, ``Zero-moment point - thirty five years of its
-  life,'' {\em I. J. Humanoid Robotics}, vol.~1, no.~1, pp.~157--173, 2004.
 
 \bibitem{diankovThesis}
 R.~Diankov, {\em Automated Construction of Robotic Manipulation Programs}.
@@ -243,5 +205,43 @@ S.~Gaertner, M.~Do, T.~Asfour, R.~Dillmann, C.~Simonidis, and W.~Seemann,
 D.~Lofaro and P.~Oh in {\em Humanoid Throws Inaugural Pitch at Major League
   Baseball Game: Challenges, Approach, Implementation and Lessons Learned},
   nov. 2012.
+
+\bibitem{5686276}
+Y.~Jun, R.~Ellenberg, and P.~Oh, ``Realization of miniature humanoid for
+  obstacle avoidance with real-time zmp preview control used for full-sized
+  humanoid,'' in {\em Humanoid Robots (Humanoids), 2010 10th IEEE-RAS Int'l
+  Conference on}, pp.~46 --51, Dec 2010.
+
+\bibitem{6094757}
+S.~Haddadin, K.~Krieger, M.~Kunze, and A.~Albu-Schaffer, ``Exploiting potential
+  energy storage for cyclic manipulation: An analysis for elastic dribbling
+  with an anthropomorphic robot,'' in {\em Intelligent Robots and Systems
+  (IROS), 2011 IEEE/RSJ Int'l Conference on}, pp.~1789 --1796, Sept 2011.
+
+\bibitem{6094892}
+Z.~Wang, C.~H. Lampert, K.~Mulling, B.~Scholkopf, and J.~Peters, ``Learning
+  anticipation policies for robot table tennis,'' in {\em Intelligent Robots
+  and Systems (IROS), 2011 IEEE/RSJ Int'l Conference on}, pp.~332 --337, Dec
+  2011.
+
+\bibitem{schaal01/BIRG}
+S.~Schaal, S.~Vijayakumar, S.~D'Souza, A.~Ijspeert, and J.~Nakanishi,
+  ``Real-time statistical learning for robotics and human augmentation,'' in
+  {\em Int'l {S}ymposium of {R}obotics {R}esearch ({ISRR}01)}, pp.~117--124,
+  Springer, 2001.
+
+\bibitem{5649335}
+J.-S. Hu, M.-C. Chien, Y.-J. Chang, S.-H. Su, and C.-Y. Kai, ``A ball-throwing
+  robot with visual feedback,'' in {\em Intelligent Robots and Systems (IROS),
+  2010 IEEE/RSJ Int'l Conference on}, pp.~2511 --2512, Oct 2010.
+
+\bibitem{5686315}
+J.~Kim, ``Motion planning of optimal throw for whole-body humanoid,'' in {\em
+  Humanoid Robots (Humanoids), 2010 10th IEEE-RAS Int'l Conference on}, pp.~21
+  --26, Dec 2010.
+
+\bibitem{zmp35}
+M.~Vukobratovic and B.~Borovac, ``Zero-moment point - thirty five years of its
+  life,'' {\em I. J. Humanoid Robotics}, vol.~1, no.~1, pp.~157--173, 2004.
 
 \end{thebibliography}

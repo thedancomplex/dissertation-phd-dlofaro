@@ -1,7 +1,7 @@
 
 
 
-The idea for a Control Archetecture for High Degree of Freedom Complex Systems stems from a gap in physical implimentation of control algerithms for robot hardware.
+The idea for a Control Archetecture for High DOF robots stems from a gap in physical implimentation of control algerithms for robot hardware.
 
 The simplest approach to developing robot software is to intergrate all functionality in one program.  
 This functionality includes the following controllers:
@@ -27,7 +27,7 @@ In most cases it is acceptiable to know the most recent data and never read any 
 This would happen if your sensors update at a faster rate then that of the robot.
 Typically robot actuiators have a bandwidth much much lower then that of a mondern conputer.
 If sensor informatio is shared using traditional shared memory over POSIX methods the controller would have to read the older information before it reaches the information it is most interested in, the newest data.
-This is called head of line blocking (look up).
+This is called head of line blocking (show reference).
 
 It is desired to make a multi-process controller that can share data between multiple processies with low-latency and no head of line blocking.
 There are a few IPCs that offer no head of line blocking and low-latency.  
