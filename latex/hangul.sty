@@ -1,0 +1,580 @@
+%%
+%%  hangul.sty   Hangul (Korean) package of hLaTeXp and hLaTeXn
+%%               1996/10/21 version
+%%               (requires hLaTeXp/hLaTeXn 1996/01/14 version)
+%%
+%%                  By Jae Choon Cha
+%%                     Department of Mathematics
+%%                     Korea Advanced Institute of Science and Technology
+%%
+%%  Copyright (C) Jae Choon Cha. All Rights are reserved.
+%%  You are not allowed to change this file.
+%%  This file is part of hLaTeXp and hLaTeXn package. You are not allowed
+%%  to distribute this file alone. This file should be distributed as
+%%  part of hLaTeXp or hLaTeXn package of the author.
+%%  This file (and any derivation) cannot be sold or distributed with
+%%  any commercial product or used in any commercial organization without
+%%  additional agreement with the author.
+%%
+%%  For suggestions and bug reports of UNCHANGED version, send e-mail to
+%%  jccha@math.kaist.ac.kr.
+%%
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{hangul}[1996/10/21 hLaTeXp/hLaTeXn Hangul package]
+\@ifl@t@r\hlatexfmtdate{1996/01/14}{}{%
+  \GenericError{\space}%
+  {hLaTeX Version Error: hLaTeX is too older than hangul package}%
+  {\space\space This hangul.sty is 1996/10/21 version,
+   but hLaTeX is \hlatexfmtdate\space version.}%
+  {This hangul.sty is newer than your hLaTeX, and may not work correctly.^^J%
+   Please use hangul.sty and hLaTeX in the same distribution,^^J%
+   so that they can cowork well.}}%
+%%
+%% Options.
+\newif\ifhangul@class \hangul@classtrue
+\newif\ifhangul@linespacing \hangul@linespacingtrue
+\DeclareOption{tracedbf}{\trace@dbfonttrue}
+\DeclareOption{notracedbf}{\trace@dbfontfalse}
+\DeclareOption{dbfsizesubst}{%
+  \ifx\auto@subst@dbfsizetrue\@undefined
+  \else \auto@subst@dbfsizetrue \fi}
+\DeclareOption{nodbfsizesubst}{%
+  \ifx\auto@subst@dbfsizefalse\@undefind
+  \else \auto@subst@dbfsizefalse}
+\DeclareOption{koreanlinebreak}{\hangulbreaking}
+\DeclareOption{englishlinebreak}{\nohangulbreaking}
+\DeclareOption{hanclass}{\hangul@classtrue}
+\DeclareOption{nohanclass}{\hangul@classfalse}
+\DeclareOption{hanlnsp}{\hangul@linespacingtrue}
+\DeclareOption{nohanlnsp}{\hangul@linespacingfalse}
+\ProcessOptions
+%%
+%% Baseline skip.
+\ifhangul@linespacing
+  \def\baselinestretch{1.3}%
+  {\footnotesize \global\footnotesep=1.1\ht\strutbox}%
+\fi
+%%
+%% Korean style enumerations and /À», /¸¦, /¿Í, /°ú, /ÀÌ, /°¡.
+\newif\ifk@fs
+\DeclareRobustCommand*{\k@fsoff}{\global\k@fsfalse}
+\DeclareRobustCommand*{\k@fson}{\global\k@fstrue}
+\DeclareRobustCommand*{\k@fsa}[1]{{\count0=#1\relax
+  \ifnum\count0<0 \count0=-\count0 \fi
+  \count1=\count0 \divide\count1 10 \multiply\count1 10 \advance\count0 -\count1
+  \k@fson \ifcase\count0 \or \or\k@fsoff \or \or \k@fsoff\or
+   \k@fsoff\or \or \or \or \k@fsoff \else \fi}}
+\k@fsoff
+\let\k@fsoff@org=\k@fsoff
+\let\k@fson@org=\k@fson
+\let\k@fsa@org=\k@fsa
+% Do not write \k@fs* during screen display operations.
+\def\set@display@protect{\let\protect\string \makedbcharstring
+ \def\k@fsoff{}\def\k@fson{}\def\k@fsa##1{}}% Disable k@fs* during screen display
+% Do not write \k@fs* during (non-\immediate) write operations.
+\let\shipout@org=\shipout
+\def\shipout#1#2{% A dirty trick; #1#2 is always \vbox{...} in LaTeX2e's output routine.
+  \def\k@fsoff{}\def\k@fson{}\def\k@fsa##1{}%
+  \shipout@org #1{%
+    \let\k@fsoff=\k@fsoff@org \let\k@fson=\k@fson@org \let\k@fsa=\k@fsa@org
+    #2}
+  \let\k@fsoff=\k@fsoff@org \let\k@fson=\k@fson@org \let\k@fsa=\k@fsa@org
+}
+% \label writes \thepage followed by \k@fsa during (non-\immediate) write operations.
+\def\label#1{\@bsphack
+  \protected@write\@auxout{}%
+         {\string\newlabel{#1}{{\@currentlabel}
+           {\thepage\noexpand\k@fsa@org{\noexpand\number\noexpand\c@page}}}}%
+  \@esphack}
+%
+\def\GaNaDa#1{\@GaNaDa{\csname c@#1\endcsname}}
+\def\PGaNaDa#1{\@PGaNaDa{\csname c@#1\endcsname}}
+\def\OGaNaDa#1{\@OGaNaDa{\csname c@#1\endcsname}}
+\def\ganada#1{\@ganada{\csname c@#1\endcsname}}
+\def\Pganada#1{\@Pganada{\csname c@#1\endcsname}}
+\def\Oganada#1{\@Oganada{\csname c@#1\endcsname}}
+\def\Palph#1{\@Palph{\csname c@#1\endcsname}}
+\def\Oalph#1{\@Oalph{\csname c@#1\endcsname}}
+\def\Parabic#1{\@Parabic{\csname c@#1\endcsname}}
+\def\Oarabic#1{\@Oarabic{\csname c@#1\endcsname}}
+\def\Sarabic#1{\@Sarabic{\csname c@#1\endcsname}}
+\def\BOarabic#1{\@BOarabic{\csname c@#1\endcsname}}
+\def\BSarabic#1{\@BSarabic{\csname c@#1\endcsname}}
+%
+\def\e@GaNaDa#1{\ifcase#1\or°¡\or³ª\or´Ù\or¶ó\or¸¶\or¹Ù\or»ç\or
+  ¾Æ\orÀÚ\orÂ÷\orÄ«\orÅ¸\orÆÄ\orÇÏ\else\@ctrerr\fi}
+\def\e@PGaNaDa#1{\ifcase#1\or©¿\or©À\or©Á\or©Â\or©Ã\or©Ä\or©Å\or
+  ©Æ\or©Ç\or©È\or©É\or©Ê\or©Ë\or©Ì\else\@ctrerr\fi}
+\def\e@OGaNaDa#1{\ifcase#1\or¨¿\or¨À\or¨Á\or¨Â\or¨Ã\or¨Ä\or¨Å\or
+  ¨Æ\or¨Ç\or¨È\or¨É\or¨Ê\or¨Ë\or¨Ì\else\@ctrerr\fi}
+\def\e@ganada#1{\ifcase#1\or¤¡\or¤¤\or¤§\or¤©\or¤±\or¤²\or¤µ\or
+  ¤·\or¤¸\or¤º\or¤»\or¤¼\or¤½\or¤¾\else\@ctrerr\fi}
+\def\e@Pganada#1{\ifcase#1\or©±\or©²\or©³\or©´\or©µ\or©¶\or©·\or
+  ©¸\or©¹\or©º\or©»\or©¼\or©½\or©¾\else\@ctrerr\fi}
+\def\e@Oganada#1{\ifcase#1\or¨±\or¨²\or¨³\or¨´\or¨µ\or¨¶\or¨·\or
+  ¨¸\or¨¹\or¨º\or¨»\or¨¼\or¨½\or¨¾\else\@ctrerr\fi}
+\def\e@Palph#1{\ifcase#1\or©Í\or©Î\or©Ï\or©Ð\or©Ñ\or©Ò\or©Ó\or©Ô\or©Õ\or
+  ©Ö\or©×\or©Ø\or©Ù\or©Ú\or©Û\or©Ü\or©Ý\or©Þ\or©ß\or©à\or©á\or©â\or
+  ©ã\or©ä\or©å\or©æ\else\@ctrerr\fi}
+\def\e@Oalph#1{\ifcase#1\or¨Í\or¨Î\or¨Ï\or¨Ð\or¨Ñ\or¨Ò\or¨Ó\or¨Ô\or¨Õ\or
+  ¨Ö\or¨×\or¨Ø\or¨Ù\or¨Ú\or¨Û\or¨Ü\or¨Ý\or¨Þ\or¨ß\or¨à\or¨á\or¨â\or
+  ¨ã\or¨ä\or¨å\or¨æ\else\@ctrerr\fi}
+\def\e@Parabic#1{\ifcase#1\or©ç\or©è\or©é\or©ê\or©ë\or©ì\or©í\or
+  ©î\or©ï\or©ð\or©ñ\or©ò\or©ó\or©ô\or©õ\orªô\orªõ\orªö\orª÷\or
+  ªø\orªù\orªú\orªû\orªü\orªý\orªþ\else\@ctrerr\fi}
+\def\e@Oarabic#1{\ifcase#1\or¨ç\or¨è\or¨é\or¨ê\or¨ë\or¨ì\or¨í\or
+  ¨î\or¨ï\or¨ð\or¨ñ\or¨ò\or¨ó\or¨ô\or¨õ\or§ð\or§ñ\or§ò\or§ó\or
+  §ô\or§õ\or§ö\or§÷\or§ø\or§ù\or§ú\or§û\or§ü\or§ý\or§þ\else\@ctrerr\fi}
+\def\e@Sarabic#1{\ifcase#1\or¢æ\or¢ç\or¢è\or¢é\or¢ê\or¢ë\or¢ì\or¢í\or
+  ¢î\or¢ï\or¢ð\or¢ñ\or¢ò\or¢ó\or¢ô\or¢õ\or¢ö\or¢÷\or¢ø\or¢ù\else\@ctrerr\fi}
+\def\e@BOarabic#1{\ifcase#1\or¦å\or¦æ\or¦ç\or¦è\or¦é\or¦ê\or¦ë\or¦ì\or
+  ¦í\or¦î\or¦ï\or¦ð\or¦ñ\or¦ò\or¦ó\or¦ô\or¦õ\or¦ö\or¦÷\or¦ø\or¦ù\or¦ú\or
+  ¦û\or¦ü\or¦ý\or¦þ\or¥ù\or¥ú\or¥û\or¥ü\else\@ctrerr\fi}
+\def\e@BSarabic#1{\ifcase#1\or¬Â\or¬Ã\or¬Ä\or¬Å\or¬Æ\or¬Ç\or¬È\or¬É\or
+  ¬Ê\or¬Ë\or¬Ì\or¬Í\or¬Î\or¬Ï\or¬Ð\or¬ò\or¬ó\or¬ô\or¬õ\or¬ö\else\@ctrerr\fi}
+%
+\def\k@arabic#1{\number #1\expandafter\k@fsa\expandafter{\number #1}}
+\def\k@roman#1{\romannumeral #1\expandafter\k@fsa\expandafter{\number #1}}
+\def\k@Roman#1{\expandafter\uppercase\expandafter{\romannumeral #1}%
+  \expandafter\k@fsa\expandafter{\number #1}}
+\def\k@alph#1{\ifcase#1\or
+   a\k@fsoff\or b\k@fsoff\or c\k@fsoff\or d\k@fsoff\or e\k@fsoff\or
+   f\k@fsoff\or g\k@fsoff\or h\k@fsoff\or i\k@fsoff\or j\k@fsoff\or
+   k\k@fsoff\or l\k@fson \or m\k@fson \or n\k@fson \or o\k@fsoff\or
+   p\k@fsoff\or q\k@fsoff\or r\k@fson \or s\k@fsoff\or t\k@fsoff\or
+   u\k@fsoff\or v\k@fsoff\or w\k@fsoff\or x\k@fsoff\or y\k@fsoff\or
+   z\k@fsoff\else\@ctrerr\fi}
+\def\k@Alph#1{\ifcase#1\or
+   A\k@fsoff\or B\k@fsoff\or C\k@fsoff\or D\k@fsoff\or E\k@fsoff\or
+   F\k@fsoff\or G\k@fsoff\or H\k@fsoff\or I\k@fsoff\or J\k@fsoff\or
+   K\k@fsoff\or L\k@fson \or M\k@fson \or N\k@fson \or O\k@fsoff\or
+   P\k@fsoff\or Q\k@fsoff\or R\k@fson \or S\k@fsoff\or T\k@fsoff\or
+   U\k@fsoff\or V\k@fsoff\or W\k@fsoff\or X\k@fsoff\or Y\k@fsoff\or
+   Z\k@fsoff\else\@ctrerr\fi}
+\def\k@fnsymbol#1{\ifcase#1\or *\or \dagger\or \ddagger\or
+   \mathchar "278\or \mathchar "27B\or \|\or **\or \dagger\dagger
+   \or \ddagger\ddagger \else\@ctrerr\fi\k@fsoff}
+\def\k@GaNaDa#1{\e@GaNaDa{#1}\k@fsoff}
+\def\k@PGaNaDa#1{\e@PGaNaDa{#1}\k@fsoff}
+\def\k@OGaNaDa#1{\e@OGaNaDa{#1}\k@fsoff}
+\def\k@ganada#1{\e@ganada{#1}\k@fson}
+\def\k@Pganada#1{\e@Pganada{#1}\k@fson}
+\def\k@Oganada#1{\e@Oganada{#1}\k@fson}
+\def\k@Palph#1{\ifcase#1\or©Í\k@fsoff\or©Î\k@fsoff\or©Ï\k@fsoff\or
+  ©Ð\k@fsoff\or©Ñ\k@fsoff\or©Ò\k@fsoff\or©Ó\k@fsoff\or©Ô\k@fsoff\or
+  ©Õ\k@fsoff\or©Ö\k@fsoff\or©×\k@fsoff\or©Ø\k@fson \or©Ù\k@fson \or
+  ©Ú\k@fson \or©Û\k@fsoff\or©Ü\k@fsoff\or©Ý\k@fsoff\or©Þ\k@fson \or
+  ©ß\k@fsoff\or©à\k@fsoff\or©á\k@fsoff\or©â\k@fsoff\or©ã\k@fsoff\or
+  ©ä\k@fsoff\or©å\k@fsoff\or©æ\k@fsoff\else\@ctrerr\fi}
+\def\k@Oalph#1{\ifcase#1\or¨Í\k@fsoff\or¨Î\k@fsoff\or¨Ï\k@fsoff\or
+  ¨Ð\k@fsoff\or¨Ñ\k@fsoff\or¨Ò\k@fsoff\or¨Ó\k@fsoff\or¨Ô\k@fsoff\or
+  ¨Õ\k@fsoff\or¨Ö\k@fsoff\or¨×\k@fsoff\or¨Ø\k@fson \or¨Ù\k@fson \or
+  ¨Ú\k@fson \or¨Û\k@fsoff\or¨Ü\k@fsoff\or¨Ý\k@fsoff\or¨Þ\k@fson \or
+  ¨ß\k@fsoff\or¨à\k@fsoff\or¨á\k@fsoff\or¨â\k@fsoff\or¨ã\k@fsoff\or
+  ¨ä\k@fsoff\or¨å\k@fsoff\or¨æ\k@fsoff\else\@ctrerr\fi}
+\def\k@Parabic#1{\@Parabic{#1}\expandafter\k@fsa\expandafter{\number #1}}
+\def\k@Oarabic#1{\@Oarabic{#1}\expandafter\k@fsa\expandafter{\number #1}}
+\def\k@Sarabic#1{\@Sarabic{#1}\expandafter\k@fsa\expandafter{\number #1}}
+\def\k@BOarabic#1{\@BOarabic{#1}\expandafter\k@fsa\expandafter{\number #1}}
+\def\k@BSarabic#1{\@BSarabic{#1}\expandafter\k@fsa\expandafter{\number #1}}
+%
+\global\let\@arabic=\k@arabic
+\global\let\@arabic=\k@arabic
+\global\let\@roman=\k@roman
+\global\let\@Roman=\k@Roman
+\global\let\@alph=\k@alph
+\global\let\@Alph=\k@Alph
+\global\let\@fnsymbol=\k@fnsymbol
+\global\let\@GaNaDa=\k@GaNaDa
+\global\let\@PGaNaDa=\k@PGaNaDa
+\global\let\@OGaNaDa=\k@OGaNaDa
+\global\let\@ganada=\k@ganada
+\global\let\@Pganada=\k@Pganada
+\global\let\@Oganada=\k@Oganada
+\global\let\@Palph=\k@Palph
+\global\let\@Oalph=\k@Oalph
+\global\let\@Parabic=\k@Parabic
+\global\let\@Oarabic=\k@Oarabic
+\global\let\@Sarabic=\k@Sarabic
+\global\let\@BOarabic=\k@BOarabic
+\global\let\@BSarabic=\k@BSarabic
+%
+\def\if@finalsound#1#2{\ifk@fs #1\else #2\fi}
+\def\yi{\if@finalsound{ÀÌ}{°¡}}
+\def\eun{\if@finalsound{Àº}{´Â}}
+\def\eul{\if@finalsound{À»}{¸¦}}
+\def\gwa{\if@finalsound{°ú}{¿Í}}
+\DeclareRobustCommand*{\^^c0}[1]{%
+  \ifx#1^^cc\yi \else %ÀÌ
+  \ifx#1^^ba\eun\else %Àº
+  \ifx#1^^bb\eul\fi   %À»
+  \fi\fi}
+\DeclareRobustCommand*{\^^b0}[1]{%
+  \ifx#1^^a1\yi \else %°¡
+  \ifx#1^^fa\gwa\fi   %°ú
+  \fi}
+\DeclareRobustCommand*{\^^b4}[1]{\ifx#1^^c2\eun\fi}%´Â
+\DeclareRobustCommand*{\^^b8}[1]{\ifx#1^^a6\eul\fi}%¸¦
+\DeclareRobustCommand*{\^^bf}[1]{\ifx#1^^cd\gwa\fi}%¿Í
+%%
+%% line-breaking style environments
+\def\englishlinebreak{\trivlist \nohangulbreaking\item\relax}
+\def\endenglishlinebreak{\endtrivlist}
+\def\koreanlinebreak{\trivlist \hangulbreaking\item\relax}
+\def\endkoreanlinebreak{\endtrivlist}
+%%
+%% Some Hangul strings.
+\ifhangul@class
+\def\contentsname{Â÷·Ê}
+\def\listfigurename{±×¸² Â÷·Ê}
+\def\listtablename{Ç¥ Â÷·Ê}
+\def\refname{Âü°í¹®Çå}
+\def\bibname{Âü°í¹®Çå}
+\def\indexname{Ã£¾Æº¸±â}
+\def\figurename{±×¸²}
+\def\tablename{Ç¥}
+\def\partname{ºÎ}
+\def\chaptername{Àå}
+\def\appendixname{ºÎ·Ï}
+\def\abstractname{¿ä¾à¹®}
+\def\hjename{Á¦}
+\newcommand{\happendixname}{\appendixname}
+\def\ccname{»çº»}
+\def\enclname{µ¿ºÀ}
+\def\pagename{ÆäÀÌÁö}
+\def\headtoname{¹Þ´ÂÀÌ:}
+\fi
+%%
+%% Header/footer markings.
+\@ifundefined{ver@report.cls}{}{\ifhangul@class
+\if@twoside
+  \def\ps@headings{%
+      \let\@oddfoot\@empty\let\@evenfoot\@empty
+      \def\@evenhead{\thepage\hfil\slshape\leftmark}%
+      \def\@oddhead{{\slshape\rightmark}\hfil\thepage}%
+      \let\@mkboth\markboth
+    \def\chaptermark##1{%
+      \markboth {{%
+        \ifnum \c@secnumdepth >\m@ne
+            \ifx\@chapapp\happendixname \@chapapp\ \thechapter. \ %
+            \else \hjename\ \thechapter\ \@chapapp\ \ \fi
+        \fi
+        ##1}}{}}%
+    \def\sectionmark##1{%
+      \markright {{%
+        \ifnum \c@secnumdepth >\z@
+          \thesection. \ %
+        \fi
+        ##1}}}}
+\else
+  \def\ps@headings{%
+    \let\@oddfoot\@empty
+    \def\@oddhead{{\slshape\rightmark}\hfil\thepage}%
+    \let\@mkboth\markboth
+    \def\chaptermark##1{%
+      \markright {{%
+        \ifnum \c@secnumdepth >\m@ne
+            \ifx\@chapapp\happendixname \@chapapp\ \thechapter. \ %
+            \else \hjename\ \thechapter\ \@chapapp\ \ \fi
+        \fi
+        ##1}}}}
+\fi\fi
+}
+\@ifundefined{ver@book.cls}{}{\ifhangul@class
+\if@twoside
+  \def\ps@headings{%
+      \let\@oddfoot\@empty\let\@evenfoot\@empty
+      \def\@evenhead{\thepage\hfil\slshape\leftmark}%
+      \def\@oddhead{{\slshape\rightmark}\hfil\thepage}%
+      \let\@mkboth\markboth
+    \def\chaptermark##1{%
+      \markboth {{%
+        \ifnum \c@secnumdepth >\m@ne
+          \if@mainmatter
+            \ifx\@chapapp\happendixname \@chapapp\ \thechapter. \ %
+            \else \hjename\ \thechapter\ \@chapapp\ \ \fi
+          \fi
+        \fi
+        ##1}}{}}%
+    \def\sectionmark##1{%
+      \markright {{%
+        \ifnum \c@secnumdepth >\z@
+          \thesection. \ %
+        \fi
+        ##1}}}}
+\else
+  \def\ps@headings{%
+    \let\@oddfoot\@empty
+    \def\@oddhead{{\slshape\rightmark}\hfil\thepage}%
+    \let\@mkboth\markboth
+    \def\chaptermark##1{%
+      \markright {{%
+        \ifnum \c@secnumdepth >\m@ne
+          \if@mainmatter
+            \ifx\@chapapp\happendixname \@chapapp\ \thechapter. \ %
+            \else \hjename\ \thechapter\ \@chapapp\ \ \fi
+          \fi
+        \fi
+        ##1}}}}
+\fi
+\ps@headings\fi
+}
+%%
+%% Contents, part, chapter, list of figure/table, bibliography, index.
+\@ifundefined{ver@report.cls}{}{\ifhangul@class
+\renewcommand\tableofcontents{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\contentsname
+        \@mkboth{\contentsname}{\contentsname}}%
+    \@starttoc{toc}%
+    \if@restonecol\twocolumn\fi
+    }
+\renewcommand\listoffigures{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\listfigurename
+      \@mkboth{\listfigurename}{\listfigurename}}%
+    \@starttoc{lof}%
+    \if@restonecol\twocolumn\fi
+    }
+\renewcommand\listoftables{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\listtablename
+      \@mkboth{\listtablename}{\listtablename}}%
+    \@starttoc{lot}%
+    \if@restonecol\twocolumn\fi
+    }
+\def\@part[#1]#2{%
+    \ifnum \c@secnumdepth >-2\relax
+      \refstepcounter{part}%
+      \addcontentsline{toc}{part}{\thepart\hspace{1em}#1}%
+    \else
+      \addcontentsline{toc}{part}{#1}%
+    \fi
+    \markboth{}{}
+    {\centering
+     \interlinepenalty \@M
+     \reset@font
+     \ifnum \c@secnumdepth >-2\relax
+       \huge\bfseries \hjename~\thepart~\partname
+       \par
+       \vskip 20\p@
+     \fi
+     \Huge \bfseries #2\par}%
+    \@endpart}
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+                         \refstepcounter{chapter}%
+                         \typeout{\ifx\@chapapp\happendixname
+                             \@chapapp\space\thechapter.
+                           \else \hjename\space\thechapter\space\@chapapp.\fi}%
+                         \addcontentsline{toc}{chapter}%
+                                   {\protect\numberline{\thechapter}#1}%
+                    \else
+                      \addcontentsline{toc}{chapter}{#1}%
+                    \fi
+                    \chaptermark{#1}%
+                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+                    \if@twocolumn
+                      \@topnewpage[\@makechapterhead{#2}]%
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi}
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \reset@font
+    \ifnum \c@secnumdepth >\m@ne
+        \huge\bfseries
+            \ifx\@chapapp\happendixname \@chapapp\ \thechapter
+            \else \hjename\ \thechapter\ \@chapapp \fi
+        \par\nobreak
+        \vskip 20\p@
+    \fi
+    \interlinepenalty\@M
+    \Huge \bfseries #1\par\nobreak
+    \vskip 40\p@
+  }}
+\renewenvironment{thebibliography}[1]
+     {\chapter*{\bibname
+        \@mkboth{\bibname}{\bibname}}%
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy\clubpenalty4000\widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
+\renewenvironment{theindex}
+               {\if@twocolumn
+                  \@restonecolfalse
+                \else
+                  \@restonecoltrue
+                \fi
+                \columnseprule \z@
+                \columnsep 35\p@
+                \twocolumn[\@makeschapterhead{\indexname}]%
+                \@mkboth{\indexname}{\indexname}
+                \thispagestyle{plain}\parindent\z@
+                \parskip\z@ \@plus .3\p@\relax
+                \let\item\@idxitem}
+               {\if@restonecol\onecolumn\else\clearpage\fi}
+\fi}
+\@ifundefined{ver@book.cls}{}{\ifhangul@class
+\def\@part[#1]#2{%
+    \ifnum \c@secnumdepth >-2\relax
+      \refstepcounter{part}%
+      \addcontentsline{toc}{part}{\thepart\hspace{1em}#1}%
+    \else
+      \addcontentsline{toc}{part}{#1}%
+    \fi
+    \markboth{}{}
+    {\centering
+     \interlinepenalty \@M
+     \normalfont
+     \ifnum \c@secnumdepth >-2\relax
+       \huge\bfseries \hjename~\thepart~\partname
+       \par
+       \vskip 20\p@
+     \fi
+     \Huge \bfseries #2\par}%
+    \@endpart}
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+                       \if@mainmatter
+                         \refstepcounter{chapter}%
+                         \typeout{\ifx\@chapapp\happendixname
+                            \@chapapp\space\thechapter.
+                            \else \hjename\space\thechapter\space\@chapapp. \fi}%
+                         \addcontentsline{toc}{chapter}%
+                                   {\protect\numberline{\thechapter}#1}%
+                       \else
+                         \addcontentsline{toc}{chapter}{#1}%
+                       \fi
+                    \else
+                      \addcontentsline{toc}{chapter}{#1}%
+                    \fi
+                    \chaptermark{#1}%
+                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+                    \if@twocolumn
+                      \@topnewpage[\@makechapterhead{#2}]%
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi}
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \huge\bfseries
+            \ifx\@chapapp\happendixname \@chapapp\ \thechapter
+            \else \hjename\ \thechapter\ \@chapapp \fi
+        \par\nobreak
+        \vskip 20\p@
+      \fi
+    \fi
+    \interlinepenalty\@M
+    \Huge \bfseries #1\par\nobreak
+    \vskip 40\p@
+  }}
+\renewcommand\tableofcontents{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\contentsname
+        \@mkboth{\contentsname}{\contentsname}}%
+    \@starttoc{toc}%
+    \if@restonecol\twocolumn\fi
+    }
+\renewcommand\listoffigures{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\listfigurename
+      \@mkboth{\MakeUppercase\listfigurename}%
+              {\MakeUppercase\listfigurename}}%
+    \@starttoc{lof}%
+    \if@restonecol\twocolumn\fi
+    }
+\renewcommand\listoftables{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\listtablename
+      \@mkboth{%
+          \MakeUppercase\listtablename}{\MakeUppercase\listtablename}}%
+    \@starttoc{lot}%
+    \if@restonecol\twocolumn\fi
+    }
+\renewenvironment{thebibliography}[1]
+     {\chapter*{\bibname
+        \@mkboth{\bibname}{\bibname}}%
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy\clubpenalty4000\widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
+\renewenvironment{theindex}
+               {\if@twocolumn
+                  \@restonecolfalse
+                \else
+                  \@restonecoltrue
+                \fi
+                \columnseprule \z@
+                \columnsep 35\p@
+                \twocolumn[\@makeschapterhead{\indexname}]%
+                \@mkboth{\indexname}{\indexname}%
+                \thispagestyle{plain}\parindent\z@
+                \parskip\z@ \@plus .3\p@\relax
+                \let\item\@idxitem}
+               {\if@restonecol\onecolumn\else\clearpage\fi}
+\fi}
+%%
+%% Enumerations for itemization-like environments.
+\renewcommand{\theenumi}{\arabic{enumi}}
+\renewcommand{\theenumii}{\arabic{enumii}}
+\renewcommand{\theenumiii}{\ganada{enumiii}}
+\renewcommand{\theenumiv}{\ganada{enumiv}}
+\renewcommand{\labelenumi}{\theenumi.}
+\renewcommand{\labelenumii}{(\theenumii)}
+\renewcommand{\labelenumiii}{\theenumiii.}
+\renewcommand{\labelenumiv}{\theenumiv.}
+%%
+%% \today.
+\ifhangul@class
+\def\today{\number\year³â \number\month¿ù \number\dayÀÏ}
+\fi
+%%
+\endinput

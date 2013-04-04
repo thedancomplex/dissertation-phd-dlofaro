@@ -256,4 +256,14 @@ N.~Dantam and M.~Stilman, ``Robust and efficient communication for real-time
   multi-process robot software,'' in {\em International Conference on Humanoid
   Robots (Humanoids)}, 2012.
 
+\bibitem{ros}
+M.~Quigley, B.~Gerkey, K.~Conley, J.~Faust, T.~Foote, J.~Leibs, E.~Berger,
+  R.~Wheeler, and A.~Ng, {\em ROS: an open-source Robot Operating System}.
+\newblock 2009.
+
+\bibitem{Gropp:1999:UMP:330577}
+W.~Gropp, E.~Lusk, and A.~Skjellum, {\em Using MPI (2nd ed.): portable parallel
+  programming with the message-passing interface}.
+\newblock Cambridge, MA, USA: MIT Press, 1999.
+
 \end{thebibliography}

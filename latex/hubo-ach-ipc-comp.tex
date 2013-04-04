@@ -32,4 +32,11 @@ The primary problem being that that thought the sender will not block the reader
 The question now is what IPC mechanism will be suitable for my control system.
 
 Upon investigation three major mechanisms are avaliable; Robot Operating System (ROS)\cite{ros}, Message Passing Interface (MPI)\cite{Gropp:1999:UMP:330577} and Ach\cite{ach}.
-Though ROS 
+Though ROS is ubicuitious in the robotics and automation field the inherent latency and the non real-time (RT) guarantee due to the use of TCP/IP it is not a good choice.
+MPI is ubiquitous in the high-proformance computing field.  It has full non-blocking capiabilities and is geared towards maximizing message throughput for networked clusters\cite{ach}.
+Table~\ref{table:ipc} shows a comparision of a wide range of IPC methods.
+A focus on reducing latency is not given.
+Ach is a newer 
+
+\input{robot-sys-comp.tex}
+\input{IPC-comp.tex}
