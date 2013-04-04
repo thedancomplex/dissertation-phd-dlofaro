@@ -5,6 +5,12 @@ N.~Dantam, D.~Lofaro, A.~Hereid, P.~Oh, A.~Ames, and M.~Stilman, ``Reliable
   software for humanoid robots,'' in {\em IEEE Robotics and Automation
   Magazine}, 2013.
 
+\bibitem{jaemiHuboSRM}
+D.~M. Lofaro, R.~Ellenberg, P.~Oh, and J.-H. Oh, ``Humanoid throwing: Design of
+  collision-free trajectories with sparse reachable maps,'' in {\em Intelligent
+  Robots and Systems (IROS), 2012 IEEE/RSJ International Conference on}, oct.
+  2012.
+
 \bibitem{5686325}
 R.~Ellenberg, R.~Sherbert, P.~Oh, A.~Alspach, R.~Gross, and J.~Oh, ``A common
   interface for humanoid simulation and hardware,'' in {\em Humanoid Robots
@@ -202,9 +208,10 @@ S.~Gaertner, M.~Do, T.~Asfour, R.~Dillmann, C.~Simonidis, and W.~Seemann,
   2010 6th German Conference on Robotics (ROBOTIK)}, pp.~1 --8, Jun 2010.
 
 \bibitem{lofaroURAI}
-D.~Lofaro and P.~Oh in {\em Humanoid Throws Inaugural Pitch at Major League
-  Baseball Game: Challenges, Approach, Implementation and Lessons Learned},
-  nov. 2012.
+D.~Lofaro and P.~Oh, ``Humanoid throws inaugural pitch at major league baseball
+  game: Challenges, approach, implementation and lessons learned,'' in {\em
+  Intelligent Robots and Systems (IROS), 2012 IEEE/RSJ International Conference
+  on}, nov. 2012.
 
 \bibitem{5686276}
 Y.~Jun, R.~Ellenberg, and P.~Oh, ``Realization of miniature humanoid for
@@ -243,5 +250,10 @@ J.~Kim, ``Motion planning of optimal throw for whole-body humanoid,'' in {\em
 \bibitem{zmp35}
 M.~Vukobratovic and B.~Borovac, ``Zero-moment point - thirty five years of its
   life,'' {\em I. J. Humanoid Robotics}, vol.~1, no.~1, pp.~157--173, 2004.
+
+\bibitem{ach}
+N.~Dantam and M.~Stilman, ``Robust and efficient communication for real-time
+  multi-process robot software,'' in {\em International Conference on Humanoid
+  Robots (Humanoids)}, 2012.
 
 \end{thebibliography}
