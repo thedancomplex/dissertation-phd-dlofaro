@@ -1,0 +1,22 @@
+This section shows the experimental and expected results of controlling a single joint via the Hubo-Ach system.
+In this example the right shoulder pitch (RSP) is given a step input from 0.0 $rad$ to 0.4 $rad$.
+The reference position $\theta_r$ is begin recorded as well as the actuator setpoint $\theta_c$ and 
+
+\begin{table}\label{table:recorded}
+\centering
+\caption{States being recorded for the single joint step response test}
+\begin{tabular}{l || c | c | c | c}
+Signal      & Symbol     & Definition                    & Source      & Units \\
+\hline
+\hline
+FeedForward & $\theta_r$ & Desired reference on the      & Hubo-Ach   & $rad$ \\
+            &            & Hubo-Ach FeedForward Channel  &            &       \\
+\hline
+FeedForward & $\theta_c$ & Reference set to the actuator & Hubo-Ach   & $rad$ \\
+\hline
+Feedback    & $\theta_a$ & Actual position of joint as   & JMC        & $rad$ \\
+            &            & measured from the encoders    &            &       \\
+\hline
+\end{tabular}
+\end{table}
+
