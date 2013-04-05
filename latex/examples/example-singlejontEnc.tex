@@ -1,8 +1,40 @@
 Feedback filtering allows us to removes the requirement that we know the joint's current position.
 Similar to Equation~\ref{eq:reffiltermode} this method sets $\theta_c$ based on a filter length $L$ and the current desired value $\theta_r$.
 However instead of assuming that we know all past $\theta_r$ we use the actual position $\theta_a$.
+This method add compliance in a similar way to that of Section~\ref{sec:singlejointRefComplience}.
 
 
 \begin{equation}\label{eq:refencmode}
 \theta_c(N) = \frac{\theta_a(N)\cdot\left(L-1\right) + \theta_r(N)}{L}
 \end{equation}
+
+This causes three major effects: 
+
+\noindent \textbf{Effect 1:} The movement of the joint is guaranteed to be filtered even if the previous reference is unknown.
+
+\noindent \textbf{Effect 2:} The steady state error of the feedback filtering method $\theta_e^{fbfilter}$ is greater than that of the PID error $\theta_e$ in the direction of the moment acting on the joint.
+
+\begin{equation}
+\theta_e^{fbfilter} > \theta_e
+\end{equation}
+
+\noindent \textbf{Effect 3:} The joint's compliance has increased due to the effect of the moment applied to the joint has on the steady state error.
+
+Fig.~\ref{fig:singleJointStepFilteredFeedback} shows $\theta_r$ plotted against $\theta_c$ and $\theta_a$.  
+$\theta_a$ not only lags behind $\theta_c$ but it also has a greater steady state error.
+Fig.~\ref{fig:singleJointStepFilteredFeedbackMoment} shows how the steady state error $\theta_e^{fbfilter}$ increases with an applied moment.
+This is where we get our compliance.
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.8\columnwidth]{./pix/tmp.png}
+  \caption{$\theta_r$ plotted against $\theta_c$ and $\theta_a$ recorded via Hubo-Ach using the feedback filtering method.}
+  \label{fig:singleJointStepFilteredFeedback}
+\end{figure}
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.8\columnwidth]{./pix/tmp.png}
+  \caption{$\theta_r$ plotted against $\theta_c$ and $\theta_a$ recorded via Hubo-Ach using the feedback filtering method with different moments applied to the joint.  You will note that as the moment increases so does $\theta_e^{fbfilter}$. }
+  \label{fig:singleJointStepFilteredFeedbackMoment}
+\end{figure}

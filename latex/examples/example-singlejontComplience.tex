@@ -1,0 +1,16 @@
+Compliance amplification takes advandage of the internal compliance of the joints and amplifies that by feeding back the PID error $\theta_e$.
+Like the Equation~\ref{eq:refrefmode} we have no past information about the set reference and we have only the compiliance given by the joints.
+If we think about $\theta_e$ and what effects it we can use it to add compliance to our system.
+It is important to note that because the Hubo is a high-gain PID position controlled device with an intergral gain $K_i$ set to zero the steady state error of the joint (the PID error $\theta_e$) is proportional to the moment applied to the joint.
+If we combine the reference $\theta_r$ and $\theta_e$ multiplied by a compliance gain $K_c$ we are able to add/amplify the compliance to the system.
+
+\begin{equation}
+\theta_c(N) = K_c\theta_e(N)+\theta_r(N)
+\end{equation}
+
+It is important to note that $K_c \leqq 1$ or the system will go unstable.
+If $K_c=1$ then we have
+
+\begin{equation}
+\theta_c(N) = \theta_a(N)
+\end{equation}
