@@ -31,19 +31,26 @@ Feedback    & $\theta_a$ & Actual position of joint as   & JMC        & $rad$ \\
   \label{fig:singleJointStep}
 \end{figure}
 
-Fig.~\ref{fig:singleJointStep} shows the results when a step input is applied and Hubo-Ach is in \textit{HUBO\_REF\_MODE\_REF\_FILTER} also know as passthrough mode.
+Fig.~\ref{fig:singleJointStep} shows the results when a step input is applied and Hubo-Ach is in \textit{HUBO\_REF\_MODE\_REF\_FILTER} also know as pass-through mode.
 This sets the what the desired reference on the \textbf{FeedForward} Hubo-Ach channel to the actuator's reference, i.e.:
 
-\begin{equation}
+\begin{equation}\label{eq:refrefmode}
  \theta_c = \theta_r
+\end{equation}
+
+As seen in Fig~\ref{fig:singleJointStep} $\theta_c$ tracks $\theta_r$ perfectly. As expected $\theta_a$ lags by a minimum of 1 time step $T$.  
+This is the time it takes between sending $\theta_c$ to the actuator over the CAN bus plus the time it takes in receiving the feedback from the encoder of the motor over CAN.
+The remainder of the lag is due to the rise time of the actuator.
+This is different for each joint.
+Because all major joints are high-gain PID the rise-time and overshoot is very small which makes the robot very stiff.
+The total lag between commanding the joint on the \textbf{FeedForward} channel and the response of the actuator is:
+
+\begin{equation}
+t_{lag} = t_{filter} + t_{rise}
 \end{equation}
 
 
 
 
-\begin{figure}[thpb]
-  \centering
-\includegraphics[width=0.8\columnwidth]{./pix/tmp.png}
-  \caption{The commanded reference plotted against the actual reference recorded via Hubo-Ach and ground truth via CAN analyzing utilities.  In this plot the commanded reference is automatically filtered by Hubo-Ach.}
-  \label{fig:singleJointStepFiltered}
-\end{figure}
+
+

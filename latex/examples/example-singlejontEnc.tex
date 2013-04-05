@@ -1,0 +1,8 @@
+Feedback filtering allows us to removes the requirement that we know the joint's current position.
+Similar to Equation~\ref{eq:reffiltermode} this method sets $\theta_c$ based on a filter length $L$ and the current desired value $\theta_r$.
+However instead of assuming that we know all past $\theta_r$ we use the actual position $\theta_a$.
+
+
+\begin{equation}\label{eq:refencmode}
+\theta_c(N) = \frac{\theta_a(N)\cdot\left(L-1\right) + \theta_r(N)}{L}
+\end{equation}
