@@ -1,0 +1,54 @@
+\begin{figure}
+\centering
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=5cm,
+  thick,main node/.style={fill=white!20,draw,font=\sffamily\Large\bfseries}]
+
+
+  \node[main node] (ref) {Reference};
+  \node[main node] (filter) [right=3.0cm of ref] {Filter};
+  \node[main node] (hubo-ach) [below=1.0cm of filter] {Hubo-Ach};
+  \node[main node] (hubo) [right=3.0cm of hubo-ach] {Hubo};
+
+
+
+
+  \path[<->,dashed, every node/.style={font=\sffamily\small}]
+    (hubo) edge node [above] {CAN} (hubo-ach);
+
+  \path[->,every node/.style={font=\sffamily\small}]
+    (ref) edge node [above] {$\theta_d$} (filter);
+
+  \path[->,every node/.style={font=\sffamily\small}]
+    (hubo-ach) edge node [left] {$\theta_r$} (filter);
+
+  \path[->,every node/.style={font=\sffamily\small}]
+    (filter) edge node [right] {$\theta_a$} (hubo-ach);
+
+
+% look into this and add z^-1
+
+\path [every node/.style={draw,minimum width=3cm, minimum height=5cm]}]
+  node (a) at (0,0) {}
+  [xshift=7cm]
+  node (b) at (0,0) {}
+  [xshift=7cm]
+  node (c) at (0,0) {};
+
+%\begin{scope}[->,>=latex]
+%    \foreach \i in {-2,...,2}{% 
+%      \draw[->] ([yshift=\i * 0.8 cm]a.east) -- ([yshift=\i * 0.8 cm]b.west) ;}
+
+%    \foreach \i in {1,2}{% 
+%      \draw[->] ([yshift=\i * 0.8 cm]a.east) to [out=50,in=130] ([yshift=\i * 0.8 cm]c.west) ;} 
+
+%    \foreach \i in {-1,-2}{% 
+%      \draw[->] ([yshift=\i * 0.8 cm]a.east) to [out=-50,in=-130] ([yshift=\i * 0.8 cm]c.west) ;}
+%\end{scope}
+
+
+\end{tikzpicture}
+\caption{Desired reference $\theta_d$ being filtered before applied to Hubo via Hubo-Ach.  $\theta_d$ is sent through a filter that reduces the \textit{jerk} on the actuator then the new reference $\theta_r$ is set on the \textbf{FeedForward} channel, Hubo-Ach reads it then commands Hubo at the rising edge of the next cycle.}
+\label{fig:hubo-ach-feedforward}
+\end{figure}
+

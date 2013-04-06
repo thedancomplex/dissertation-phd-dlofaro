@@ -38,6 +38,13 @@ This sets the what the desired reference on the \textbf{FeedForward} Hubo-Ach ch
  \theta_c(N) = \theta_r(N)
 \end{equation}
 
+Fig.~\ref{fig:hubo-ach-feedforward} shows the block diagram of the control setup.
+
+\input{examples/block-SingleJoint.tex}
+\input{examples/block-SingleJointFiltered.tex}
+\input{examples/block-SingleJointFilteredEnc}
+
+
 As seen in Fig~\ref{fig:singleJointStep} $\theta_c$ tracks $\theta_r$ perfectly. As expected $\theta_a$ lags by a minimum of 1 time step $T$.  
 This is the time it takes between sending $\theta_c$ to the actuator over the CAN bus plus the time it takes in receiving the feedback from the encoder of the motor over CAN.
 The remainder of the lag is due to the rise time of the actuator.
@@ -48,9 +55,6 @@ The total lag between commanding the joint on the \textbf{FeedForward} channel a
 \begin{equation}
 t_{lag} = t_{filter} + t_{rise}
 \end{equation}
-
-
-
 
 
 

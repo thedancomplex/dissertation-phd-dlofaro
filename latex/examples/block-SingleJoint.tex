@@ -1,0 +1,25 @@
+\begin{figure}
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=5cm,
+  thick,main node/.style={fill=white!20,draw,font=\sffamily\Large\bfseries}]
+
+
+  \node[main node] (ref) {Reference};
+  \node[main node] (hubo-ach) [right of=ref] {Hubo-Ach};
+  \node[main node] (hubo) [right of=hubo-ach] {Hubo};
+
+
+
+
+  \path[<->,dashed, every node/.style={font=\sffamily\small}]
+    (hubo) edge node [above] {CAN} (hubo-ach);
+
+  \path[->,every node/.style={font=\sffamily\small}]
+    (ref) edge node [above] {$\theta_r$} (hubo-ach);
+
+
+\end{tikzpicture}
+\caption{Reference $\theta_r$ being applied to Hubo via Hubo-Ach.  $\theta_r$ is set on the \textbf{FeedForward} channel, Hubo-Ach reads it then commands Hubo at the rising edge of the next cycle.}
+\label{fig:hubo-ach-feedforward}
+\end{figure}
+
