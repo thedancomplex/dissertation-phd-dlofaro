@@ -1,0 +1,29 @@
+In order to control the Hubo's upper body manipulators in work space as opposed to joint space both forward and inverse kinematics are required, (FK) and (IK) respectively.
+In order to find a proper solution the joint limits, singularities and feasible workspace (no-self collisions) must be accounted for.
+
+The kinematic structure of the right and left arm of the Hubo are identical with the caveat that the work space offset is mirrored over the z-axis.
+This means that they have the same Denavit–Hartenberg (DH) parameters
+
+\begin{table}
+\centering
+\caption{Denavit–Hartenberg for Hubo2+ upper body (arms) in standard format}
+\begin{tabular}{|l | c|}
+\hline
+Link     & Length (m) \\
+\hline
+\hline
+$l_{A1}$ & 0.215 \\
+\hline
+$l_{A2}$ & 0.179 \\
+\hline
+$l_{A3}$ & 0.182 \\
+\hline
+$l_{A4}$ & 0.121 \\
+\hline
+$l_{E}$ & 0.100 \\
+
+\hline
+
+\end{tabular}\label{table:DHupper}
+\end{table}
+
