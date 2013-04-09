@@ -1,1 +1,38 @@
+The next step is to find the inverse kinematic (IK) solution for the righ arm.
+Inherently this problem has multiple solutions.
+When solving the IK Pieper\cite{peiper1968kinematics} states that a closed-form solution does exist if:
+\begin{itemize}
+\item Three consecutive joints axes of the manipulator are parallel to one another
+\end{itemize}
 
+OR
+\begin{itemize}
+\item Three consecutive joints intercect at a single point
+\end{itemize}
+
+The kinematic structure in Fig~\ref{fig:hubo} and Fig~\ref{fig:IkFkCoordinate} shows that the Hubo2+ platform does have a three joints that intersect the same point in the shoulders and in the hips.
+Thus a closed-form solution exists for both arms and both legs.
+
+The transform $T_0^6$ in Equation~\ref{eq:t06} is needed to solve the IK problem for the shoulder.  
+It is important to note that $T_0^6$ is in the form of
+
+\begin{equation}
+T_0^6 = \left[ \begin{array}{cccc} 
+\overline{x_6} & \overline{y_6} & \overline{z_6} & \overline{p_6} \\
+0              & 0              & 0              & 1   
+\end{array} \right]
+\end{equation} 
+
+Where $\overline{x_6}$, $\overline{y_6}$ and $\overline{z_6}$ are $[3x1]$ unit vectors along the principle axes of the end-effectors frame, see Fig.~\ref{fig:IkFkCoordinate}.
+Position vector $\overline{p_6}$ describes the hand about joint $A1$ (shoulder).
+The arm can be vied in different frames.
+If we look at the arm in reference to the end-effector's frame.
+The reverse transform is defined as $(T_0^6)`$
+
+
+\begin{equation}
+(T_0^6)` = T_6_0 = (T_ = \left[ \begin{array}{cccc} 
+\overline{x_6} & \overline{y_6} & \overline{z_6} & \overline{p_6} \\
+0              & 0              & 0              & 1   
+\end{array} \right]
+\end{equation} 
