@@ -60,7 +60,7 @@ $i$ (frame)  & $\theta_i$ (rad)         & $\alpha_i$ (rad) & $a_i$ (m) & $d_i$ (
 In order to calculate for full FK transform $T_{N}^{E}$, where $E$ represents the end-effector and $N$ is the neck (robot origin), we must first calculate:
 
 \begin{equation}\label{eq:t06}
-T_0^6 = \prod_{i=1}^{5} T_{i-1}^{i} T_{i}^{i+1} = T_{0}^{1}T_{1}^{2}T_{2}^{3}T_{3}^{4}T_{4}^{5}T_{5}^{6}
+T_0^6 = \prod_{i=1}^{6} T_{i-1}^{i} = T_{0}^{1}T_{1}^{2}T_{2}^{3}T_{3}^{4}T_{4}^{5}T_{5}^{6}
 \end{equation}
 
 In order to procure the transform $T_{N}^{E}$ we must pre-multiply $T_{0}^{6}$ by the transform $T_{N}^{0}$ and post-multiply it by the transform $T_{6}^{E}$.  
@@ -83,3 +83,4 @@ T_{N}^{0} = \left[ \begin{array}{cccc}
 
 
 Now with a given set of joint space angles we can find the end-effectors position in reference to the robot origin, the neck.
+

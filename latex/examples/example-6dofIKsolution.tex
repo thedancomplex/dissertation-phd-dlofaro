@@ -1,4 +1,4 @@
-The next step is to find the inverse kinematic (IK) solution for the righ arm.
+The next step is to find the inverse kinematic (IK) solution for the right arm.
 Inherently this problem has multiple solutions.
 When solving the IK Pieper\cite{peiper1968kinematics} states that a closed-form solution does exist if:
 \begin{itemize}
@@ -16,14 +16,14 @@ Thus a closed-form solution exists for both arms and both legs.
 The transform $T_0^6$ in Equation~\ref{eq:t06} is needed to solve the IK problem for the shoulder.  
 It is important to note that $T_0^6$ is in the form of
 
-\begin{equation}
+\begin{equation}\label{eq:T06}
 T_0^6 = \left[ \begin{array}{cccc} 
 \overline{x_6} & \overline{y_6} & \overline{z_6} & \overline{p_6} \\
 0              & 0              & 0              & 1   
 \end{array} \right]
 \end{equation} 
 
-Where $\overline{x_6}$, $\overline{y_6}$ and $\overline{z_6}$ are $[3x1]$ unit vectors along the principle axes of the end-effectors frame, see Fig.~\ref{fig:IkFkCoordinate}.
+Where $\overline{x_6}$, $\overline{y_6}$ and $\overline{z_6}$ are $[3x1]$ unit vectors along the principle axes of the end-effectors coordinate frame $i$, see Fig.~\ref{fig:IkFkCoordinate}.
 Position vector $\overline{p_6}$ describes the hand about joint $A1$ (shoulder).
 The arm can be vied in different frames.
 If we look at the arm in reference to the end-effector's frame.
@@ -31,8 +31,133 @@ The reverse transform is defined as $(T_0^6)`$
 
 
 \begin{equation}
-(T_0^6)` = T_6_0 = (T_ = \left[ \begin{array}{cccc} 
+(T_0^6)' = T_6^0 = (T_0^6)^{-1} = \left[ \begin{array}{cccc} 
 \overline{x_6} & \overline{y_6} & \overline{z_6} & \overline{p_6} \\
 0              & 0              & 0              & 1   
+\end{array} \right]^{-1}
+\end{equation} 
+
+The following method is based on the work done by our partner Park et. al.\cite{5649842}.
+The general link translation matrix $T_{i-1}^i$ relates the $i^{th}$ coordinate frame to the $(i-1)^{th}$ coordinate frame.  
+In addition we can extend Equation~\ref{eq:T06} to
+
+\begin{equation}\label{eq:06invIK}
+T_0^6 = \left[ \begin{array}{cccc} 
+\overline{x_6} & \overline{y_6} & \overline{z_6} & \overline{p_6} \\
+0              & 0              & 0              & 1   
+\end{array} \right] = \left[ \begin{array}{cccc} 
+\overline{n} & \overline{s} & \overline{a} & \overline{p} \\
+0            & 0            & 0            & 1   
 \end{array} \right]
 \end{equation} 
+
+Where $[\overline{n}, \overline{s}, \overline{a}, \overline{p}]$ represents the normal vector, the sliding vector, the approach vector and the position vector of the end effector respectively\cite{fu1987robotics}.  We can now state that
+
+\begin{equation}
+(T_0^6)' = T_6^0 = (T_0^6)^{-1} = \left[ \begin{array}{cccc} 
+\overline{x_6} & \overline{y_6} & \overline{z_6} & \overline{p_6} \\
+0              & 0              & 0              & 1   
+\end{array} \right]^{-1}= \left[ \begin{array}{cccc} 
+\overline{n}' & \overline{s}' & \overline{a}' & \overline{p}' \\
+0             & 0             & 0             & 1   
+\end{array} \right]
+\end{equation} 
+
+We can now use the reverse method to solve for the joint angles as in \cite{fu1987robotics} and derived in the tech report\cite{gtechIK2}.
+The first three lower joint angles of $A_4$, $A_5$ and $A_6$ are solved for.
+Subsequently the upper joint angles of $A_1$, $A_2$ and $A_3$ are solved.
+
+Using inverse transform methods\cite{4046335} we can modify Equation~\ref{eq:t06} to
+
+\begin{equation}\label{eq:t06IK}
+T_6^0 = (T_0^6)^{-1} = \prod_{i=6}^{1} T_{i}^{i-1} = T_{6}^{5}T_{5}^{4}T_{4}^{3}T_{3}^{2}T_{2}^{1}T_{1}^{0}
+\end{equation}
+
+Then we equate Equation~\ref{eq:06invIK} to Equation~\ref{eq:t06IK} 
+
+\begin{equation}
+T_{6}^{5}T_{5}^{4}T_{4}^{3}T_{3}^{2}T_{2}^{1}T_{1}^{0} = \left[ \begin{array}{cccc} 
+\overline{n}' & \overline{s}' & \overline{a}' & \overline{p}' \\
+0             & 0             & 0             & 1   
+\end{array} \right]
+\end{equation}
+
+Then move $T_6^5$ to the other side of the equation
+
+
+\begin{equation}\label{eq:preG}
+T_{5}^{4}T_{4}^{3}T_{3}^{2}T_{2}^{1}T_{1}^{0} = T_{5}^{6}\left[ \begin{array}{cccc} 
+\overline{n}' & \overline{s}' & \overline{a}' & \overline{p}' \\
+0             & 0             & 0             & 1   
+\end{array} \right]
+\end{equation}
+
+For simplicity we will represent Equation~\ref{eq:preG} as $G_L$ and $G_R$ standing for \textit{right} and \textit{left} side.
+
+\begin{equation}
+G_L = T_{5}^{6}\left[ \begin{array}{cccc} 
+\overline{n}' & \overline{s}' & \overline{a}' & \overline{p}' \\
+0             & 0             & 0             & 1   
+\end{array} \right]
+\end{equation}
+
+
+
+\begin{equation}
+G_R = T_{5}^{4}T_{4}^{3}T_{3}^{2}T_{2}^{1}T_{1}^{0} 
+\end{equation}
+
+
+Expanding gives us
+
+\begin{equation}
+G_L = \left[ \begin{array}{cccc} 
+g_{11} & g_{12} & g_{13} & cos(\theta_6)(p_x'+l_{A_4})-sin(\theta_6)p_y' \\
+g_{21} & g_{22} & g_{23} & sin(\theta_6)(p_x'+l_{A_4})-cos(\theta_6)p_y' \\
+g_{31} & g_{32} & g_{33} & p_z'                                         \\
+0      & 0      & 0      & 1   
+\end{array} \right]
+\end{equation}
+
+and
+
+\begin{equation}
+G_R = \left[ \begin{array}{cccc} 
+g_{11} & g_{12} & g_{13} & sin(\theta_4)cos(\theta_5)l_{A_2} \\
+g_{21} & g_{22} & g_{23} & cos(\theta_6)l_{A_2}-l_{A3}       \\
+g_{31} & g_{32} & g_{33} & sin(\theta_4)sin(\theta_5)l_{A_2}  \\
+0      & 0      & 0      & 1   
+\end{array} \right]
+\end{equation}
+
+We can then equate elements $(1,4)$, $(2,4)$ and $(3,4)$ of $G_L$ and $G_R$. 
+This gives us
+
+\begin{equation}
+cos(\theta_6)(p_x'+l_{A_4})-sin(\theta_6)p_y' = sin(\theta_4)cos(\theta_5)l_{A_2}
+\end{equation}
+
+\begin{equation}
+sin(\theta_6)(p_x'+l_{A_4})-cos(\theta_6)p_y' = cos(\theta_6)l_{A_2}-l_{A3}
+\end{equation}
+
+\begin{equation}
+p_z' = sin(\theta_4)sin(\theta_5)l_{A_2}}
+\end{equation}
+
+
+
+
+
+
+
+\begin{equation}
+\theta_4 = atan2\left( \pm real \left(\sqrt{1-cos(\theta_4)^2} , cos(\theta_4) \right) \right)
+\end{equation}
+
+\noindent Note: $atan2()$ represents the the $atan$ method that gathers the information of the signs of the inputs in order to put the returned value in the appropriate quadrant.
+
+\begin{equation}
+cos(\theta_4) = \frac{(p_x'+l_{A_4})^2  +  p_y'^2  +  p_z'^2  -  l_{A_2}^2  -  l_{A_3}^2}
+                     {2l_{A_2}l_{A3}}
+\end{equation}
