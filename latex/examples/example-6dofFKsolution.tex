@@ -9,7 +9,7 @@ sin(\theta_i) &  cos(\theta_i)cos(\alpha_i) & -cos(\theta_i)sin(\alpha_i)  &  a_
 \end{array} \right]
 \end{equation}
 
-Where $\theta_i$, $\alpha_i$ and $d_i$ are shown in Fig.~\ref{fig:dhDiagram}.  The coordinate frame of the Hubo2+ used for both the forward and inverse kinematics are defined in Fig.~\ref{fig:IkFkCoordinate}.  The DH parameters for the arm for the transform $T_i^{i-1}$ is found in Table~\ref{table:dhparamrightArm}.
+Where $\theta_i$, $\alpha_i$ and $d_i$ are shown in Fig.~\ref{fig:dhDiagram}.  The coordinate frame of the Hubo2+ used for both the forward and inverse kinematics are defined in Fig.~\ref{fig:IkFkCoordinate} and Fig.~\ref{fig:IkFkCoordinateArm}.  The DH parameters for the arm for the transform $T_i^{i-1}$ is found in Table~\ref{table:dhparamrightArm}.
 
 \begin{figure}[thpb]
   \centering
@@ -26,10 +26,20 @@ Image Credit: \textit{http://en.wikipedia.org/wiki/File:Sample\_Denavit-Hartenbe
   \centering
 %  \begin{minipage}{\textwidth}
 \includegraphics[width=0.8\columnwidth]{./examples/pix/hubo2GTechFrame.pdf}
-\caption{Hubo2+ coordinate frame for use with the forward and inverse kinematic example.  These coordinate frames are defigned spisificall for IK and FK     }
+\caption{Hubo2+ coordinate frame for use with the forward and inverse kinematic example.  These coordinate frames are defined specifically for the IK and FK examples and are the same frame as in\cite{5649842}}
 \label{fig:IkFkCoordinate}
 %  \end{minipage}
 \end{figure}
+
+\begin{figure}[thpb]
+  \centering
+%  \begin{minipage}{\textwidth}
+\includegraphics[width=0.8\columnwidth]{./examples/pix/parkIKHuboArm.png}
+\caption{Hubo2+ coordinate frame for right arm.  Uses with the forward and inverse kinematic example.  These coordinate frames are defined specifically for the IK and FK examples and are the same frame as in\cite{5649842}   }
+\label{fig:IkFkCoordinateArm}
+%  \end{minipage}
+\end{figure}
+
 
 
 \begin{table}

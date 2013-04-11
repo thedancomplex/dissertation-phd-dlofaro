@@ -124,7 +124,7 @@ and
 \begin{equation}
 G_R = \left[ \begin{array}{cccc} 
 g_{11} & g_{12} & g_{13} & sin(\theta_4)cos(\theta_5)l_{A_2} \\
-g_{21} & g_{22} & g_{23} & cos(\theta_6)l_{A_2}-l_{A3}       \\
+g_{21} & g_{22} & g_{23} & -cos(\theta_6)l_{A_2}-l_{A3}       \\
 g_{31} & g_{32} & g_{33} & sin(\theta_4)sin(\theta_5)l_{A_2}  \\
 0      & 0      & 0      & 1   
 \end{array} \right]
@@ -133,31 +133,98 @@ g_{31} & g_{32} & g_{33} & sin(\theta_4)sin(\theta_5)l_{A_2}  \\
 We can then equate elements $(1,4)$, $(2,4)$ and $(3,4)$ of $G_L$ and $G_R$. 
 This gives us
 
-\begin{equation}
+\begin{equation}\label{eq:thetaSolve11}
 cos(\theta_6)(p_x'+l_{A_4})-sin(\theta_6)p_y' = sin(\theta_4)cos(\theta_5)l_{A_2}
 \end{equation}
 
-\begin{equation}
-sin(\theta_6)(p_x'+l_{A_4})-cos(\theta_6)p_y' = cos(\theta_6)l_{A_2}-l_{A3}
+\begin{equation}\label{eq:thetaSolve12}
+sin(\theta_6)(p_x'+l_{A_4})-cos(\theta_6)p_y' = -cos(\theta_6)l_{A_2}-l_{A3}
 \end{equation}
 
-\begin{equation}
-p_z' = sin(\theta_4)sin(\theta_5)l_{A_2}}
+\begin{equation}\label{eq:thetaSolve13}
+p_z' = sin(\theta_4)sin(\theta_5)l_{A_2}
+\end{equation}
+
+Based on the desired task space location we let
+
+\begin{equation}\label{eq:thetaSolve21}
+p_x' + l_{A_4} = r \cdot cos(\phi)
+\end{equation}
+
+and
+
+\begin{equation}\label{eq:thetaSolve22}
+p_y' = r \cdot sin(\phi)
+\end{equation}
+
+where 
+
+\begin{equation}\label{eq:thetaSolve31}
+r = sqrt{(p_x'+l_{A_4})^2 + (p_y')^2}
+\end{equation}
+
+and 
+
+\begin{equation}\label{eq:thetaSolve32}
+\phi = atan2(p_y',p_x'+l_{A_4})
+\end{equation}
+
+\textbf{Note:} $atan2()$ represents the the $atan$ method that gathers the information of the signs of the inputs in order to put the returned value in the appropriate quadrant.
+
+Combining Equation (\ref{eq:thetaSolve11}), (\ref{eq:thetaSolve12}) and (\ref{eq:thetaSolve13}) with Equation (\ref{eq:thetaSolve21}) and (\ref{eq:thetaSolve22}) we get
+
+\begin{equation}\label{eq:thetaSolve41}
+r \cdot cos(\theta_6+\phi) = sin(\theta_4)cos(\theta_5)l_{A_2}
+\end{equation}
+
+\begin{equation}\label{eq:thetaSolve42}
+r \cdot sin(\theta_6+\phi) = -cos(\theta_4)l_{A_2}-l_{A_3}
+\end{equation}
+
+\begin{equation}\label{eq:thetaSolve43}
+p_z' = sin(\theta_4)sin(\theta_5)l_{A_2}
 \end{equation}
 
 
-
-
-
+When we combine above with Equation (\ref{eq:thetaSolve31}) and (\ref{eq:thetaSolve32}) and obtain 
 
 
 \begin{equation}
-\theta_4 = atan2\left( \pm real \left(\sqrt{1-cos(\theta_4)^2} , cos(\theta_4) \right) \right)
+\theta_4 = atan2\left( \pm \sqrt{1-cos(\theta_4)^2} , cos(\theta_4)  \right)
 \end{equation}
 
-\noindent Note: $atan2()$ represents the the $atan$ method that gathers the information of the signs of the inputs in order to put the returned value in the appropriate quadrant.
+where
 
 \begin{equation}
 cos(\theta_4) = \frac{(p_x'+l_{A_4})^2  +  p_y'^2  +  p_z'^2  -  l_{A_2}^2  -  l_{A_3}^2}
                      {2l_{A_2}l_{A3}}
 \end{equation}
+
+Using Equation~\ref{eq:thetaSolve43} we can get $\theta_5$
+
+\begin{equation}
+\theta_5 = atan2(sin(\theta_5), \pm\sqrt{1-sin(\theta_5)^2})
+\end{equation}
+
+where
+
+\begin{equation}
+sin(\theta_5) = \frac{p_z'}
+                     {sin(\theta_4)l_{A_2}}
+\end{equation}
+
+
+We can then solve for $\theta_6$ by dividing Equation~\ref{eq:thetaSolve42} by Equation~\ref{eq:thetaSolve41}.
+
+
+
+\begin{equation}
+\frac{r \cdot sin(\theta_6+\phi)}
+     {r \cdot cos(\theta_6+\phi)} = tan(\theta_6+\phi) = \frac{-cos(\theta_4)l_{A_2}-l_{A_3}}
+                                                              {sin(\theta_4)cos(\theta_5)l_{A_2}}
+\end{equation}
+
+\begin{equation}
+\theta_6 = atan2(-(cos(\theta_4)l_{A_2}+l_{A_3}), sin(\theta_4)cos(\theta_5)l_{A_2}) - \phi
+\end{equation}
+
