@@ -228,3 +228,60 @@ We can then solve for $\theta_6$ by dividing Equation~\ref{eq:thetaSolve42} by E
 \theta_6 = atan2(-(cos(\theta_4)l_{A_2}+l_{A_3}), sin(\theta_4)cos(\theta_5)l_{A_2}) - \phi
 \end{equation}
 
+
+Now that we have $\theta_4$, $\theta_5$ and $\theta_6$ we reconstruct $G$ in reference to joint $A_1$, $A_2$ and $A_3$.  We will call this $G^*$.  Like $G$ we will have a right ($G^*_R$) and left ($G^*_R$) of $G$:
+
+\begin{equation}
+G_L^* = \left[ \begin{array}{cccc} 
+g_{11}^* & g_{12}^* & g_{13}^* & g_{14}^* \\
+g_{21}^* & g_{22}^* & g_{23}^* & g_{24}^* \\
+g_{31}^* & g_{32}^* & g_{33}^* & g_{34}^* \\
+0        & 0        & 0        & 1   
+\end{array} \right]
+\end{equation}
+
+\scriptsize
+\begin{equation}
+G_R^* = \left[ \begin{array}{cccc} 
+cos(\theta_1)cos(\theta_2)cos(\theta_3)-sin(\theta_1)sin(\theta_3) & cos(\theta_1)sin(\theta_3) + sin(\theta_1)cos(\theta_2)cos(\theta_3) & sin(\theta_2)cos(theta_3) & 0 \\
+-cos(\theta_1)sin(\theta_2) & -sin(\theta_1)sin(\theta_1) & cos(\theta_2) & l_{A_2} \\
+sin(\theta_1)cos(\theta_3)+cos(\theta_1)cos(\theta_2)sin(\theta_3) & sin(\theta_1)cos(\theta_2)sin(\theta_3)-cos(\theta_1)cos(\theta_3) & sin(\theta_2)sin(\theta_3) & 0 \\
+0        & 0        & 0        & 1   
+\end{array} \right]
+\end{equation}
+\normalsize
+
+as before we can copare the elements of $G^*_L$ and $G^*_R$.  
+Specifically compare element $(2,3)$.
+We then get
+
+\begin{equation}
+cos(\theta_2) = \begin{array}{l} a_z'sin(\theta_4)sin(\theta_5) - a_y'(cos(\theta_4)cos(\theta_6) + sin(\theta_4)cos(\theta_5)sin(\theta_6)) \\
+-a_x'(cos(\theta_4)sin(\theta_6)-sin(\theta_4)cos(\theta_5)cos(\theta_6))
+\end{array}
+\end{equation}
+
+\begin{equation}
+\theta_2 = atan2(\pm \sqrt{1-cos(\theta_2)^2}, cos(\theta_2)
+\end{equation}
+
+If we take elements $(1,3)$ and $(3,3)$ of $G^*_L$ with those of $G^*_R$ we get
+
+\begin{equation}
+g^*_{13} = \begin{array}{l} a_x'( cos(\theta_4)cos(\theta_5)cos(\theta_6) + sin(\theta_4)sin(\theta_6) + a_z'cos(\theta_4)sin(\theta_5) \\
++ a_y'(sin(\theta_4)cos(\theta_6)-cos(\theta_4)cos(\theta_5)sin(\theta_6))
+\end{array}
+\end{equation}
+
+By dividing these two equations we can get $\theta_1$
+
+\begin{equation}
+\theta_2 = atan2(g^*_{33}, g^*_{13})
+\end{equation}
+
+and thus
+
+\begin{equation}
+\begin{array}{rcrc}IF:& sin(\theta_2)<0 & THEN: & \theta_1 = \theta_1 + \pi
+\end{array}
+\end{equation}
