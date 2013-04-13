@@ -26,7 +26,7 @@ Feedback    & $\theta_a$ & Actual position of joint as   & JMC        & $rad$ \\
 
 \begin{figure}[thpb]
   \centering
-\includegraphics[width=0.8\columnwidth]{./pix/tmp.png}
+\includegraphics[width=0.8\columnwidth]{./examples/pix/RSP-Zp4-step-step-crop.pdf}
   \caption{The commanded reference plotted against the actual reference recorded via Hubo-Ach and ground truth via CAN analyzing utilities.  In this plot the commanded reference is not automatically filtered by Hubo-Ach.  The commanded joint is the right shoulder pitch.}
   \label{fig:singleJointStep}
 \end{figure}
@@ -55,6 +55,5 @@ The total lag between commanding the joint on the \textbf{FeedForward} channel a
 \begin{equation}
 t_{lag} = t_{filter} + t_{rise}
 \end{equation}
-
 
 
