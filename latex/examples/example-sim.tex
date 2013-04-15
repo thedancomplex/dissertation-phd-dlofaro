@@ -1,0 +1,29 @@
+The simulator used for Hubo-Ach is the OpenHubo.
+OpenHubo is an open-source kinematic and dynamic simulator for the the Hubo2 and Hubo2+ series robots.
+It was developed by the Drexel Autonomous Systems Lab and runs using the open-source robot simulation environment OpenRAVE\cite{diankovThesis}.
+Fig.~\ref{fig:openhubbo} shows the OpenHubo shell model and collision model.
+
+\begin{figure}[thpb]
+  \centering
+      \includegraphics[width=0.4\columnwidth]{./pix/hBody.png}\includegraphics[width=0.4\columnwidth]{./pix/hCol.png}
+      
+\caption{OpenHubo model of the Hubo2 humanoid robot developed by the Drexel Autonomous Systems Lab and runs using the open-source robot simulation environment OpenRAVE\cite{diankovThesis}.  (Left) Shell Model - High polygon count.  (Right) Collision model - Made with primitives.}
+\label{fig:openhubbo}
+\end{figure}
+
+The masses and lengths are of the OpenHubo model are all based off of the CAD model.
+The shell model includes an external skin based off of the CAD model of the Hubo's shell.
+This model is high polygon count and thus tends to require more processing time to detect collisions.
+The collision model is constructed out of primitives in order to decrease the complexity of the model and decrease required processing time.
+The collision model is a representation of the shell model. 
+It does not exactly fit the contours but through experimentation and use has been calibrated to be a good representation of the Hubo's outer shell.
+
+
+\input{examples/block-sim.tex}
+
+
+
+Hubo-Ach is designed to run in either real-time or in simulation time.
+This is especially useful when running experimental controllers and you do not want to damage the robot.
+In real-time mode Hubo-Ach updates at its normal sampling period $T_{r}$.
+Due to the complexity of the 
