@@ -47,7 +47,7 @@
 
 
 \end{tikzpicture}
-\caption{Desired reference $\theta_d$ being filtered before applied to Hubo via Hubo-Ach.  $\theta_d$ is sent through a filter that reduces the \textit{jerk} on the actuator then the new reference $\theta_r$ is set on the \textbf{FeedForward} channel, Hubo-Ach reads it then commands Hubo at the rising edge of the next cycle.}
-\label{fig:hubo-ach-feedforwardFilter}
+\caption{Diagram of how the OpenHubo simulator is connected to Hubo-Ach.  No changes to previous controllers are required for them to work with the simulator.  Just as before the desired reference $\theta_d$ being filtered before applied to Hubo via Hubo-Ach.  $\theta_d$ is sent through a filter that reduces the \textit{jerk} on the actuator then the new reference $\theta_r$ is set on the \textbf{FeedForward} channel, Hubo-Ach reads it then commands Hubo at the rising edge of the next cycle.  At this point $\Gamma_{ts}$ is set high and the OpenHubo simulator reads $\theta_c$.  The reference is set within OpenHubo and solved with a simulation period of $T_{sim}$.  Once The state, $H_{state}$ has been determined it is placed on the Hubo-Ach \textbf{FeedForward} channel and the ready trigger $\Gamma_{fs}$ is raised.  Hubo-Ach is waiting for the rising edge of $\Gamma_{fs}$ to continue on to the next cycle.}
+\label{fig:openhubosim}
 \end{figure}
 

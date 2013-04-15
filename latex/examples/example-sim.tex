@@ -16,14 +16,74 @@ The shell model includes an external skin based off of the CAD model of the Hubo
 This model is high polygon count and thus tends to require more processing time to detect collisions.
 The collision model is constructed out of primitives in order to decrease the complexity of the model and decrease required processing time.
 The collision model is a representation of the shell model. 
-It does not exactly fit the contours but through experimentation and use has been calibrated to be a good representation of the Hubo's outer shell.
+It does not precisely fit the contours but through experimentation and use has been calibrated to be a good representation of the Hubo's outer shell.
 
+Fig~\ref{fig:openhubosim} shows the diagram of how the OpenHubo simulator is connected to Hubo-Ach.  
+No changes to previous controllers are required for them to work with the simulator.
+Just as before the desired reference $\theta_d$ being filtered before applied to Hubo via Hubo-Ach.  
+$\theta_d$ is sent through a filter that reduces the \textit{jerk} on the actuator then the new reference $\theta_r$ is set on the \textbf{FeedForward} channel, Hubo-Ach reads it then commands Hubo at the rising edge of the next cycle.  
+At this point the \textit{to simulator} trigger, $\Gamma_{ts}$, is set high and the OpenHubo simulator reads $\theta_c$.
+The simulator waits until Hubo-Ach is ready until it starts its next set of cycles.
+The reference is set within OpenHubo and solved with a simulation period of $T_{sim}$.
+The simulation period $T_{sim}$ must be an integer deviser of the robot real-time period $T_r$.
+In this case
+
+\begin{equation}
+T_r=0.005~s
+\end{equation}
+
+\begin{equation}
+T_{sim} = \frac{T_r}{n}
+\end{equation}
+
+
+Once the simulator has gone through $n$ cycles the current state, $H_{state}$ is placed on the Hubo-Ach \textbf{FeedForward} channel and the ready trigger $\Gamma_{fs}$ is raised.  
+Hubo-Ach is waiting for the rising edge of the \textit{from simulator} trigger, $\Gamma_{fs}$, to continue on to the next cycle.
 
 \input{examples/block-sim.tex}
 
 
+The external controllers do not know weather Hubo-Ach is running in \textit{simulation} or \textit{real-time} mode.  
+In order to ensure a Hubo-Ach controller stays what ever timing method is being used the controller can do any of the following:
 
-Hubo-Ach is designed to run in either real-time or in simulation time.
-This is especially useful when running experimental controllers and you do not want to damage the robot.
-In real-time mode Hubo-Ach updates at its normal sampling period $T_{r}$.
-Due to the complexity of the 
+\begin{itemize}
+\item Wait for the $\Gamma_{fs}$ trigger
+\item Wait for a new $H_P{state}$ to be updated
+\item Watch the time listed within $H_{state}$
+\end{itemize}
+
+If the given task does not require physics or feedback from $H_{state}$ then you can run in \textit{no physics} mode.
+\textit{No physics} mode only gives collisions, joint angles and ideal feedback from the sensors.
+In addition \textit{no physics} is capable of running much faster then real-time if needed.
+
+
+
+\begin{table}
+\centering
+\caption{OpenHubo simulator sim-time and real-time comparison chart.  Shows the maximum percent real-time the OpenHubo simulator is capable of preforming at where 100\% is real-time.  All tests were preformed on an Intel i7 running at 2.8Ghz with 18Gb of RAM.}
+\begin{tabular}{| l || c | c |}
+\hline
+Mode               & Timing                & Maximum Percent Real-Time (\%) \\
+\hline
+\hline
+Physics            & Sim-Time              & 37\%   \\
+\hline
+No Physics         & Real-Time or Sim-Time & 362\%  \\
+\hline
+\end{tabular}\label{table:simtime}
+\end{table}
+
+
+Fig.~\ref{fig:visualservoing} shows the capability of Hubo-Ach to run in both sim-time and real-time modes.  
+This is the same statically stable trajectory as seen in Fig.~\ref{fig:staticwalking}
+
+
+\begin{figure}[thpb]
+  \centering
+      \includegraphics[width=0.93\columnwidth]{./pix/tmp.png}
+      \includegraphics{./qrcode/qrcode-simtimewalking.png}\\
+      Video: http://danlofaro.com/phd/simtimewalking/
+\caption{OpenHubo walking using Hubo-Ach in Sim-Time mode with ODE physics.}
+\label{fig:visualservoing}
+\end{figure}
+
