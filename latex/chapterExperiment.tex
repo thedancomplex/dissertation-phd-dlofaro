@@ -1,4 +1,35 @@
 \chapter{Experiment}
+%% Explain the tasks
+
+%%%\section{System setup}
+%%%State diagram of plan
+%%%\begin{itemize}
+%%%\item Find the valve - sensing
+%%%\item Move to the valve - close loop on sensing
+%%%\item Grab the valve
+%%%\item Jump on the valve
+%%%\end{itemize}
+
+
+%%%\section{Task}\label{sec:task}
+%%%Turning a valve with whole body (more of a lever)
+%%%\begin{itemize}
+%%%\item Find the valve - sensing
+%%%\item Move to the valve - close loop on sensing
+%%%\item Grab the valve
+%%%\item Jump on the valve
+%%%\end{itemize}
+
+%%%Controllers
+%%%\begin{itemize}
+%%%\item Walking
+%%%\item Balance
+%%%\item Complience
+%%%\item IK
+%%%\item Visual Servoing
+%%%\end{itemize}
+
+
 \section{Single Joint Examples}\label{sec:simpleExamples}
 This section contains step by step examples of how my system functions properly with the hubo system allowing for multiple processes to work with the system
 
@@ -10,57 +41,61 @@ This section contains step by step examples of how my system functions properly 
 		\input{examples/example-singlejontComplience.tex}
 	\subsection{Joint Space Step Response with Feedback Filtering}\label{sec:singlejointEnc}
 		\input{examples/example-singlejontEnc.tex}
+
+\section{Balance}
+%% Once foot example
+%% maybe 2 foot example
+
+\section{Simulator}\label{sec:simulator}
+	\input{examples/example-sim.tex}
+	%% show balance in simulator too
+
+
 \section{Six Degree of Freedom Inverse Kinimatic Implimentation Example}\label{sec:6dofik}
 This section shows how we calculate the inverse kinimatics (IK) for the Hubo's right arm and how we use that calculation in conjunction with Section~\ref{sec:simpleExamples}.  The result is the ability to command the end effector (EEF)
-%	\subsection{Work Space Controller Example}
-%		\input{examples/example-6dofIKsolution.tex}
-%	\subsection{Six DOF IK Implimentaiton}
+
 \input{examples/example-6dofIKsolutionIntro.tex}
 	\subsection{Froward Kinematics} 
 		\input{examples/example-6dofFKsolution.tex}
 	\subsection{Inverse Kinematics}\label{sec:ik}
 			\input{examples/example-6dofIKsolution.tex}
-			
+
+
+%% SRM - make sure they know this is what I did
+\section{Sparese Reachiable Map Inverse Kinimatics}\label{sec:srm}
+		%\input{srm/abstract.tex}
+		%\input{srm/introduction.tex}
+		\input{srm/priorwork.tex}
+		\input{srm/methodology.tex}
+		%% split trapozoidal motion profile into another section example
+
+
+%% Advanced Examples: Maybe add the title :advanced examples or somethign like that			
 \section{Visual Serving Example}
 This section uses visual feedback using an RGB-D (Red Green Blue - Depth) camera and the 6-DOF IK example from Section~\ref{sec:6dofik}.
 	\subsection{Tracking Using Vision}
 		\input{examples/example-servoing.tex}
 		
-		
+
 \section{Valve Turning}
 	\input{examples/example-valveturning.tex}
 
 \section{Walking}
+	%% Sim walking too
 	\input{examples/example-walking.tex}
 	\subsection{Static Walking}\label{sec:staticWalking}
 		\input{examples/example-staticwalking.tex}
 	\subsection{Dynamic Walking}\label{sec:dynamicWalking}
 		\input{examples/example-dynamicwalking.tex}
 
-\section{Simulator}\label{sec:simulator}
-	\input{examples/example-sim.tex}
-
-
-\section{Task}\label{sec:task}
-Turning a valve with whole body (more of a lever)
-\begin{itemize}
-\item Find the valve - sensing
-\item Move to the valve - close loop on sensing
-\item Grab the valve
-\item Jump on the valve
-\end{itemize}
 
 
 
-\section{System setup}
 
-State diagram of plan
-\begin{itemize}
-\item Find the valve - sensing
-\item Move to the valve - close loop on sensing
-\item Grab the valve
-\item Jump on the valve
-\end{itemize}
+
+
+
+
 
 Software structrue
 \begin{itemize}
@@ -71,26 +106,8 @@ Software structrue
 \end{itemize}
 
 
-Sensors Chosen
-\begin{itemize}
-\item FT
-\item IMU
-\item Monocular
-\item RGB-D
-\end{itemize}
 
-Controllers
-\begin{itemize}
-\item Walking
-\item Balance
-\item Complience
-\item IK
-\item Visual Servoing
-\end{itemize}
 
-\section{Results}\label{sec:results}
-\begin{itemize}
-\item What worked
-\item What did not
-\item To be improved
-\end{itemize}
+
+
+
