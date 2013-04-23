@@ -5,30 +5,18 @@
 It is common place for a complex electrical mechanical system to have a hybrid controller.  
 Different controllers are needed when the system is in different states or doing different tasks.
 This is especially true for complete and complex autonomous systems.
-I define a complete and complex autonomous system as an electro mechanical mechanism with high degree of freedom (DOF) that is cabiable of making its own decisions through the use of sensor data processed by its artificial intelligence (AI).
+I define a complete and complex autonomous system as an electro mechanical mechanism with high degree of freedom (DOF) that is capable of making its own decisions through the use of sensor data processed by its artificial intelligence (AI).
 The combination of high DOF and the requirement for autonomy makes the work space broad and controllers complex.
-The overarching question what is the structure for a control system for complete and complex autonomous systems with high DOF, a multitude of sensors, AI performing high-level and low-level tasks all while keeping a stable system structure conducive to collaborative work.
+The overarching question becomes; What is the control system structure for a complete and complex autonomous systems with high DOF, a multitude of sensors, AI performing high-level and low-level tasks all while keeping a stable system structure conducive to collaborative work?
 My thesis shows that a multi-process control structure coupled with the proper timing mechanisms is conducive to answering this question.
-
-% note make sure that you state that you use C for intergraion and python for ease of use
-
-
-%The decisions made are high-level and low-level.
-%My work has brought me through research into kinematic planning resulting in my Sparse Reachable Map, visual recognition techniques and over robot system control which resulted in making one of my robots throw the first pitch at a Major League Baseball game and the creating of an viable control system for complex systems.
-%This work has brought me to my final thesis.
-%I argue through example and experimentation that multi-process based method of robot control more beneficial for control of electro-mechanical systems using todays technologies.
-
-%High level decisions take care of objectives such as \textit{where to go} and \textit{what to pick up}. 
-%These decisions are like our concious decisions.
-%Low level decisions take care of balancing, inverse kinimatics etc.
-%These decisions can be compaired to our unconscious responses to stimuli, such as balancing, sitting, breating etc.
+It is proven with physical experiments and the creation of Hubo-Ach\cite{lofaroRAM2013}; a fully functional Sim-Time and Real-Time control system for complete and complex autonomous systems.
 
 Through experimentation I prove my control system is a viable way of controlling complete and complex autonomous system and still be conducive to collaborative work.  
-A roadmap of how my research has taken me to my thesis is shown in Section~\ref{sec:contributions}.
+A road map of how my research has taken me to my thesis is shown in Section~\ref{sec:roadmap}.
 As proof of viability I show the basic structure of my system \textit{Hubo-Ach} in Section~\ref{sec:hubo-ach}\cite{lofaroRAM2013}.  
 I give step by step examples in Section~\ref{sec:simpleExamples}.
 Section~\ref{sec:simulator} shows how we can move from real-time to using a simulated version of the platform in simulation time without having to change the controller.
-Section~\ref{sec:task} discribes the experiment which consists of making the robot proform an advanced task that pulls together visual, kinimatic, path planning and other controllers together using this one system.
+Section~\ref{sec:task} describes the experiment which consists of making the robot preform an advanced task that pulls together visual, kinematic, path planning and other controllers together using this one system.
 The techniques used stem from my contributions in Section~\ref{sec:contributions}.
 Section~\ref{sec:results} shows the results of the experiment thus show the viability of the system.
 Lastly Section~\ref{sec:conclusion} discusses the results of the work and the future of this system.
@@ -42,22 +30,6 @@ Before I continue it is important to note that my work has already been validate
 
 For the remainder of this document the complete and complex autonomous systems that I will be referring to are robots.
 The majority of examples given will be in reference to humanoid robotics and the Hubo2+ (KHR-4+) platform.
-The Hubo platform is discribed in Section~\ref{sec:hubo}.
+The Hubo platform is described in Section~\ref{sec:hubo}.
 
 
-
-
-
-%This is demonstrated through experimentation on multiple electro mechanical platforms.
-%The primary platform focused on in this document is the Hubo 2 and the Hubo 2+ full-size humanoid robot.
-%The Hubo platform is discribed in Section~\ref{sec:hubo}.
-
-
-
-
-%\begin{itemize}
-%\item Creating a system that can monitor its self
-%\item Avoid self collisions
-%\item Plan future movements
-%\item Proform these plans with a higher archical structure such that it stays stable and safe among all else.
-%\end{itemize}
