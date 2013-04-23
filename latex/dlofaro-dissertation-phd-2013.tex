@@ -67,7 +67,26 @@
 
 %\includeonly{chapter1}
 
+%% for chapter heading
+\usepackage{fancyhdr} 
+
+\pagestyle{fancy} 
+  \renewcommand{\chaptermark}[1]{                               
+  \markboth{\thechapter{} #1}{}
+  } 
+  \fancyhf{} 
+  \fancyhead[L]{\leftmark} 
+  \fancyhead[C]{} 
+  \fancyhead[R]{Page \thepage}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancypagestyle{plain}{%
+  }
+
+
+
 \begin{document} 
+
+
 
 	\doublespacing
 	\maketitle 
