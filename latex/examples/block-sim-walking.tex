@@ -1,0 +1,65 @@
+\begin{figure}
+\centering
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=5cm,
+  thick,main node/.style={fill=white!20,draw,font=\sffamily\Large\bfseries}]
+
+
+  \node[main node] (ctrl) [text width=3cm] {Walking Pattern};
+ 
+  \node[main node] (hubo-ach) [right=1.5cm of ctrl] {Hubo-Ach};
+  
+  \node[main node,font=\small] (hold1) [right=1.5cm of hubo-ach, yshift=0.5cm] {hold};
+  \node[main node,font=\small] (hold2) [right=1.5cm of hubo-ach, yshift=-0.5cm] {hold};
+  \node[main node,font=\small] (hold3) [below=0cm of ctrl, yshift=0.0cm] {hold};
+
+
+  \node[main node] (hubo) [right=1.5cm of hold1, yshift=-0.5cm] {OpenHubo};
+
+
+
+
+%  \path[->, every node/.style={font=\sffamily\small}]
+%    (hubo-ach) edge node [above] {$\theta_c$} (hubo);
+
+\draw[->] ([yshift=0.2 cm]hubo-ach.east)  to [out=0,in=-180] node [below] {$\theta_c$} ([yshift=-0.0 cm]hold1.west)  ;
+\draw[->] ([yshift=0.0 cm]hold1.east)  to [out=0,in=-180] node [below] {$\theta_c$} ([yshift=0.2 cm]hubo.west)  ;
+\draw[-*] ([xshift=1.0 cm]hubo-ach.north)  to [out=60,in=120] node [above] {$\Gamma_{ts}$} ([yshift=-0.05 cm]hold1.north)  ;
+%\draw[-*] ([xshift=-0.02 cm]hubo-ach.north)  to [out=120,in=60] node [above] {$\Gamma_{ts}$} ([yshift=-0.05 cm]hold3.north)  ;
+
+
+
+\draw[->] ([yshift=0.0 cm]hold2.west)  to [out=180,in=0] node [below] {$H_{state}$} ([yshift=-0.2 cm]hubo-ach.east)  ;
+\draw[->] ([yshift=-0.2 cm]hubo.west)  to [out=180,in=0] node [below right] {$H_{state}$} ([yshift=0.0 cm]hold2.east)  ;
+\draw[-*] ([xshift=-0.02 cm]hubo.south)  to [out=-120,in=-60] node [above] {$\Gamma_{fs}$} ([yshift=0.05 cm]hold2.south)  ;
+\draw[-*] ([xshift=0.02 cm]hubo.south)  to [out=-115,in=-55] node [above] {$\Gamma_{fs}$} ([yshift=0.05 cm]hold3.south)  ;
+
+\draw[-*] (hold3.north)  to [out=90,in=-90] node [above] {}(ctrl.south)  ;
+
+%\draw[->] ([yshift=-0.0 cm]hubo-ach.west)  to [out=180,in=-90] node [below left] {$H_{state}$} ([yshift=0.0 cm]ctrl.south)  ;
+
+
+
+%\draw[->] ([yshift=-0.2 cm]hubo.west)  -- node [below] {$H_{state}$} ([yshift=-0.2 cm]hubo-ach.east)  ;
+%\draw[->] ([yshift=-0.0 cm]hubo.south)  to [out=-120,in=-60] node [below] {$\Gamma_{fs}$} ([yshift=-0.0 cm]hubo-ach.south)  ;
+
+
+
+  \path[->,every node/.style={font=\sffamily\small}]
+    (ctrl) edge node [above] {$\theta_r$} (hubo-ach);
+
+
+
+\end{tikzpicture}
+\caption{Diagram of how the OpenHubo simulator is connected to Hubo-Ach and is used to run a walking trajectory.  
+The walking pattern generator ensures proper constraints on the velocity, acceleration and jerk and thus the filter seen in Fig.~\ref{fig:openhubosim} is not desired.  
+$\theta_r$ is set directly on the \textbf{FeedForward} channel thus each joint will have the response as seen in Fig.~\ref{fig:singleJointStep} for each commanded reference command at each time step.
+Hubo-Ach reads the \textbf{FeedForward} channel and commands Hubo at the rising edge of the next cycle.  
+At this point $\Gamma_{ts}$ is set high and the OpenHubo simulator reads $\theta_c$.  
+The reference is set within OpenHubo and solved with a simulation period of $T_{sim}$.  
+Once The state, $H_{state}$ has been determined it is placed on the Hubo-Ach \textbf{FeedForward} channel and the ready trigger $\Gamma_{fs}$ is raised.  
+Hubo-Ach is waiting for the rising edge of $\Gamma_{fs}$ to continue on to the next cycle.  
+In order to keep with the sim-time the \textit{Walking Pattern} also waits for the rising edge of $\Gamma_{fs}$ to put the next desired reference on the \textbf{FeedForward} channel. }
+\label{fig:openhubosimWalking}
+\end{figure}
+

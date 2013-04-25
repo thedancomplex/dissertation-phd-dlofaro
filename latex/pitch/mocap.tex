@@ -1,5 +1,3 @@
-\subsection{Human to Humanoid Kinematic Mapping}\label{sec:sec:mocap}
-
 Motion capture (MoCap) systems are commonly used to record high degree of freedom human motion.  
 Athletic trainers in baseball, football and cycling use motion capture to analyze and improve throwing and lower limb motions\cite{Fleisig1996,barrentiine1998,Mochizuki1998,Akira1999}.
 MoCap systems are also used to generate human-like motions and map those motion to humanoids\cite{1545060,Polland2002}.  
@@ -20,9 +18,9 @@ b) Preform motions where the pitch motions are decoupled (roll and yaw stays con
 c) Combine joint values for near by joints (reduce the model to the same DOF as the robot).  
 d) Some tests require the addition of static offsets to joints to ensure the zero-moment-point (ZMP) criteria is satisfied as stated in Section~\ref{sec:sec:balance}
 
-\begin{figure}[t]
+\begin{figure}[thpb]
   \centering
-\includegraphics[width=0.8\columnwidth]{./pix/mocapJoints.png}  \caption{Left: Jaemi Hubo joint order and orientation using right hand rule.  Right: Motion capture model of human figure}
+\includegraphics[width=0.6\columnwidth]{./pix/mocapJoints.png}  \caption{Left: Jaemi Hubo joint order and orientation using right hand rule.  Right: Motion capture model of human figure}
   \label{fig:mocap-joints}
 \end{figure}
 
@@ -33,9 +31,9 @@ All motions were in the sagittal plane to keep pitch joints decoupled.
 To avoid the robot's joint limit of $\pm180^o$ an underhand throwing motion was used.
 Fig.~\ref{fig:mocap-underhand} shows the human throwing the ball and the robot throwing the ball to the mapped motion of the human.
 
-\begin{figure}[t]
+\begin{figure}[thpb]
   \centering
-\includegraphics[width=0.7\columnwidth]{./pix/mocap/throwmocap3.png}
+\includegraphics[width=0.6\columnwidth]{./pix/mocap/throwmocap3.png}
 %\includegraphics[width=0.33\columnwidth]{./pix/mocap/1a.png}
 %\includegraphics[width=0.33\columnwidth]{./pix/mocap/1b.png}
 %\includegraphics[width=0.33\columnwidth]{./pix/mocap/1c.png} 
@@ -48,7 +46,7 @@ Fig.~\ref{fig:mocap-underhand} shows the human throwing the ball and the robot t
 %\includegraphics[width=0.33\columnwidth]{./pix/mocap/4a.png}
 %\includegraphics[width=0.33\columnwidth]{./pix/mocap/4b.png}
 %\includegraphics[width=0.33\columnwidth]{./pix/mocap/4c.png} 
-\includegraphics{./qrcode/qrcode-underarm.png}\\
+\includegraphics[width=0.3\columnwidth]{./qrcode/qrcode-underarm.png}\\
       Video: http://danlofaro.com/phd/underarmthrow/
   \caption{(Left to Right): (1) Human throwing underhand in sagittal plane while being recorded via a motion capture system.  (2) Recorded trajectory mapped to high degree of freedom model.  (3) High degree of freedom model mapped to lower degree of freedom OpenHUBO.  (4) Resulting trajectory and balancing algorithm run on Hubo.\cite{lofaroURAI}}
   \label{fig:mocap-underhand}

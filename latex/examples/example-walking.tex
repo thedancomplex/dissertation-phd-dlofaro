@@ -1,3 +1,103 @@
-This section shows two examples of how Hubo-Ach was used for stable walking.  
-Section~\ref{sec:staticWalking} shows how the open loop static walking trajectory is created and run using Hubo-ach.
-Section~\ref{sec:dynamicWalking} shows the result of a five day \textit{hack-a-thon} using Hubo-Ach to add dynamic walking capability.  
+This section shows examples of how Hubo-Ach was used for stable walking.
+Examples are given using:
+\begin{itemize}
+\item Hubo2+ (Physical Robot)
+\item OpenHubo (Simulator)
+\item RobotSim Hubo (Simulator)
+\end{itemize}
+
+section~\ref{sec:WalkingPatternGeneration} shows how the open-loop walking trajectory is created.
+
+Section~\ref{sec:OpenHuboWalking} shows how the open loop walking trajectory is run in sim-time on OpenHubo using Hubo-Ach.
+Section~\ref{sec:RobotSimWalking} shows how the open loop walking trajectory is run in sim-time on RobotSim using Hubo-Ach.
+Section~\ref{sec:HuboWalking} shows the same walking trajectory running on the real Hubo hardware in real-time using Hubo-Ach.
+It also shows the difference between running in sim-time and real-time.
+Section~\ref{sec:dynamicWalking} shows the result of a five day \textit{hack-a-thon} using Hubo-Ach to add dynamic walking capability.
+
+
+
+
+
+%% ---------------- Walking Pattern Generation ------------------------
+\subsection{Walking Pattern Generation}\label{sec:WalkingPatternGeneration}
+The walking pattern demonstrated in this section is generated based on the work of Park et. al.\cite{4115633}
+A walking pattern is the way in which a legged robot, in this case two legged, moves its joints to create a walking gate while maintaining stability.
+The walking pattern consists of two major phases:
+\begin{itemize}
+\item Single Support Phase (SSP)
+\item Double Support Phase (DSP)
+\end{itemize}
+
+\noindent \textbf{Single support phase} is when one foot is on the ground.
+This phase is when one leg moves from one stepping position to the other.
+The ZMP must remain above the planted foot to guarantee stability.\\
+
+\noindent \textbf{Double support phase} is when both feet are planted on the ground.  
+When in this phase the ZMP moves from above one foot to the other along the stable area as seen in Fig.~\ref{fig:zmp}.
+
+
+
+
+\begin{figure}[t]
+  \centering
+\includegraphics[width=0.5\columnwidth]{./examples/pix/huboZMPx.pdf}
+  \caption{Hubo model diagram for ZMP walking in the $x$ direction (side view).  $b$ and $f$ are the step lengths for the left and the right foot.  $A$ defines the ankle.  $t_1$ is the time of the starting of the step, $t_2$ defines the landing of the stepping foot.  $P$ defines the hip location.  $\widetilde{x}$ defines the walking velocity.  The middle diagram depicts the SSP and the left and right diagrams show the DSP.}
+  \label{fig:huboZMPx}
+\end{figure}
+
+Fig~\ref{fig:huboZMPx} and \ref{fig:huboZMPy} shows the walking pattern phases on a Hubo model in the $x$ and $y$ direction respectively.
+In these figures $A_R$ and $A_L$ defines the left and right ankles respectively.  
+$t_1$ is the time of the starting of the step, $t_2$ defines the landing of the stepping foot.  
+$t_0$ defines time when the stepping foot is at peak step height.  
+$P$ defines the hip location.  
+$\widetilde{x}$ defines the walking velocity.
+$\widetilde{y}$ defines the body sway velocity.  
+The middle diagram depicts the SSP and the left and right diagrams show the DSP.
+
+
+
+\begin{figure}[t]
+  \centering
+\includegraphics[width=0.7\columnwidth]{./examples/pix/huboZMPy.pdf}
+  \caption{Hubo model diagram for ZMP walking in the $y$ direction (front view).  $A_R$ and $A_L$ defines the left and right ankles respectively.  $t_1$ is the time of the starting of the step, $t_2$ defines the landing of the stepping foot.  $t_0$ defines time when the stepping foot is at peak step height.  $P$ defines the hip location.  $\widetilde{y}$ defines the body sway velocity.  The middle diagram depicts the SSP and the left and right diagrams show the DSP.}
+  \label{fig:huboZMPy}
+\end{figure}
+
+
+The walking patterns are generated creating a joint space trajectory with a period $T$ of $0.005~sec$.
+The patterns keep the ZMP criteria described in Section~\ref{sec:zmp}.
+These walking patterns are used to test the simulated robots and the physical robots.
+Fig.~\ref{fig:huboZMPjointSpace} shows the joint space walking pattern verses time.
+
+\begin{figure}[t]
+  \centering
+\includegraphics[width=0.5\columnwidth]{./pix/tmp.png}
+  \caption{Joint space walking pattern.  The trajectory sampling period $T$ is $0.05~sec$.  Forward step length is $0.2~m$, sway velocity $\widetilde{y}$ is $0.062~\frac{m}{sec}$, and step period is $0.8~sec$.}
+  \label{fig:huboZMPjointSpace}
+\end{figure}
+
+
+
+
+
+%% ---------------- Walking Pattern Generation ------------------------
+\subsection{Walking Using OpenHubo Simulator and Hubo-Ach}\label{sec:OpenHuboWalking}
+The walking pattern that was generated in Section~\ref{sec:WalkingPatternGeneration} was then applied to the OpenHubo system described in Section~\ref{sec:simulator} via the Hubo-Ach controller.
+The walking pattern was applied in sim-time with a period $T_{sim}$ of $0.005~sec$.
+The block diagram of the system using OpenHubo in sim-time for a walking trajectory is shown in Fig.~\ref{fig:openhubosimWalking}.
+
+\input{examples/block-sim-walking.tex}
+
+In Fig.~\ref{fig:openhubosimWalking} the OpenHubo simulator is connected to Hubo-Ach and is used to run the walking trajectory.  
+The walking pattern generator ensures proper constraints on the velocity, acceleration and jerk and thus the filter seen in Fig.~\ref{fig:openhubosim} is not desired.  
+$\theta_r$ is set directly on the \textbf{FeedForward} channel thus each joint will have the response as seen in Fig.~\ref{fig:singleJointStep} for each commanded reference command at each time step.
+Hubo-Ach reads the \textbf{FeedForward} channel and commands Hubo at the rising edge of the next cycle.  
+At this point $\Gamma_{ts}$ is set high and the OpenHubo simulator reads $\theta_c$.  
+The reference is set within OpenHubo and solved with a simulation period of $T_{sim}$.  
+Once The state, $H_{state}$ has been determined it is placed on the Hubo-Ach \textbf{FeedForward} channel and the ready trigger $\Gamma_{fs}$ is raised.  
+Hubo-Ach is waiting for the rising edge of $\Gamma_{fs}$ to continue on to the next cycle.  
+In order to keep with the sim-time the \textit{Walking Pattern} also waits for the rising edge of $\Gamma_{fs}$ to put the next desired reference on the \textbf{FeedForward} channel.
+
+
+
+
