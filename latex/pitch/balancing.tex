@@ -47,3 +47,15 @@ The control law is as follows
 \end{equation}
 
 Where $\theta_t$ is the desired trajectory of the lower body (pitch or roll), $x$ denotes pitch or roll and $x_a$ denotes pitch or roll on the ankle.  $\theta_{c}$ is the orientation of the center of mass in the global frame.  $\theta_n$ is the resulting trajectory.  $K_p$ and $K_d$ are the proportional and derivative gains.  The resulting control allows for a stable stance even with perturbations from upper body motions.
+
+Fig.~\ref{fig:oneFootBalanceVideo} shows the example of the Hubo balancing using the above method.
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.6\columnwidth]{./pix/onefoot.png}
+\includegraphics[width=0.3\columnwidth]{./qrcode/qrcode-onefoot.png}\\
+      Video: http://danlofaro.com/phd/balance/
+  \caption{Hubo Balancing using method discribed in Section~\ref{sec:sec:balance}}
+  \label{fig:oneFootBalanceVideo}
+\end{figure}
+
