@@ -80,8 +80,9 @@ Fig.~\ref{fig:huboZMPjointSpace} shows the joint space walking pattern verses ti
 
 
 
-%% ---------------- Walking Pattern Generation ------------------------
+%% ---------------- OpenHubo Walking ------------------------
 \subsection{Walking Using OpenHubo Simulator and Hubo-Ach}\label{sec:OpenHuboWalking}
+
 The walking pattern that was generated in Section~\ref{sec:WalkingPatternGeneration} was then applied to the OpenHubo system described in Section~\ref{sec:simulator} via the Hubo-Ach controller.
 The walking pattern was applied in sim-time with a period $T_{sim}$ of $0.005~sec$.
 The block diagram of the system using OpenHubo in sim-time for a walking trajectory is shown in Fig.~\ref{fig:openhubosimWalking}.
@@ -97,6 +98,99 @@ The reference is set within OpenHubo and solved with a simulation period of $T_{
 Once The state, $H_{state}$ has been determined it is placed on the Hubo-Ach \textbf{FeedForward} channel and the ready trigger $\Gamma_{fs}$ is raised.  
 Hubo-Ach is waiting for the rising edge of $\Gamma_{fs}$ to continue on to the next cycle.  
 In order to keep with the sim-time the \textit{Walking Pattern} also waits for the rising edge of $\Gamma_{fs}$ to put the next desired reference on the \textbf{FeedForward} channel.
+Fig.~\ref{fig:openHuboWalkingVideo} shows the Virtual Hubo successfully ZMP walking using OpenHubo and Hubo-Ach.
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.6\columnwidth]{./examples/pix/openhubo-walking.png}
+\includegraphics[width=0.3\columnwidth]{./qrcode/qrcode-openhubo-walking.png}\\
+      Video: http://danlofaro.com/phd/walking/\#WalkingOpenHubo
+  \caption{Virtual Hubo in OpenHubo preforming ZMP walking using Hubo-Ach in sim-time based on the walking pattern generated in Section~\ref{sec:WalkingPatternGeneration}}
+  \label{fig:openHuboWalkingVideo}
+\end{figure}
+
+
+
+
+%% ---------------- OpenHubo Walking ------------------------
+\subsection{Walking Using RobotSim and Hubo-Ach}\label{sec:RobotSimWalking}
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.6\columnwidth]{./examples/pix/robotsim-walking.png}
+\includegraphics[width=0.3\columnwidth]{./qrcode/qrcode-robotsim-walking.png}\\
+      Video: http://danlofaro.com/phd/walking/\#WalkingRobotSim
+  \caption{Virtual Hubo in RobotSim preforming ZMP walking using Hubo-Ach in sim-time based on the walking pattern generated in Section~\ref{sec:WalkingPatternGeneration}}
+  \label{fig:robotSimWalkingVideo}
+\end{figure}
+
+The walking pattern that was generated in Section~\ref{sec:WalkingPatternGeneration} was then applied to the RobotSim dynamic simulator via the Hubo-Ach controller.
+RobotSim was developed by Professor Kris Hauser from Indiana University.
+The simulator was integrated into Hubo-Ach on April 24$^{th}$, 2013 during a 12 hour \textit{Hack-A-Thon} at Worchester Polytechnic Institute by Daniel M. Lofaro, Jingru Luo and Professor Kris Hauser\cite{wpiHackathon}.
+The walking pattern was applied in sim-time with a period $T_{sim}$ of $0.005~sec$.
+The block diagram of the system using RobotSim in sim-time for a walking trajectory is shown in Fig.~\ref{fig:RobotSimWalking}.
+
+\input{examples/block-sim-walking.tex}
+
+In Fig.~\ref{fig:RobotSimWalking} the RobotSim simulator is connected to Hubo-Ach and is used to run the walking trajectory.  
+The walking pattern generator ensures proper constraints on the velocity, acceleration and jerk and thus the filter seen in Fig.~\ref{fig:openhubosim} is not desired.  
+$\theta_r$ is set directly on the \textbf{FeedForward} channel thus each joint will have the response as seen in Fig.~\ref{fig:singleJointStep} for each commanded reference command at each time step.
+Hubo-Ach reads the \textbf{FeedForward} channel and commands Hubo at the rising edge of the next cycle.  
+At this point $\Gamma_{ts}$ is set high and the RobotSim simulator reads $\theta_c$.  
+The reference is set within RobotSim and solved with a simulation period of $T_{sim}$.  
+Once The state, $H_{state}$ has been determined it is placed on the Hubo-Ach \textbf{FeedForward} channel and the ready trigger $\Gamma_{fs}$ is raised.  
+Hubo-Ach is waiting for the rising edge of $\Gamma_{fs}$ to continue on to the next cycle.  
+In order to keep with the sim-time the \textit{Walking Pattern} also waits for the rising edge of $\Gamma_{fs}$ to put the next desired reference on the \textbf{FeedForward} channel.
+Fig.~\ref{fig:robotSimWalkingVideo} shows the Virtual Hubo successfully ZMP walking using RobotSim and Hubo-Ach.
+
+\input{examples/block-sim-walking-RobotSim.tex}
+
+
+
+
+
+%% ---------------- Hubo Walking ------------------------
+\subsection{Hubo Walking using Hubo-Ach}\label{sec:HuboWalking}
+The walking pattern that was generated in Section~\ref{sec:WalkingPatternGeneration} was then applied to the physical Hubo platform using the Hubo-Ach controller.
+The walking pattern was applied in real-time with a period $T_r$ of $0.005~sec$.
+Unlike the simulated versions which run in sim-time the system is now running in real-time; thus it no longer needs to wait for an external trigger.
+The walking pattern trajectory is now posted to the \textbf{FeedForward} channel at an RT period of $T_r$.
+The walking pattern generator ensures proper constraints on the velocity, acceleration and jerk and thus the filter seen in Fig.~\ref{fig:openhubosim} is not desired.
+Fig.~\ref{fig:huboWalk} shows the block diagram of the walking pattern from Section~\ref{sec:WalkingPatternGeneration} being run in real-time on the physical Hubo2+ platform.
+Fig.~\ref{fig:RealHuboWalkingVideo} shows the Hubo successfully ZMP walking using OpenHubo and Hubo-Ach.
+Fig.~\ref{fig:RealHuboWalkingInPlaceVideo} shows the Hubo successfully ZMP walking in place using OpenHubo and Hubo-Ach.
+
+
+\input{examples/block-hubo-walk.tex}
+
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.6\columnwidth]{./examples/pix/hubo-walking.png}
+\includegraphics[width=0.3\columnwidth]{./qrcode/qrcode-hubo-walking.png}\\
+      Video: http://danlofaro.com/phd/walking/\#WalkingHubo
+  \caption{Hubo2+ preforming ZMP walking using Hubo-Ach in real-time based on the walking pattern generated in Section~\ref{sec:WalkingPatternGeneration}.}
+  \label{fig:RealHuboWalkingVideo}
+\end{figure}
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.6\columnwidth]{./examples/pix/hubo-walkinginplace.png}
+\includegraphics[width=0.3\columnwidth]{./qrcode/qrcode-hubo-walkinginplace.png}\\
+      Video: http://danlofaro.com/phd/walking/\#WalkingInPlaceHubo
+  \caption{Hubo2+ preforming ZMP walking in place using Hubo-Ach in real-time based on the walking pattern generated in Section~\ref{sec:WalkingPatternGeneration} with a forward velocity of $0.0~\frac{m}{sec}$}
+  \label{fig:RealHuboWalkingInPlaceVideo}
+\end{figure}
+
+
+
+
+
+
+\subsection{Walking Using RobotSim and Hubo-Ach}\label{sec:RobotSimWalking}
+
+
+
+
 
 
 

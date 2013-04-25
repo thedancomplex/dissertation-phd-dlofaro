@@ -14,7 +14,7 @@
   \node[main node,font=\small] (hold3) [below=0.0cm of ctrl, yshift=0.0cm] {hold};
 
 
-  \node[main node] (hubo) [right=1.5cm of hold1, yshift=-0.5cm] {OpenHubo};
+  \node[main node] (hubo) [right=1.5cm of hold1, yshift=-0.5cm] {RobotSim};
 
 
 
@@ -51,15 +51,15 @@
 
 
 \end{tikzpicture}
-\caption{Diagram of how the OpenHubo simulator is connected to Hubo-Ach and is used to run a walking trajectory.  
+\caption{Diagram of how the RobotSim simulator is connected to Hubo-Ach and is used to run the walking trajectory.  
 The walking pattern generator ensures proper constraints on the velocity, acceleration and jerk and thus the filter seen in Fig.~\ref{fig:openhubosim} is not desired.  
 $\theta_r$ is set directly on the \textbf{FeedForward} channel thus each joint will have the response as seen in Fig.~\ref{fig:singleJointStep} for each commanded reference command at each time step.
 Hubo-Ach reads the \textbf{FeedForward} channel and commands Hubo at the rising edge of the next cycle.  
-At this point $\Gamma_{ts}$ is set high and the OpenHubo simulator reads $\theta_c$.  
-The reference is set within OpenHubo and solved with a simulation period of $T_{sim}$.  
+At this point $\Gamma_{ts}$ is set high and the RobotSim simulator reads $\theta_c$.  
+The reference is set within RobotSim and solved with a simulation period of $T_{sim}$.  
 Once The state, $H_{state}$ has been determined it is placed on the Hubo-Ach \textbf{FeedForward} channel and the ready trigger $\Gamma_{fs}$ is raised.  
 Hubo-Ach is waiting for the rising edge of $\Gamma_{fs}$ to continue on to the next cycle.  
-In order to keep with the sim-time the \textit{Walking Pattern} also waits for the rising edge of $\Gamma_{fs}$ to put the next desired reference on the \textbf{FeedForward} channel. }
-\label{fig:openhubosimWalking}
+In order to keep with the sim-time the \textit{Walking Pattern} also waits for the rising edge of $\Gamma_{fs}$ to put the next desired reference on the \textbf{FeedForward} channel.}
+\label{fig:RobotSimWalking}
 \end{figure}
 
