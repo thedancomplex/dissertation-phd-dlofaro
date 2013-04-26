@@ -1,9 +1,9 @@
 
+This section gives a quick background to why inter-process communication (IPC) is used for the Hubo-Ach control system and a brief background of different IPC methods.
+Section~\ref{sec:hubo-ach} give this background in greater detail.
 
-
-The idea for a Control Archetecture for High DOF robots stems from a gap in physical implimentation of control algerithms for robot hardware.
-
-The simplest approach to developing robot software is to intergrate all functionality in one program.  
+The idea for a Control Architecture for High DOF robots stems from a gap in physical implementation of control algorithms for robot hardware.
+The simplest approach to developing robot software is to integrate all functionality in one program.  
 This functionality includes the following controllers:
 \begin{itemize}
 \item Hardware Control
@@ -13,12 +13,12 @@ This functionality includes the following controllers:
 \item etc.
 \end{itemize}
 
-If all of this functionality is in one process then it has the bennifit of freedom of inter process comunication latency.
+If all of this functionality is in one process then it has the benefit of freedom of inter process communication latency.
 However being in one process also means that if one of the controllers laggs or faults it cause the entire controller to lag or fault.
-This is of great concern if a non-prority controller such as vision processing faults causing a priority controller such as a ballance controller, to fail.
+This is of great concern if a non-prority controller such as vision processing faults causing a priority controller such as a balance controller, to fail.
 This will cause the robot to fall.
 How is this fixed?
-One solution and my proposed solution is to use inter-process comunicatoin (IPC).
+One solution and my proposed solution is to use multiple processies and IPC methods.
 Inter-process comunication is a method of exchanging data between multiple processies.
 Typical POSIX methods give you the \textbf{oldest} information first and have locks on the memroy when processies are writing to it.
 An overview of these mechanisms are given in \cite{stevens2005advanced}.
@@ -33,6 +33,11 @@ This is called head of line blocking\cite{ach}.
 
 It is desired to make a multi-process controller that can share data between multiple processies with low-latency and no head of line blocking.
 There are a few IPCs that offer no head of line blocking and low-latency.  
-After much research (inserte examples here) it was found that the Ach IPC wuld best fit my needs.
+A discription of each IPC type is in Section~\ref{sec:hubo-ach}.
+Table~\ref{table:ipc} shows a full comparision of the different IPC types.
+%After much research (inserte examples here) it was found that the Ach IPC wuld best fit my needs.
+
+My thesis Hubo-Ach is a multi-process control system that uses IPC methods to communicate between processes.
+Section~\ref{sec:hubo-ach} describes Hubo-Ach in detail.
 
 
