@@ -20,14 +20,16 @@ This will cause the robot to fall.
 How is this fixed?
 One solution and my proposed solution is to use inter-process comunicatoin (IPC).
 Inter-process comunication is a method of exchanging data between multiple processies.
-Typical POSIX methods (cite here) give you the \textbf{oldest} information first and have locks on the memroy when processies are writing to it.
+Typical POSIX methods give you the \textbf{oldest} information first and have locks on the memroy when processies are writing to it.
+An overview of these mechanisms are given in \cite{stevens2005advanced}.
+
 Robots work in the physical world. 
 More recent information is more important to it then older.
 In most cases it is acceptiable to know the most recent data and never read any of the older data.
 This would happen if your sensors update at a faster rate then that of the robot.
 Typically robot actuiators have a bandwidth much much lower then that of a mondern conputer.
 If sensor informatio is shared using traditional shared memory over POSIX methods the controller would have to read the older information before it reaches the information it is most interested in, the newest data.
-This is called head of line blocking (show reference).
+This is called head of line blocking\cite{ach}.
 
 It is desired to make a multi-process controller that can share data between multiple processies with low-latency and no head of line blocking.
 There are a few IPCs that offer no head of line blocking and low-latency.  
