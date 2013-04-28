@@ -31,12 +31,27 @@ In addition N. Dantam shows that other IPC mechanism using select/poll/epoll/kqu
 The primary problem being that that thought the sender will not block the reader must stil read the oldest data first.
 The question now is what IPC mechanism will be suitable for my control system.
 
+
+
+\begin{figure}[thpb]
+  \centering
+      \includegraphics[width=1.0\columnwidth]{./hubo-ach/pix/dantam2012robustAchTiming.pdf}\\
+\caption{Histograms of Ach and Pipe messaging latencies. Benchmarking performed on a Core 2 Duo running Ubuntu Linux 10.04 with PREEMPT
+kernel. The labels $\alpha$s/$\beta$r indicate a test run with $\alpha$ sending processes and $\beta$ receiving processes\cite{ach}.}
+\label{fig:ach-timing}
+\end{figure}
+
+
+
+
 Upon investigation three major mechanisms are avaliable; Robot Operating System (ROS)\cite{ros}, Message Passing Interface (MPI)\cite{Gropp:1999:UMP:330577} and Ach\cite{ach}.
 Though ROS is ubicuitious in the robotics and automation field the inherent latency and the non real-time (RT) guarantee due to the use of TCP/IP it is not a good choice.
 MPI is ubiquitous in the high-proformance computing field.  It has full non-blocking capiabilities and is geared towards maximizing message throughput for networked clusters\cite{ach}.
 Table~\ref{table:ipc} shows a comparision of a wide range of IPC methods.
 A focus on reducing latency is not given.
-Ach is a newer 
+Ach does focuses on latency.
+Fig.~\ref{fig:ach-timing} shows histograms of Ach and Pipe messaging latencies. Benchmarking performed on a Core 2 Duo running Ubuntu Linux 10.04 with PREEMPT
+kernel. The labels $\alpha$s/$\beta$r indicate a test run with $\alpha$ sending processes and $\beta$ receiving processes.
 
 \input{hubo-ach/robot-sys-comp.tex}
 \input{hubo-ach/IPC-comp.tex}
