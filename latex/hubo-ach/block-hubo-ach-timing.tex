@@ -1,0 +1,86 @@
+\begin{figure}
+\centering
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=5cm,
+  thick,main node/.style={fill=white!20,draw,font=\sffamily\footnotesize\bfseries}]
+
+  
+  \node[main node] (latesRef) [ text width=2.5cm, minimum height=1.5cm, align=center]   {Reference\\(Latest)};
+  \node[main node] (ctrl)     [left=0.8cm of latesRef,minimum height=1.5cm, align=center]                           {Controller};
+  \node[main node] (getRef)   [right=0.5cm of latesRef, text width=3.5cm, minimum height=1.5cm, align=center]      {Get Reference};
+  \node[main node] (latesRef) [left=0.5cm of getRef, text width=2.5cm, minimum height=1.5cm, align=center]   {Reference\\(Latest)};
+
+
+  \node[main node] (fromsim)     [above=1.0cm of getRef, text width=3.5cm, minimum height=1.5cm, align=center]    {From Simulator\\ Hold (sim mode)};
+  \node[main node] (tosim)       [below=1.0cm of getRef, text width=3.5cm, minimum height=1.5cm, align=center]    {To Simulator\\ Trigger};
+  \node[main node] (filter)      [below=1.0cm of tosim, text width=3.5cm, minimum height=1.5cm, align=center]     {Filter};
+  \node[main node] (setRef)      [below=1.0cm of filter, text width=3.5cm, minimum height=1.5cm, align=center]    {Set Reference};
+  \node[main node] (reqSens)     [below=1.0cm of setRef, text width=3.5cm, minimum height=1.5cm, align=center]    {Request Sensors};
+  \node[main node] (getSens)     [below=1.0cm of reqSens, text width=3.5cm, minimum height=1.5cm, align=center]   {Get Sensors};
+  \node[main node] (putState)    [below=1.0cm of getSens, text width=3.5cm, minimum height=1.5cm, align=center]   {Put State};
+  \node[main node] (rthold)      [left=0.5cm of getSens, minimum height=1.5cm, align=center]   {Real-Time\\Hold};
+  \node[main node] (latestState) [left=0.5cm of putState, text width=2.5cm, minimum height=1.5cm, align=center, yshift=-1.0cm]   {State\\(Latest)};
+  \node[main node, draw=white] (haname)   [right=3.0cm of putState, align=center]   {};
+
+  \node[main node] (robot)    [right=4.5cm of setRef, minimum height=5.5cm, align=center]    {Robot};
+  
+
+
+
+  \path[->, every node/.style={font=\sffamily\small}]
+    (ctrl) edge node [above] {$\theta_r$} (latesRef);
+
+%  \path[->, every node/.style={font=\sffamily\small}]
+%    (fromsim) edge node [right] {$t_0=0.011~ms$} (getRef);
+%\draw[->] ([xshift=-1.2 cm]fromsim.south)  to [out=-90,in=90] node [right] {$t_0=0.011~ms$} ([xshift=-1.2 cm]getRef.north)  ;
+%\draw[->] ([xshift=-1.2 cm]getRef.south)   to [out=-90,in=90] node [right] {$t_1=0.011~ms$} ([xshift=-1.2 cm]tosim.north)  ;
+%\draw[->] ([xshift=-1.2 cm]tosim.south)   to [out=-90,in=90] node [right] {$t_2=0.011~ms$} ([xshift=-1.2 cm]filter.north)  ;
+%\draw[->] ([xshift=-1.2 cm]filter.south)   to [out=-90,in=90] node [right] {$t_3=???~ms$} ([xshift=-1.2 cm]setRef.north)  ;
+%\draw[->] ([xshift=-1.2 cm]setRef.south)   to [out=-90,in=90] node [right] {$t_4=???~ms$} ([xshift=-1.2 cm]reqSens.north)  ;
+%\draw[->] ([xshift=-1.2 cm]reqSens.south)   to [out=-90,in=90] node [right] {$t_5=???~ms$} ([xshift=-1.2 cm]getSens.north)  ;
+%\draw[->] ([xshift=-1.2 cm]getSens.south)   to [out=-90,in=90] node [right] {$t_6=0.011~ms$} ([xshift=-1.2 cm]putState.north)  ;
+%\draw[->] ([xshift=0.0 cm]putState.west)   to [out=180,in=-90] node [below, yshift=-0.5cm, xshift=-0.2cm] {$t_7=0.011~ms$} ([xshift=0.0 cm]rthold.south)  ;
+
+
+
+\draw[->] ([xshift=0.0cm]fromsim.south)  to [out=-90,in=90] node [right]  {} ([xshift=0.0cm]getRef.north)  ;
+\draw[->] ([xshift=0.0cm]getRef.south)   to [out=-90,in=90] node [right]  {} ([xshift=0.0cm]tosim.north)  ;
+\draw[->] ([xshift=0.0cm]tosim.south)   to [out=-90,in=90] node [right]   {} ([xshift=0.0cm]filter.north)  ;
+\draw[->] ([xshift=0.0cm]filter.south)   to [out=-90,in=90] node [right]  {} ([xshift=0.0cm]setRef.north)  ;
+\draw[->] ([xshift=0.0cm]setRef.south)   to [out=-90,in=90] node [right]  {} ([xshift=0.0cm]reqSens.north)  ;
+\draw[->] ([xshift=0.0cm]reqSens.south)   to [out=-90,in=90] node [right] {} ([xshift=0.0cm]getSens.north)  ;
+\draw[->] ([xshift=0.0cm]getSens.south)   to [out=-90,in=90] node [right] {} ([xshift=0.0cm]putState.north)  ;
+\draw[->] ([xshift=0.0 cm]putState.west)   to [out=180,in=-90] node [below, yshift=-0.5cm, xshift=-0.2cm] {} ([xshift=0.0 cm]rthold.south)  ;
+\draw[->] ([xshift=0.0 cm]rthold.north)   to [out=90,in=-130] node [right, yshift=-2.0cm, xshift=0.8cm, rotate=90] {$\displaystyle t_{hold}=T-\sum_{i=0}^{7} t_i$} ([xshift=0.0 cm]fromsim.west)  ;
+
+
+
+\draw[->] ([yshift=0.75cm]fromsim.east)  to [out=-30,in=30] node [right] {$t_0=0.011~ms$} ([yshift=-0.75cm]fromsim.east)  ;
+\draw[->] ([yshift=0.75cm]getRef.east)  to [out=-30,in=30] node [right] {$t_1=0.011~ms$} ([yshift=-0.75cm]getRef.east)  ;
+\draw[->] ([yshift=0.75cm]tosim.east)  to [out=-30,in=30] node [right] {$t_2=0.011~ms$} ([yshift=-0.75cm]tosim.east)  ;
+\draw[->] ([yshift=0.75cm]filter.east)  to [out=-30,in=30] node [right] {$t_3=???~ms$} ([yshift=-0.75cm]filter.east)  ;
+\draw[->] ([yshift=0.75cm]setRef.east)  to [out=-30,in=30] node [right] {$t_4=???~ms$} ([yshift=-0.75cm]setRef.east)  ;
+\draw[->] ([yshift=0.75cm]reqSens.east)  to [out=-30,in=30] node [right] {$t_5=???~ms$} ([yshift=-0.75cm]reqSens.east)  ;
+\draw[->] ([yshift=0.75cm]getSens.east)  to [out=-30,in=30] node [right] {$t_6=???~ms$} ([yshift=-0.75cm]getSens.east)  ;
+\draw[->] ([yshift=0.75cm]putState.east)  to [out=-30,in=30] node [right] {$t_7=0.011~ms$} ([yshift=-0.75cm]putState.east)  ;
+
+\node[fit=(fromsim)(putState)(rthold)(haname)(latestState), draw,label={south:Hubo-Ach}] (hubo-ach) [minimum width=4.5cm] {};
+
+
+
+
+%  \path[->,every node/.style={font=\sffamily\small}]
+%    (ik) edge node [above] {$\overline{\theta_d}$} (filter);
+
+% \draw[->] ([xshift=-0.5 cm]filter.south)  -- node [left] {$\overline{\theta_r}$} ([xshift=-0.5 cm]hubo-ach.north)  ;
+% \draw[->] ([xshift=0.5 cm]hubo-ach.north) -- node [left] {$\overline{\theta_a}$} ([xshift=0.5 cm]filter.south)  ;
+
+% \path[<->,dashed, every node/.style={font=\sffamily\small}]
+%    (hubo) edge node [above] {CAN} (hubo-ach);
+
+
+\end{tikzpicture}
+\caption{Desired reference $\theta_d$ being filtered before applied to Hubo via Hubo-Ach.  $\theta_d$ is sent through a filter that reduces the \textit{jerk} on the actuator by using Equation~\ref{eq:refencmode}.  The new reference $\theta_r$ is set on the \textbf{FeedForward} channel, Hubo-Ach reads it then commands Hubo at the rising edge of the next cycle.  This method adds compliance to the system}
+\label{fig:hubo-ach-feedforwardFilterFeedBack}
+\end{figure}
+
