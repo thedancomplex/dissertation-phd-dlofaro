@@ -42,8 +42,8 @@ hold on
 plot(rat,mTr,'b')
 plot(rat,mRo,'g')
 plot(rat,mCl,'k')
-legend('Idel','Open-Loop','Read State','Closed-Loop');
-title({sprintf('CPU Utilization:');sprintf('Average Idel CPU Usage = %.2f %%', mean(mId))
+legend('Idle','Open-Loop','Read State','Closed-Loop');
+title({sprintf('CPU Utilization:');sprintf('Average Idle CPU Usage = %.2f %%', mean(mId))
                                        ;sprintf('Average Open-Loop CPU Usage = %.2f %%', mean(mTr))
                                        ;sprintf('Average Read State CPU Usage = %.2f %%', mean(mRo))
                                        ;sprintf('Average Closed-Loop CPU Usage = %.2f %%', mean(mCl))})
