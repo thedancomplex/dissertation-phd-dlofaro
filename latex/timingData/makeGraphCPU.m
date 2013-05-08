@@ -8,21 +8,22 @@ filenameCl = 'huboCPU-closedLoop.tex';
 %filename = 'RSP-Zp4-Step-Step-Real.traj';
 T = 0.1;
 ra = 100:400;
+sh = 3.2;
 mId = dlmread(filenameId, ' ');
 mId = mId(:,1);
-mId = mId(ra)/2;
+mId = mId(ra)/2-sh;
 mRo = dlmread(filenameRo, ' ');
 mRo = mRo(:,1);
-mRo = mRo(ra)/2;
+mRo = mRo(ra)/2-sh;
 mTr = dlmread(filenameTr, ' ');
 mTr = mTr(:,1);
-mTr = mTr(ra)/2;
+mTr = mTr(ra)/2-sh;
 mCl = dlmread(filenameCl, ' ');
 mCl = mCl(:,1);
-mCl = mCl(ra)/2;
+mCl = mCl(ra)/2-sh;
 
-gmin = 6;
-gmax = 14;
+gmin = 4;
+gmax = 13;
 
 % total time
 ttime = 0;
