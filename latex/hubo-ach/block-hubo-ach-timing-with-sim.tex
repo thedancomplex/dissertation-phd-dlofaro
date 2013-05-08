@@ -10,10 +10,10 @@
   \node[main node] (getRef)   [right=1.5cm of latesRef, text width=3.0cm, minimum height=1.1cm, align=center]      {Get Reference};
  
 
- % \node[main node] (fromsim)     [above=1.0cm of getRef, text width=3.0cm, minimum height=1.1cm, align=center]    {From Simulator\\ Hold (sim mode)};
- % \node[main node] (sim)         [above=1.0cm of fromsim, text width=3.0cm, minimum height=1.1cm, align=center]    {Simulator \\Trigger\\ (sim mode)};
+  \node[main node] (fromsim)     [above=1.0cm of getRef, text width=3.0cm, minimum height=1.1cm, align=center]    {From Simulator\\ Hold (sim mode)};
+  \node[main node] (sim)         [above=1.0cm of fromsim, text width=3.0cm, minimum height=1.1cm, align=center]    {Simulator \\Trigger\\ (sim mode)};
 
- \node[main node, draw=white] (haname2)   [above=0.2cm of getRef, align=center]   {};
+ \node[main node, draw=white] (haname2)   [above=0.2cm of fromsim, align=center]   {};
 
   \node[main node] (dodebug)     [below=1.0cm of getRef, text width=3.0cm, minimum height=1.1cm, align=center]    {User Commands\\ (debug)};
   \node[main node] (tosim)       [below=1.0cm of dodebug, text width=3.0cm, minimum height=1.1cm, align=center]    {To Simulator\\ Trigger};
@@ -52,7 +52,7 @@
 
 
 \draw[->] ([xshift=0.0cm]latesRef.east)  to [out=0,in=-180]  node [right]  {} ([xshift=0.0cm]getRef.west)  ;
-%\draw[->] ([xshift=0.0cm]fromsim.south)  to [out=-90,in=90]  node [right]  {} ([xshift=0.0cm]getRef.north)  ;
+\draw[->] ([xshift=0.0cm]fromsim.south)  to [out=-90,in=90]  node [right]  {} ([xshift=0.0cm]getRef.north)  ;
 \draw[->] ([xshift=0.0cm]getRef.south)   to [out=-90,in=90]  node [right]  {} ([xshift=0.0cm]dodebug.north)  ;
 \draw[->] ([xshift=0.0cm]dodebug.south)  to [out=-90,in=90]  node [right]  {} ([xshift=0.0cm]tosim.north)  ;
 \draw[->] ([xshift=0.0cm]tosim.south)    to [out=-90,in=90]  node [right]  {} ([xshift=0.0cm]filter.north)  ;
@@ -62,29 +62,28 @@
 \draw[->] ([xshift=0.0cm]getSens.south)  to [out=-90,in=90]  node [right]  {} ([xshift=0.0cm]canWait.north)  ;
 \draw[->] ([xshift=0.0cm]canWait.south)  to [out=-90,in=90]  node [right]  {} ([xshift=0.0cm]putState.north)  ;
 \draw[->] ([xshift=0.0 cm]putState.west) to [out=180,in=-90] node [below, yshift=-0.5cm, xshift=-0.2cm] {} ([xshift=0.0 cm]rthold.south)  ;
-\draw[->] ([xshift=0.0 cm]rthold.north)  to [out=90,in=-120] node [left, yshift=-1.0cm, xshift=-0.8cm, rotate=90] {} ([xshift=0.0 cm]getRef.west)  ;
+\draw[->] ([xshift=0.0 cm]rthold.north)  to [out=90,in=-120] node [left, yshift=-1.0cm, xshift=-0.8cm, rotate=90] {} ([xshift=0.0 cm]fromsim.west)  ;
 \draw[->] ([xshift=0.0cm]putState.south) to [out=-90,in=0]   node [right]  {} ([xshift=0.0cm]latestState.east)  ;
 
 
 
-
-%\draw[->] ([yshift=0.75cm]fromsim.east)  to [out=-30,in=30] node [right] {$t_0=0.014~ms$} ([yshift=-0.75cm]fromsim.east)  ;
-\draw[->] ([yshift=0.75cm]getRef.east)  to [out=-30,in=30] node [right] {$t_0=0.010~ms$} ([yshift=-0.75cm]getRef.east)  ;
-\draw[->] ([yshift=0.75cm]dodebug.east)  to [out=-30,in=30] node [right] {$t_1=0.011~ms$} ([yshift=-0.75cm]dodebug.east)  ;
-\draw[->] ([yshift=0.75cm]tosim.east)  to [out=-30,in=30] node [right] {$t_2=0.014~ms$} ([yshift=-0.75cm]tosim.east)  ;
-\draw[->] ([yshift=0.75cm]filter.east)  to [out=-30,in=30] node [right] {$t_3=0.008~ms$} ([yshift=-0.75cm]filter.east)  ;
-\draw[->] ([yshift=0.75cm]setRef.east)  to [out=-30,in=30] node [right] {$t_4=0.152~ms$} ([yshift=-0.75cm]setRef.east)  ;
-\draw[->] ([yshift=0.75cm]reqSens.east)  to [out=-47,in=47] node [right] {$t_5=1.365~ms$} ([yshift=-0.75cm]getSens.east)  ;
-\draw[->] ([yshift=0.75cm]canWait.east)  to [out=-30,in=30] node [right,align=center] {$t_6=3.000~ms$\\(hard timeout)} ([yshift=-0.75cm]canWait.east)  ;
+\draw[->] ([yshift=0.75cm]fromsim.east)  to [out=-30,in=30] node [right] {$t_0=0.014~ms$} ([yshift=-0.75cm]fromsim.east)  ;
+\draw[->] ([yshift=0.75cm]getRef.east)  to [out=-30,in=30] node [right] {$t_1=0.010~ms$} ([yshift=-0.75cm]getRef.east)  ;
+\draw[->] ([yshift=0.75cm]dodebug.east)  to [out=-30,in=30] node [right] {$t_2=0.011~ms$} ([yshift=-0.75cm]dodebug.east)  ;
+\draw[->] ([yshift=0.75cm]tosim.east)  to [out=-30,in=30] node [right] {$t_3=0.014~ms$} ([yshift=-0.75cm]tosim.east)  ;
+\draw[->] ([yshift=0.75cm]filter.east)  to [out=-30,in=30] node [right] {$t_4=0.008~ms$} ([yshift=-0.75cm]filter.east)  ;
+\draw[->] ([yshift=0.75cm]setRef.east)  to [out=-30,in=30] node [right] {$t_5=0.152~ms$} ([yshift=-0.75cm]setRef.east)  ;
+\draw[->] ([yshift=0.75cm]reqSens.east)  to [out=-47,in=47] node [right] {$t_6=1.365~ms$} ([yshift=-0.75cm]getSens.east)  ;
+\draw[->] ([yshift=0.75cm]canWait.east)  to [out=-30,in=30] node [right,align=center] {$t_7=3.000~ms$\\(hard timeout)} ([yshift=-0.75cm]canWait.east)  ;
 %\draw[->] ([yshift=0.75cm]reqSens.east)  to [out=-30,in=30] node [right] {$t_5=???~ms$} ([yshift=-0.75cm]reqSens.east)  ;
 %\draw[->] ([yshift=0.75cm]getSens.east)  to [out=-30,in=30] node [right] {$t_6=???~ms$} ([yshift=-0.75cm]getSens.east)  ;
-\draw[->] ([yshift=0.75cm]putState.east)  to [out=-30,in=30] node [right] {$t_7=0.092~ms$} ([yshift=-0.75cm]putState.east)  ;
-\draw[->] ([yshift=-0.75cm]rthold.west)  to [out=120,in=-120] node [above, yshift=1.5cm, xshift=0.3cm, rotate=90] {$\displaystyle t_{hold}=T-\sum_{i=0}^{8} t_i=0.348~ms$} ([yshift=0.75cm]rthold.west)  ;
+\draw[->] ([yshift=0.75cm]putState.east)  to [out=-30,in=30] node [right] {$t_8=0.092~ms$} ([yshift=-0.75cm]putState.east)  ;
+\draw[->] ([yshift=-0.75cm]rthold.west)  to [out=120,in=-120] node [above, yshift=1.5cm, xshift=0.3cm, rotate=90] {$\displaystyle t_{hold}=T-\sum_{i=0}^{8} t_i=0.334~ms$} ([yshift=0.75cm]rthold.west)  ;
 
-\draw[->, dashed] ([xshift=0.0cm]latestState.west)   to [out=120,in=-90] node [right] {} ([xshift=0.0cm]ctrl.south)  ;
-%\draw[->, dashed] ([xshift=0.0cm]sim.south)   to [out=-90,in=90] node [right] {} ([xshift=0.0cm]fromsim.north)  ;
+\draw[->, dashed] ([xshift=0.0cm]latestState.west)   to [out=130,in=-90] node [right] {} ([xshift=0.0cm]ctrl.south)  ;
+\draw[->, dashed] ([xshift=0.0cm]sim.south)   to [out=-90,in=90] node [right] {} ([xshift=0.0cm]fromsim.north)  ;
 
-\node[fit=(getRef)(putState)(rthold)(haname)(latestState)(haname2), draw,label={south:Hubo-Ach}] (hubo-ach) [minimum width=4.5cm] {};
+\node[fit=(fromsim)(putState)(rthold)(haname)(latestState)(haname2), draw,label={south:Hubo-Ach}] (hubo-ach) [minimum width=4.5cm] {};
 
 
 
@@ -107,7 +106,7 @@
 
 
 \end{tikzpicture}
-\caption{Timing diagram of Hubo-Ach.  All times $t_*$ denote measured times each block takes to complete.  Tests were done on a 1.6Ghz Atom D525 Dual Core with 1GB DDR3 800Mhz memory running Ubuntu 12.04 LTS linux kernel 3.2.0-29 on a Hubo2+ utilizing a CAN bus running at 1Mbps baud.  Average CPU usage is 7.5\% using a total of 4Mb or memory.}
-\label{fig:hubo-ach-timing}
+\caption{Desired reference $\theta_d$ being filtered before applied to Hubo via Hubo-Ach.  $\theta_d$ is sent through a filter that reduces the \textit{jerk} on the actuator by using Equation~\ref{eq:refencmode}.  The new reference $\theta_r$ is set on the \textbf{FeedForward} channel, Hubo-Ach reads it then commands Hubo at the rising edge of the next cycle.  This method adds compliance to the system}
+\label{fig:hubo-ach-feedforwardFilterFeedBack}
 \end{figure}
 
