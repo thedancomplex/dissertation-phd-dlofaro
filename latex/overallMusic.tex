@@ -1,0 +1,20 @@
+When making a humanoid an interactive musical partisipant there are may factors that must be taken into account.  
+For example what sensors are you using for your input.
+How do you want to interact with the world.
+What is the range of music you want to interact with.
+In this work a high speed ($120~fps$) camera was used to track a conductors motions.
+Because we cared about when things are moving and finding the beat optical flow algorithms was used to determin the delta between each frame.
+From this the robot is able to see when the beat is occurring.
+Using past data the system can determin when the next beat will occure.
+
+In addition auditory beat tracking methods were used to perdict when the next beat would occure.  
+This used an array of colmb filters to home in on the beat timing.
+A gausian misture model was used to combine the visual and auditory data into the final perdictive beat system.
+
+The finial system would tap its hand to the beat with acuricy simular to that of a human as seen in the trial data
+
+Overall the major observations were that:
+\begin{itemize}
+\item Sensor data comes in at different rates still need to be combined
+\item The right tool for the right job is different for visual techniquens then auditory (mac vs. linux/PC)
+\item There is a noticiable latency between commands and the action of the robot.\end{itemize}

@@ -1,0 +1,94 @@
+\input{hubo-ach/block-hubo-ach-timing.tex}
+
+
+
+
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.6\columnwidth]{./timingData/getTrigger.pdf}
+  \caption{The amount of time it takes to send the external trigger.  In this case each sample has a time step of $0.005~sec$}
+  \label{fig:timing-getTrigger}
+\end{figure}
+
+
+
+
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.6\columnwidth]{./timingData/getRef.pdf}
+  \caption{The amount of time it takes to request and get the reference for the actuators.  In this case each sample has a time step of $0.005~sec$}
+  \label{fig:timing-getRef}
+\end{figure}
+
+
+
+
+
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.6\columnwidth]{./timingData/getPos.pdf}
+  \caption{The amount of time it takes to request and get the actual position from the actuators.  In this case each sample has a time step of $0.005~sec$}
+  \label{fig:timing-getPos}
+\end{figure}
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.6\columnwidth]{./timingData/getImu.pdf}
+  \caption{The amount of time it takes to request and get the IMU data.  In this case each sample has a time step of $0.005~sec$}
+  \label{fig:timing-imu}
+\end{figure}
+
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.6\columnwidth]{./timingData/getAcc.pdf}
+  \caption{The amount of time it takes to request and get the accelerometers data.  In this case each sample has a time step of $0.005~sec$}
+  \label{fig:timing-acc}
+\end{figure}
+
+
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.6\columnwidth]{./timingData/getFt.pdf}
+  \caption{The amount of time it takes to request and get the force-torque sensors.  In this case each sample has a time step of $0.005~sec$}
+  \label{fig:timing-ft}
+\end{figure}
+
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.6\columnwidth]{./timingData/filter.pdf}
+  \caption{The amount of time it takes to process the built in filter.  In this case each sample has a time step of $0.005~sec$}
+  \label{fig:timing-filter}
+\end{figure}
+
+
+
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.6\columnwidth]{./timingData/doCmd.pdf}
+  \caption{User command timing per sample.  In this case each sample has a time step of $0.005~sec$}
+  \label{fig:timing-doCmd}
+\end{figure}
+
+
+
+
+
+
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.6\columnwidth]{./timingData/cpu.pdf}
+  \caption{CPU utilization for the Hubo-Ach process when 1) idle, 2) under open-loop control, 3) reading the sensors, and 4) under closed-loop control.  
+It is important to note that the cpu utilization stays within 0.3\% when idle and under closed loop control.
+This means that the CPU utilization of Hubo-Ach is independent of the external control method.
+Thus it will not add more to the CPU load under complex control schemes then under simple ones.}
+  \label{fig:timing-getTrigger}
+\end{figure}
+
