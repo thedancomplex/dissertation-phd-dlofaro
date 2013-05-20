@@ -1,0 +1,181 @@
+Robot	year	DOF	note				Brands
+ASIMO	2001	34					KUKA
+BigDog	2005	16					
+Robonova	2007	16					
+Biloid (ROBOTIS)	2007	20					
+DARwin-OP (ROBOTIS)	2010	20					
+iRobot Create	2007	2					
+KHR-1 (Kondo Kagaku)	2004	17					
+PUMA (Westinghouse)	1975	6	developed while at stanfored by Victor Scheinman				
+Da Vinci Surgical System	1998	28	7 per arm 4 arms				
+UNIMATE (GM)	1954	6	die casting				
+PackBot (iRobot)	1998	11					
+Nao (Aldebaran)	2004	25					
+Spirit/Opportunity (NASA)	2004	30					
+AIBO (Sony)	1999	20					
+Shakey the robot	1966	2	first autonomous robot				
+Sojourner (NASA)	1997	15	First USA robot on mars, as part of the path finder mission				
+Mini-Hubo	2009	22	Mini verions of hubo				
+ATHLETE (NASA)	2008	36					
+Boe-Bot	2001	2					
+FRIEND	2003	9	Care-Providing Robot 7 dof shunk + wheels				
+Choromet	2004	30					
+Dragon Runner	2002	4	military				
+DRDO Daksh	2008	12	military				
+Flame	2003	20					
+TALON (Foster-Miller)	2003	7					
+Geminoid (Hiroshi Ishiguro)	2005	30	Human like more then 30 dof in face				
+HAL (Hybrid Assistive Limb)	2011	35					
+P3 (Honda)	1997	28					
+HRP-1	1997	28					
+HRP-2P	1998	30					
+HRP-2 Promet	2002	30					
+HRP-3P	2005	36					
+HRP-3 Promet MK-II	2007	42					
+HRP-4C	2009	42					
+HRP-4C	2010	34					
+Dirt Dog (iRobot)	2010	2					
+Ranger (iRobot)	2009	3	UUV				
+Seaglider (iRobot)	2008	4	UUV				
+Warrior (iRobot)	2008	13	military				
+Kanguera	2007	20					
+Kobian	2009	35	expressing emotion				
+Koolvac	2005	3					
+Roomba (iRobot)	2002	3					
+Lewis	2002	5	Wedding Photographer				
+LittleDog (BD)	2005	12					
+CHEETAH (BD)	2012	15					
+PETMAN (BD)	2010	30					
+RiSE (BD)	2006	35					
+Looj	2008	3	rain gutter cleaner				
+MANOI PF01	2007	17					
+Orazio	2004	3	vaccume cleaner				
+Open PINO Platform	2006	28	humanoid				
+Plen	2007	18					
+RoboMop	2011	2					
+Robosapien	2005	11					
+Adam	2009	40	robot scientist (estimated DOF)				
+Roboreptile	2006	11					
+Ropid	2012	30					
+RuBot II	2011	24	Rubix cube solving robot				
+Seropi (KITECH)	2010	21					
+Shadow Hand	2004	20					
+Whegs	2006	10					
+WonderBorg	2000	2					
+XBC	2005	3	BotBall controller				
+XM1216 (iRobot)	2009	10	Small Unmanned Ground Vehicle				
+Gakutensoku	1929	5	Japan Robot that can move its arms (pnumatic)				
+Teletank	1930	2	Soviet RC tank with explosives				
+George	1949	5	shiny walk around robot from uk				
+Borgward	1942	2	RC tank with explosives				
+Elmer	1948	3	Grey Walters first made the electric autonomous robot – tortoises				
+Elise	1949	3	Grey Walters first made the electric autonomous robot – tortoises				
+Goliath	1944	2	RC anit mine				
+Beetle (Mobile Land Mine)	1940	2	Mobile land Mine				
+Turtle “Class” (Hello World for Robots)	1949	2	hello world of robots, this is why ROS uses the turtle example 				
+Hardiman (GE)	1965	24	Exo skelliton – violant and uncotnrollable (failure)				
+Beast (John Hopkins)	1960	3					
+TIOSS	1962	6					
+Walking truck (GE)	1968	16	walkign truck hydrolic				
+Freddy	1969	3	used for AI and manipulation				
+Freddy II	1973	5	lead to the development of  RAPT robot programming language				
+Milton Bradley Playmate	1968	2	Kit				
+Senster Philips	1970	5	first robotic scolputre controlled by a digital computer				
+Lunokhod 1	1970	11	Soviet robot on the moon 				
+Wheelbarrow	1972	5	Military bomb disposal robot				
+Lunokhod 2	1973	11	on moon				
+Voyager 1 and Voyager 2	1977	5	estimate for actuators				
+Big Trak	1979	2	tank robot toy using transisters				
+Allen	1986	18	made by Rodney Brooks (Allen is his middle name) Estimated DOF				
+Omnibot	1985	6	toy				
+Canadarm	1981	6	arm for the space shuttle				
+HERO (Heathkit Educational Robot)	1982	3					
+RB5X	1983	5	roling platform with arms				
+Topo	1983	5	Programmed by an Apple II				
+Modulus	1984	16	mobile robot with arms				
+Adelbrecht	1985	2	Robot ball				
+R.O.B. (Nintendo Robot)	1985	4					
+E0 (Honda)	1986	6					
+E1 (Honda)	1987	12					
+E2 (Honda)	1989	12					
+E3 (Honda)	1991	12					
+E4 (Honda)	1991	12					
+E5 (Honda) 	1992	12					
+E6 (Honda)	1993	12					
+P1 (Honda)	1993	30					
+P2 (Honda)	1996	30					
+P4 (Honda)	2000	34					
+ASIMO (Honda)	2000	26					
+ASIMO “R2” (Honda)	2005	34					
+Navlab (series)	1986	5	aunonomous cars				
+RoboTurb	1988	5	welding robot				
+Robosaurus	1989	13	car destroying robot				
+Entomopter	2000	5	(semi continumum – flaping / flying robot)				
+Hypno-Disc	2006	3	robot wars				
+Kismet	1998	15					
+Panic Attack	2003	3	robot wars				
+Cyberknife	1990	8	medical xray and gamma etc				
+Khepera	1991	2	small mobile robot				
+Don Cuco El Guapo	1992	28	piano robot				
+INSECT	1992	24	hexipod				
+LAURON I	1994	25	hexipod				
+LAURON II	1995	26	hexipod				
+LAURON III	1999	26	hexipod				
+LAURON IV	2004	27	hexipod				
+Upuant Project	1992	4	go through shafts in great pyramids				
+Polly (MIT)	1993	5	first robot to move at animal speed (1m/s)				
+Nomad 200 (N200)	1994	2					
+UWA Telerobot	1994	2	first telioperated industrial robot over the internet				
+Blendo	1995	2	ballebots				
+Push the Talking Trash Can (Disney Land)	1995	2					
+RoboTuna (MIT)	1993	6	MIT				
+Sarcoman	1995	41					
+BioHazard	1996	4	battlebots				
+Electrolux Trilobite	1996	3	vaccume cleaner				
+Nomad Rover (CMU/NASA)	1997	8					
+Roadblock	1997	3	robot wars				
+Alice	1998	3	robot socker (small)				
+Razer	1998	3	battlebots				
+T.R.A.C.I.E.	1998	2	battlebots				
+ERS-210 (Sony)	1999	20	aibo type robot				
+ERS-300 (Sony – Latte and Macaron)	1999	15					
+ERS-311 (Sony – Latte)	2001	15					
+ERS-312 (Sony – Macaron)	2001	15					
+ERS-220 (Sony)	2000	16					
+AIBO MUTANT (Sony)	1999	16	Prototype				
+AIBO Prototype (Sony)	1999	17					
+ERS-110 AIBO (Sony)	1999	19					
+ERS-7 AIBO (Sony)	2003	20					
+ERS-7M2 AIBO (Sony)	2004	20					
+ERS-7M3 AIBO (Sony)	2005	20					
+Chaos 2	1999	3	battlebots				
+Cosmobot	1999	3	toy				
+Tornado	1999	3	battlebots				
+Chandrayaan-2 (NASA) (proposed)	2015	15	NASA Moon				
+Legged Squad Support System	2009	16	like bigdog				
+Scarab Rover	2008	11	lunar south poll in the dark holes				
+Luna 2	1959	0	First human objetct on the moon, just crashed				
+AISoy1	2010	5					
+Neato XV	2010	3	vaccume cleaner				
+Geoff Peterson	2010	20	estimated				
+PR2 (Willow Garage)	2010	18					
+Great Moments with Mr. Lincoln (Disney)	1965	26	estimate 				
+Robonaut (NASA)	2009	40	(setup dependent)				
+Robonaut 2 (NASA)	2010	40					
+TOPIO Dio	2010	28					
+VSR-2: Talos FG	2010	26	estimate 				
+Arachno-Bot	2011	40	Spyder robot				
+RoboBee	2013	2	estimate 				
+KHR-0 	2001	12					
+KHR-1 (KAIST)	2002	21					
+KHR-2	2004	41					
+KHR-3 (HUBO)	2005	41					
+Albert HUBO (KHR-3)	2005	66					
+Hubo 2 (KHR-4)	2008	40					
+HUBO 2 Plus (KHR-4 Plus)	2011	38					
+KR AGILUS (KUKA)	2012	6					
+KR QUANTEC (KUKA)	2010	6					
+KUKA titan (KUKA)	2007	6					
+IR 6/60  (KUKA)	1979	6					
+FAMULUS (KUKA)	1973	7					
+youBot (KUKA)	2010	10					
