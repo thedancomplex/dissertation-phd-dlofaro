@@ -34,12 +34,30 @@ This filter has multiple options:
 \item Compliance amplification mode which artificially increases the compliance of the joint (Section~\ref{sec:singlejointRefComplience})
 The measured time delay is $0.0080~ms$ with micro-second accuracy.
 The standard deviation is $0.0030~ms$.
+\end{itemize}
+This gives the system the option of reducing the jerk on the high-gain position controlled actuators allowing for slower update rates on the reference channel.
+The \textit{direct reference} mode allows a controller to have direct access to the commanded reference with no additional filtering.
 
 
 
 
 
-Fig.~\ref{fig:timing-getPos} The amount of time it takes to request and get the actual position from the actuators.
+Fig.~\ref{fig:timing-setRef} shows amount of time it takes to set the reference on the actuators via setting the data in the CAN bus buffer.
+The amount of time it takes for the for the references to be set to the actuators via the CAN is dependent on the baud rate of the CAN bus.
+Currently the baud rate is set to 1Mbps.
+CAN is the limiting factor in the loop rate.
+The table of the required bits to be sent via can is available in Table~\ref{table:huboCAN}.
+
+
+\input{./hubo-ach/table-CAN.tex}
+
+
+Fig.~\ref{fig:timing-getPos}, \ref{fig:timing-imu}, \ref{fig:timing-acc}, \ref{fig:timing-ft} shows the amount of time it takes to request and get the state data from the actuator from over the CAN bus.
+This takes in total $1.365~ms$ plus an additional $3.0~ms$ for wait-on-CAN to ensure all queued messages in the CAN buffer are send and received. 
+
+
+Fig.~\ref{fig:timing-setstate} shows the amount of time it takes to set the state to the feedback channel.
+The measured delay is $0.092~ms$ with a standard deviation of $0.091$.
 
 
 
@@ -78,11 +96,12 @@ Fig.~\ref{fig:timing-getPos} The amount of time it takes to request and get the 
 
 
 
-
-
-
-
-
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.6\columnwidth]{./timingData/setRef.pdf}
+  \caption{The amount of time it takes to set the reference on the actuators via setting the data in the CAN bus buffer.  In this case each sample has a time step of $0.005~sec$}
+  \label{fig:timing-setRef}
+\end{figure}
 
 \begin{figure}[thpb]
   \centering
@@ -116,25 +135,46 @@ Fig.~\ref{fig:timing-getPos} The amount of time it takes to request and get the 
 \end{figure}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 \begin{figure}[thpb]
   \centering
-\includegraphics[width=0.6\columnwidth]{./timingData/cpu.pdf}
-  \caption{CPU utilization for the Hubo-Ach process when 1) idle, 2) under open-loop control, 3) reading the sensors, and 4) under closed-loop control.  
-It is important to note that the cpu utilization stays within 0.3\% when idle and under closed loop control.
-This means that the CPU utilization of Hubo-Ach is independent of the external control method.
-Thus it will not add more to the CPU load under complex control schemes then under simple ones.}
-  \label{fig:timing-getTrigger}
+\includegraphics[width=0.6\columnwidth]{./timingData/setState.pdf}
+  \caption{The amount of time it takes to set the state data on the feedback channel.  In this case each sample has a time step of $0.005~sec$}
+  \label{fig:timing-setstate}
 \end{figure}
+
+
+
+
+Assuming no CAN delays Hubo-Ach can run at $1900~khz$.
+With the current configuration of a 2 channel CAN bus it is restricted to below $237~hz$.
+With a 4 channel CAN configuration it can be increased to $469~hz$.
+With an 8 channel CAN configuration it can be increased to $1063~hz$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

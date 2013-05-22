@@ -1,0 +1,29 @@
+
+\begin{sidewaystable}
+\scriptsize
+\caption{Hubo CAN packet data length and explanation}
+\begin{tabular}{p{2cm} || p{1cm} | p{3cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm}| p{1cm} | p{1cm} | p{0.5cm} | p{0.5cm}}
+\hline
+
+
+
+Field name	&	Length (bits)	&	Purpose	&	Pos CMD	&	Board Status (main)	&	Board Status (Neck and finger)	&	Encoder Pos (normal)	&	Encoder Pos (Neck)	&	Encoder Pos Finger (0)	&	Encoder Pos (Finger 1)	&	Current	&	FT	&	IMU	\\ \hline 
+\hline
+Start-of-frame	&	1	&	Denotes the start of frame transmission	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	\\ \hline
+Identifier	&	11	&	A (unique) identifier for the data which also represent the message priority	&	11	&	11	&	11	&	11	&	11	&	11	&	11	&	11	&	11	&	11	\\ \hline
+Remote transmission request (RTR)	&	1	&	Dominant (0) (see Remote Frame below)	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	\\ \hline
+Identifier extension bit (IDE)	&	1	&	Must be dominant (0)Optional	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	\\ \hline
+Reserved bit (r0)	&	1	&	Reserved bit (it must be set to dominant (0), but accepted as either dominant or recessive)	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	\\ \hline
+Data length code (DLC)*	&	4	&	Number of bytes of data (0–8 bytes)	&	4	&	4	&	4	&	4	&	4	&	4	&	4	&	4	&	4	&	4	\\ \hline
+Data field	&	0–64 (0-8 bytes)	&	Data to be transmitted (length in bytes dictated by DLC field)	&	48	&	64	&	40	&	64	&	48	&	48	&	32	&	64	&	64	&	64	\\ \hline
+CRC	&	15	&	Cyclic Redundancy Check	&	15	&	15	&	15	&	15	&	15	&	15	&	15	&	15	&	15	&	15	\\ \hline
+CRC delimiter	&	1	&	Must be recessive (1)	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	\\ \hline
+ACK slot	&	1	&	Transmitter sends recessive (1) and any receiver can assert a dominant (0)	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	\\ \hline
+ACK delimiter	&	1	&	Must be recessive (1)	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	&	1	\\ \hline
+End-of-frame (EOF)	&	7	&	Must be recessive (1)	&	7	&	7	&	7	&	7	&	7	&	7	&	7	&	7	&	7	&	7	\\ \hline
+	&		&	Total	&	92	&	108	&	84	&	108	&	92	&	92	&	76	&	108	&	108	&	108	\\ \hline
+
+\end{tabular}
+\label{table:huboCAN}
+\end{sidewaystable}
+\normalsize

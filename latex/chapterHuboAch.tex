@@ -12,5 +12,41 @@
 \input{hubo-ach/hubo-ach-intro.tex}
 \section{Inter Process Comunication Comparision}
 	\input{hubo-ach/hubo-ach-ipc-comp.tex}
-\section{Timing}
+\section{Timing}\label{sec:timing}
 	\input{hubo-ach/hubo-ach-timing.tex}
+\section{CPU Usage}
+	\input{hubo-ach/hubo-ach-cpu.tex}
+\section{Verification Experiments}\label{sec:simpleExamples}
+This section contains step by step verification examples showing the controller for high DOF complex system functions properly with the hubo system.
+All controllers are implimented using the multiple processes approach and includes all latencies found in Section~\ref{sec:timing}.
+
+	\subsection{Joint Space Step Response}\label{sec:singlejointStep}
+		\input{examples/example-singlejontStep.tex}
+	\subsection{Joint Space Step Response with Position Filtering}\label{sec:singlejointFilter}
+		\input{examples/example-singlejontFilter.tex}
+	\subsection{Compliance Amplification}\label{sec:singlejointRefComplience}
+		\input{examples/example-singlejontComplience.tex}
+	\subsection{Joint Space Step Response with Feedback Filtering}\label{sec:singlejointEnc}
+		\input{examples/example-singlejontEnc.tex}
+
+\section{Kinimatics}
+Kinimatic planning is a key focus of the Hubo-Ach controller.
+This section provides two published examples of the Hubo-Ach controller being used for inverse kinimatics and control.
+Section~\ref{sec:valve} shows the work of Lofaro et. al. \cite{lofaroTePRA2013Valve} using Constrained BiDirectional Rapidly-exploring Random Tree (CBiRRT) to provide a statically stable joint space trajectory allowing the robot to turn a valve.
+Section~\ref{sec:6dofik} shows the work of Lofaro et. al. \cite{lofaroTePRA2013HuboAch} using traditional 6 DOF forward and inverse kinimatic techniques to provide an analitical IK solution to each of the 6 DOF end effectors.
+The additional use of on-line trapizodial velocity profiling methods in Section~\ref{sec:trap} allow for the creation of a real-time IK controller based in Hubo-Ach.
+
+
+\subsection{Valve Turning}\label{sec:valve}
+	\input{examples/example-valveturning.tex}
+
+
+
+\section{Six Degree of Freedom Inverse Kinimatic Implimentation Example}\label{sec:6dofik}
+This section shows how we calculate the inverse kinimatics (IK) for the Hubo's right arm and how we use that calculation in conjunction with Section~\ref{sec:simpleExamples}.  The result is the ability to command the end effector (EEF)
+
+\input{examples/example-6dofIKsolutionIntro.tex}
+	\subsection{Froward Kinematics} 
+		\input{examples/example-6dofFKsolution.tex}
+	\subsection{Inverse Kinematics}\label{sec:ik}
+			\input{examples/example-6dofIKsolution.tex}

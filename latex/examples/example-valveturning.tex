@@ -1,4 +1,5 @@
-This section presents our progress towards performing valve turning task set by the DARPA Robotics Challenge (DRC) Event \#7\cite{drc}. 
+This section presents progress towards performing valve turning task set by the DARPA Robotics Challenge (DRC) Event \#7\cite{drc}. 
+This work is published verification of the Hubo-Ach system with details in Lofaro et. al.~\cite{lofaroTePRA2013Valve}.
 The task requires that a robot locate, approach, grasp, and turn an industrial valve with two hands.
 A core constraint for the DRC is that communications with the robot are limited, making conventional tele-operation is infeasible.
 Thus, the valve-turning task requires a straightforward way for a user to command the robot to perform complex actions. 
@@ -32,7 +33,7 @@ Fig.~\ref{fig:valve} shows the Hubo turning a valve using this method.
 
 
 
-\subsection{Planning}
+\subsubsection{Planning}
 The planning package plans trajectories for high degree of freedom robots so that they can perform object manipulation.
 The initial configuration of the robot is critical to manipulation because the robot must be able to:
 \begin{itemize}
@@ -45,7 +46,7 @@ CBiRRT consists of three main components: constraint
 representation, constraint-satisfaction, and a general planning algorithm. 
 For full details of CBiRRT and its implementation, see Berenson et. al.\cite{Berenson_2011_6867}.
 
-\subsection{Experiment}
+\subsubsection{Experiment}
 Our preliminary experiments with the Hubo were centered around validating our method of motion planning for the robot and evaluating the robot’s capabilities in relation to the requirements of our DRC task (turning the valve). 
 These tests were performed on the Hubo2+ at MIT and Drexel University, housed in the lab of Professor Russ Tedrake and Paul Oh respectively.
 Our experiments conﬁrmed that the planning system enabled control of the Hubo and that the Hubo was physically capable of turning the valve.
