@@ -1,15 +1,45 @@
 \input{hubo-ach/block-hubo-ach-timing.tex}
+To ensure that the Hubo-Ach controller is able to run at the desired control rates, timing experiments of each part of the controller was taken.
+All tests were done with a sample step size of $0.005~sec$.
+Each of the following figures have the same X and Y scale.
+This is to give a visual representation of how much each portion of the cycle each part of Hubo-Ach takes up.
+
+
+
+
+Fig.~\ref{fig:timing-getRef} shows the amount of time it takes to request and get the reference for the actuators.
+This reads the most recent reference off of the feedforward channel and uses that as the reference used in this cycle of Hubo-Ach.
+This time is measured to be $0.0010~ms$ with micro-second accuracy.
+The standard deviation is $0.0028$.
+
+
+
+Fig.~\ref{fig:timing-doCmd} shows the amount of time it takes to complete all unread commands given by the user via the console.
+User commands are manual actions such as homing individual or all joints, resetting actuator errors, and reading error states.
+This time is measured to be $0.011~ms$ with micro-second accuracy.
+The standard deviation is $0.0.0033$.
+
+
+Fig.~\ref{fig:timing-getTrigger} shows the amount of time it takes to send the external trigger.  
+This external trigger tells a controller or simulator when the new reference's and commands have been read.
+In real-time mode the measured time delay is $0.0014~ms$ with micro-second accuracy and a standard deviation of $0.0035$.
+
+
+Fig.~\ref{fig:timing-filter} shows the amount of time it takes to process the built in filter.
+This filter has multiple options:
+\begin{itemize}
+\item Direct reference mode where the filter acts as a reference pass through (Section~\ref{sec:singlejointStep}.
+\item Low pass filter based on previous reference commands (Section~\ref{sec:singlejointFilter}.
+\item Low pass filter using feedback from the actual position of the joint (Section~\ref{sec:singlejointEnc}).
+\item Compliance amplification mode which artificially increases the compliance of the joint (Section~\ref{sec:singlejointRefComplience})
+The measured time delay is $0.0080~ms$ with micro-second accuracy.
+The standard deviation is $0.0030~ms$.
 
 
 
 
 
-\begin{figure}[thpb]
-  \centering
-\includegraphics[width=0.6\columnwidth]{./timingData/getTrigger.pdf}
-  \caption{The amount of time it takes to send the external trigger.  In this case each sample has a time step of $0.005~sec$}
-  \label{fig:timing-getTrigger}
-\end{figure}
+Fig.~\ref{fig:timing-getPos} The amount of time it takes to request and get the actual position from the actuators.
 
 
 
@@ -21,6 +51,33 @@
   \caption{The amount of time it takes to request and get the reference for the actuators.  In this case each sample has a time step of $0.005~sec$}
   \label{fig:timing-getRef}
 \end{figure}
+
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.6\columnwidth]{./timingData/doCmd.pdf}
+  \caption{The amount of time it takes to complete all unread commands given by the user via the console.  In this case each sample has a time step of $0.005~sec$}
+  \label{fig:timing-doCmd}
+\end{figure}
+
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.6\columnwidth]{./timingData/getTrigger.pdf}
+  \caption{The amount of time it takes to send the external trigger.  In this case each sample has a time step of $0.005~sec$}
+  \label{fig:timing-getTrigger}
+\end{figure}
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.6\columnwidth]{./timingData/filter.pdf}
+  \caption{The amount of time it takes to process the built in filter.  In this case each sample has a time step of $0.005~sec$}
+  \label{fig:timing-filter}
+\end{figure}
+
+
+
+
 
 
 
@@ -59,22 +116,11 @@
 \end{figure}
 
 
-\begin{figure}[thpb]
-  \centering
-\includegraphics[width=0.6\columnwidth]{./timingData/filter.pdf}
-  \caption{The amount of time it takes to process the built in filter.  In this case each sample has a time step of $0.005~sec$}
-  \label{fig:timing-filter}
-\end{figure}
 
 
 
 
-\begin{figure}[thpb]
-  \centering
-\includegraphics[width=0.6\columnwidth]{./timingData/doCmd.pdf}
-  \caption{User command timing per sample.  In this case each sample has a time step of $0.005~sec$}
-  \label{fig:timing-doCmd}
-\end{figure}
+
 
 
 
