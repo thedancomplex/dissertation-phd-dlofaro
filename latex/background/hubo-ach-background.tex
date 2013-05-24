@@ -9,32 +9,32 @@ This functionality includes the following controllers:
 \item Hardware Control
 \item Perception
 \item Planning
-\item Kinimatics
+\item Kinematics
 \item etc.
 \end{itemize}
 
 If all of this functionality is in one process then it has the benefit of freedom of inter process communication latency.
-However being in one process also means that if one of the controllers laggs or faults it cause the entire controller to lag or fault.
-This is of great concern if a non-prority controller such as vision processing faults causing a priority controller such as a balance controller, to fail.
+However being in one process also means that if one of the controllers lags or faults it cause the entire controller to lag or fault.
+This is of great concern if a non-priority controller such as vision processing faults causing a priority controller such as a balance controller, to fail.
 This will cause the robot to fall.
 How is this fixed?
-One solution and my proposed solution is to use multiple processies and IPC methods.
-Inter-process comunication is a method of exchanging data between multiple processies.
-Typical POSIX methods give you the \textbf{oldest} information first and have locks on the memroy when processies are writing to it.
+One solution and my proposed solution is to use multiple processes and IPC methods.
+Inter-process communication is a method of exchanging data between multiple processes.
+Typical POSIX methods give you the \textbf{oldest} information first and have locks on the memory when processes are writing to it.
 An overview of these mechanisms are given in \cite{stevens2005advanced}.
 
 Robots work in the physical world. 
 More recent information is more important to it then older.
-In most cases it is acceptiable to know the most recent data and never read any of the older data.
+In most cases it is acceptable to know the most recent data and never read any of the older data.
 This would happen if your sensors update at a faster rate then that of the robot.
-Typically robot actuiators have a bandwidth much much lower then that of a mondern conputer.
-If sensor informatio is shared using traditional shared memory over POSIX methods the controller would have to read the older information before it reaches the information it is most interested in, the newest data.
-This is called head of line blocking\cite{ach}.
+Typically robot actuators have a bandwidth much much lower then that of a modern computer.
+If sensor information is shared using traditional shared memory over POSIX methods the controller would have to read the older information before it reaches the information it is most interested in, the newest data.
+This is known effect but new concern for robot controllers called head of line blocking\cite{ach}.
 
-It is desired to make a multi-process controller that can share data between multiple processies with low-latency and no head of line blocking.
+It is desired to make a multi-process controller that can share data between multiple processes with low-latency and no head of line blocking.
 There are a few IPCs that offer no head of line blocking and low-latency.  
-A discription of each IPC type is in Section~\ref{sec:hubo-ach}.
-Table~\ref{table:ipc} shows a full comparision of the different IPC types.
+A description of each IPC type is in Section~\ref{sec:hubo-ach}.
+Table~\ref{table:ipc} shows a full comparison of the different IPC types.
 %After much research (inserte examples here) it was found that the Ach IPC wuld best fit my needs.
 
 My thesis Hubo-Ach is a multi-process control system that uses IPC methods to communicate between processes.

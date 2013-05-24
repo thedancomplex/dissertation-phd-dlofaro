@@ -3,6 +3,10 @@
 % do IK
 Kinematic planning focuses on creating and testing valid trajectories for series kinematic manipulators.
 The focus of this research is on high degree of freedom (DOF), high-gain, position controlled mechanisms.
+High-gain position controlled mechanisms are the focus because the experimental platform used for this work is a that type of robot.
+This limits the work because it is crucial that the joint-space acceleration profile is correct or the system will over-torque and shutdown.
+
+
 The works are chosen as it pertains to end-effector velocity control.
 Throwing and hitting are examples of end-effector velocity control.  
 The goal is to have the end-effector moving at a specific rate in a specific direction.
@@ -10,10 +14,10 @@ In most cases it demands whole-body coordination to achieve a desired end-effect
 Whole-body coordination is different for planted robots and un-planted robots.  
 
 
-\noindent \textit{Planted robots} are robots where the base is attached to the ground or the base is significantly more massive then the manipulator.
+\noindent \textit{Fixed robots} are robots where the base is attached to the ground or the base is significantly more massive then the manipulator.
 Planted robots do not have to worry about balance consternates. 
 
-\noindent \textit{Un-planted robots} are robots that have an manipulator that is not significantly ligher then the base.  
+\noindent \textit{Un-fixed robots} are robots that have an manipulator that is not significantly lighter then the base.  
 In addition the robot is not physically attached to the ground.
 This results in the robot needing to satisfy balance constraints.
 In the static case if the robot satisfies the zero moment point (ZMP) criteria it will remain stable~\cite{5686276}.

@@ -7,7 +7,7 @@ Through my research I have found that end-effector velocity control can be broke
 
 
 \noindent \textbf{Time and Location Sensitive}: 
-If your velocity control is time and location sensitive it means that your end effector needs to have a given velocity at a specific time in a specific location or the task fales.
+If the velocity controler is time and location sensitive it means that your end effector needs to have a given velocity at a specific time in a specific location or the task fales.
 Hitting a baseball with a bat is an example of \textit{time and location sensitive}  EEVC.
 If the bat has the correct velocity but not at the correct time it will not hit the ball or the ball will not go in the desired place.  
 The same goes for if it does not have the correct location but does have the correct velocity.
@@ -16,7 +16,7 @@ Other examples include playing the piano, hitting a tennis ball with a racquet, 
 
 
 \noindent \textbf{Location Sensitive}:
-If your velocity control is location sensitive it means that it only matters that the velocity occurs at a given location.
+If the velocity controler is location sensitive it means that it only matters that the velocity occurs at a given location.
 The time it takes to reach that velocity will not effect the results.
 Hitting a nail with a hammer is a prime example of location sensitive EEVC.  
 The nail is not moving but it does need to be hit in a given location with a given velocity.
@@ -56,40 +56,42 @@ In recent work Mori et al. \cite{5152525} has show his ability to control the tr
 The only input is torque to the manipulator.
 The concept consists is to map the input torque that will change only one of the kinimatic variables and not the other two.
 This map is done over a given space and thus you can independently chose your translational and angular velocity as well as direction as long as it is in the valid search space.
-The manipulator and a search space example can be seen in Fig.~\ref{fig:mori}. 
+%The manipulator and a search space example can be seen in Fig.~\ref{fig:mori}. 
 
-\begin{figure}[thpb]
-  \centering
-\includegraphics[width=0.4\columnwidth]{./background/pix/mori2.png}\includegraphics[width=0.4\columnwidth]{./background/pix/mori1.png}
-  \caption{Map of the input torque that will change only one of the kinimatic variables and not the other two.
-This map is done over a given space and thus you can independently chose your translational and angular velocity as well as direction as long as it is in the valid search space.}
-  \label{fig:mori}
-\end{figure}
+%\begin{figure}[thpb]
+%  \centering
+%\includegraphics[width=0.4\columnwidth]{./background/pix/mori2.png}\includegraphics[width=0.4\columnwidth]{./background/pix/mori1.png}
+%  \caption{Map of the input torque that will change only one of the kinimatic variables and not the other two.
+%This map is done over a given space and thus you can independently chose your translational and angular velocity as well as direction as long as it is in the valid search space.}
+%  \label{fig:mori}
+%\end{figure}
 
 
 Senoo et al.\cite{4651142} used a torque controlled 3-DOF arm to create a high speed throwing trajectory.
 This arm falls into the \textit{time and location insensitive} category of throwing.
 Senoo used a kinematic chain approach based on how humans throw.  
 Doing this Senoo was able to achieved an end-effector velocity of 6.0 $m/s$ and can throw in $R^3$ space.
-This is done via the use of a planted robot arm made by Barret Technology Inc consisting of 3-DOF with a $360^o$ rotation base yaw actuator, see Fig.~\ref{fig:senoo}. 
+This is done via the use of a planted robot arm made by Barret Technology Inc consisting of 3-DOF with a $360^o$ rotation base yaw actuator.%, see Fig.~\ref{fig:senoo}. 
  
 
-\begin{figure}[thpb]
-  \centering
-\includegraphics[width=0.6\columnwidth]{./background/pix/senoo2.png}\includegraphics[width=0.4\columnwidth]{./background/pix/senoo1.png}
-  \caption{3-DOF arm achieving an end-effector velocity of 6.0 $m/s$ and can throw in $R^3$ space.
-This is done via the use of a planted robot arm made by Barret Technology Inc with a $360^o$ rotation base yaw actuator}
-  \label{fig:senoo}
-\end{figure}
+%\begin{figure}[thpb]
+%  \centering
+%\includegraphics[width=0.6\columnwidth]{./background/pix/senoo2.png}\includegraphics[width=0.4\columnwidth]{./background/pix/senoo1.png}
+%  \caption{3-DOF arm achieving an end-effector velocity of 6.0 $m/s$ and can throw in $R^3$ space.
+%This is done via the use of a planted robot arm made by Barret Technology Inc with a $360^o$ rotation base yaw actuator}
+%  \label{fig:senoo}
+%\end{figure}
  
 
 Low degree of freedom throwing machines/robots are common.  
-Typical throwing robots have between one and three degrees of freedom (DOF)~\cite{509405, Lynch97dynamicnonprehensile, 5152525, 509335, springerlink:10.1007/s10015-006-0401-0}.
+Typical throwing robots have between one and three degrees of freedom (DOF)~\cite{509405, Lynch97dynamicnonprehensile, 5152525, 509335, springerlink:10.1007/s10015-006-0401-0,throw5347013,throw6386000,throw5152438,throw5423199,throw6224565,throw6347845,throw6071965}.
 All of these mechanisms are limited to throwing in a plane.   
 
 
 
 These low degree of freedom throwing robots are either physically attached/planted to the mechanical ground or have a base that is significantly more massive then the arm.  
+
+
 
 Haddadin et al.\cite{6094757} used their 7-DOF arm and a 6-DOF force torque sensor with standard feedback methods to dribble a basket ball.  
 In addition Zhikun et al.~\cite{6094892} used reinforcement learning to teach their 7-DOF planted robot arm to play ping-pong.  
@@ -98,5 +100,23 @@ Visual feedback was used in the basketball throwing robot by Hu et al.~\cite{564
 All of the latter robots were fixed to the ground to guarantee stability.
 
 Kim et al. \cite{5686315,JooH2011438} takes the research to the next level with finding optimal overhand and sidearm throwing motions for a high degree of freedom humanoid computer model.  The model consists of 55-DOF and is not fixed to mechanical ground or a massive base.  Motor torques are then calculated to create both sidearm and overhand throws that continuously satisfies the zero-moment-point stability criteria~\cite{4309277}.  
+
+The above works require forms of inverse kinematics.
+Most of the works use manipulators less then 6 or 7 DOF.
+This is because for those that have less then 6 DOF (7 DOF in some cases) closed form solutions can be solved for\cite{ik5163900,5649842,ik97878,ik326569,ik1087114}.
+
+For higher DOF IK solving methods such as Constrained Bi-directional Rapidly-Exploring Random Tree (CBiRRT) \cite{Berenson_2009_6309}, neural nets\cite{ik23979,ik845162,ik131985,ik832704,ik1662342,ik932681} or learning methods\cite{ik4543497} could be used.
+These methods do not guarantee any convergence and/or stability of the solution.
+
+For high DOF IK to guarantee convergence if there is a solution it is possible to use the inverse Jacobian transpose IK solving method\cite{ik99999,ik844073,ik973374,ik4655620}.
+Using this iterative method requires that there is only a small change from the end effector's current position and the goal position.  
+If the latter is the case, the solver will converge on a solution if one exists.
+It is important to note that the initial configuration must be known to obtain a solution.
+
+The end-effector velocity control technique described in Section~\ref{sec:sec:srm} uses the principles of the inverse Jacobian transpose IK method along with forward kinematics and Lofaro et. al.\cite{6385987} Sparse Reachable Map (SRM) to create a high DOF work space end-effector velocity controller.
+
+
+
+
 
 

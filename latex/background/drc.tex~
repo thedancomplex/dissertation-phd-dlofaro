@@ -1,6 +1,6 @@
 My years of experience dealing with high DOF robots was the catalyst for my thesis, the DARPA Robotics Challenge (DRC) was the fuel that kept my Hubo-Ach controller development thriving.
-Having an event that required multi-disciplinary collaboration in a short development time frame was the perfect place for me to test the viability of my controller.
-\linebreak
+Having an event that required multi-disciplinary collaboration in a short development time frame was the perfect place for me to test the viability of my controller.\\
+
 \noindent \textbf{Overview of the DARPA Robotics Challenge:} In July 2012 DARPA released a solicitation for proposals to compete in the DARPA Robotics Challenge.
 The DRC is a challenge that is in direct response to the Tsuanmi in Fukushima in 2011 (check this).
 The challenge is to have a robot be able to use human tools, human vehicles and preform human tasks in an un-structured un modified human environment.

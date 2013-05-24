@@ -18,7 +18,7 @@
 	\input{hubo-ach/hubo-ach-cpu.tex}
 \section{Verification Experiments}\label{sec:simpleExamples}
 This section contains step by step verification examples showing the controller for high DOF complex system functions properly with the hubo system.
-All controllers are implimented using the multiple processes approach and includes all latencies found in Section~\ref{sec:timing}.
+All controllers are implemented using the multiple processes approach and includes all latencies found in Section~\ref{sec:timing}.
 
 	\subsection{Joint Space Step Response}\label{sec:singlejointStep}
 		\input{examples/example-singlejontStep.tex}
@@ -30,11 +30,11 @@ All controllers are implimented using the multiple processes approach and includ
 		\input{examples/example-singlejontEnc.tex}
 
 \section{Kinimatics}\label{sec:hubo-ach-kinimatics}
-Kinimatic planning is a key focus of the Hubo-Ach controller.
-This section provides two published examples of the Hubo-Ach controller being used for inverse kinimatics and control.
-Section~\ref{sec:valve} shows the work of Lofaro et. al. \cite{lofaroTePRA2013Valve} using Constrained BiDirectional Rapidly-exploring Random Tree (CBiRRT) to provide a statically stable joint space trajectory allowing the robot to turn a valve.
-Section~\ref{sec:6dofik} shows the work of Lofaro et. al. \cite{lofaroTePRA2013HuboAch} using traditional 6 DOF forward and inverse kinimatic techniques to provide an analitical IK solution to each of the 6 DOF end effectors.
-The additional use of on-line trapizodial velocity profiling methods in Section~\ref{sec:trap} allow for the creation of a real-time IK controller based in Hubo-Ach.
+Kinematic planning is a key focus of the Hubo-Ach controller.
+This section provides two published examples of the Hubo-Ach controller being used for inverse kinematics and control.
+Section~\ref{sec:valve} shows the work of Lofaro et. al. \cite{lofaroTePRA2013Valve} using Constrained Bi-Directional Rapidly-exploring Random Tree (CBiRRT) to provide a statically stable joint space trajectory allowing the robot to turn a valve.
+Section~\ref{sec:6dofik} shows the work of Lofaro et. al. \cite{lofaroTePRA2013HuboAch} using traditional 6 DOF forward and inverse kinematic techniques to provide an analytical IK solution to each of the 6 DOF end effectors.
+The additional use of on-line trapezoidal velocity profiling methods in Section~\ref{sec:trap} allow for the creation of a real-time IK controller based in Hubo-Ach.
 
 
 \subsection{Valve Turning}\label{sec:valve}
@@ -42,8 +42,8 @@ The additional use of on-line trapizodial velocity profiling methods in Section~
 
 
 
-\section{Six Degree of Freedom Inverse Kinimatic Implimentation Example}\label{sec:6dofik}
-This section shows how we calculate the inverse kinimatics (IK) for the Hubo's right arm and how we use that calculation in conjunction with Section~\ref{sec:simpleExamples}.  The result is the ability to command the end effector (EEF)
+\section{Six Degree of Freedom Inverse Kinematic Implementation Example}\label{sec:6dofik}
+This section shows how we calculate the inverse kinematics (IK) for the Hubo's right arm and how we use that calculation in conjunction with Section~\ref{sec:simpleExamples}.  The result is the ability to command the end effector (EEF)
 
 \input{examples/example-6dofIKsolutionIntro.tex}
 	\subsection{Froward Kinematics} 
@@ -53,3 +53,29 @@ This section shows how we calculate the inverse kinimatics (IK) for the Hubo's r
 
 \section{Verification: Door Opening}\label{sec:hubo-achVerification}
 	\input{examples/hubo-ach-door-open.tex}
+
+\section{Validation: Peer Survey on Hubo-Ach}
+	This section shows the peer survey taken by users of Hubo-Ach.
+	Thirteen independent users were surveyed.
+	The overwhelming conclusion was that the system is useful, was the unifying algorithmic framework as advertised and helped with development.
+	Out of a score from 0-10 on the question \textit{"Would you use Hubo-Ach again the the future when programming Hubo"} received an average of 9.23 (see Table~\ref{table:q6}.
+	Table~\ref{table:q1}, \ref{table:q2}, \ref{table:q3}, \ref{table:q4}, \ref{table:q5}, \ref{table:q6}
+
+	\input{survey/q1t.tex}
+	\input{survey/q2t.tex}
+	\input{survey/q3t.tex}
+	\input{survey/q4t.tex}
+	\input{survey/q5t.tex}
+	\input{survey/q6t.tex}
+
+In conclusion Hubo-Ach is validated as being a useful \textit{unified algorithmic framework for complex systems and humanoid robots} by peers.
+Shown to have consistent system performance in Section~\ref{sec:timing}.
+It is verified via implementation of full body kinematic examples in Section~\ref{sec:valve} and \ref{sec:6dofik}.
+
+
+
+
+
+
+
+

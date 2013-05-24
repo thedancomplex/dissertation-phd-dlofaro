@@ -1,15 +1,17 @@
 
 %\section{Hubo-Ach: Linux on Hubo}
 
-The Hubo2+ is a $1.3\meter$ tall, $42 \kilo\gram$ full-size humanoid
-robot, produced by the Korean Advanced Institute of Science and
-Technology (KAIST) and spinoff company Rainbow Inc. \cite{1573587}.
-It has 38 DOF: six per arm and leg, five per hand, three in the neck,
-and one in the waist.  Sensors include three-axis force-torque sensors
-in the wrists and ankles, accelerometers in the feet, and an inertial
-measurement unit (IMU).  The sensors and embedded motor controllers
-are connected via a Controller Area Network to a pair of Intel Atom
-PC104+ PCs.
+
+
+%The Hubo2+ is a $1.3\meter$ tall, $42 \kilo\gram$ full-size humanoid
+%robot, produced by the Korean Advanced Institute of Science and
+%Technology (KAIST) and spinoff company Rainbow Inc. \cite{1573587}.
+%It has 38 DOF: six per arm and leg, five per hand, three in the neck,
+%and one in the waist.  Sensors include three-axis force-torque sensors
+%in the wrists and ankles, accelerometers in the feet, and an inertial
+%measurement unit (IMU).  The sensors and embedded motor controllers
+%are connected via a Controller Area Network to a pair of Intel Atom
+%PC104+ PCs.
 
 % \begin{figure*}[thpb]
 %   \centering
@@ -88,8 +90,8 @@ PC104+ PCs.
 % Institute of Technology.
 
 Hubo-Ach \footnote{Available under permissive license,
-  \url{http://github.com/hubo/hubo-ach}} is an Ach-based interface to Hubo's
-sensors and motor controllers.  This provides a conventional GNU/Linux
+  \url{http://github.com/hubo/hubo-ach}} is an multi-process unified algorithmic framework for high degree of freedom complex systems and humanoids.
+In this case spisificall Hubo.  This provides a conventional GNU/Linux
 programming environment, with the variety of tools available therein,
 for developing applications on the Hubo.  It also efficiently links
 the embedded electronics and real-time control to popular frameworks
@@ -104,7 +106,9 @@ MATLAB\footnote{MATLAB: http://www.mathworks.com/}.
 % and developers of the Hubo in mind.  This design philosophy
 % streamlines closed-loop controller implementation, human robot
 % interaction development and the utilization of popular robot related
-% systems such as ROS\footnote{ROS: http://www.ros.org/} (Robot
+% systems sucReachability analysis of sampling based plan-
+ner
+h as ROS\footnote{ROS: http://www.ros.org/} (Robot
 % Operating System), OpenRAVE\footnote{OpenRAVE: http://openrave.org/}
 % and MATLAB\footnote{MATLAB: http://www.mathworks.com/} on the Hubo
 % platform.
@@ -188,8 +192,10 @@ computes desired trajectories, which are relayed via {\tt
   hubo-ach-ros} to {\tt filter} for preprocessing to smooth the motion
 and reduce \emph{jerk} before {\tt hubo-daemon} communicates
 references to the embedded controllers.  During operation, {\tt rviz}
-displays a 3D model of the Hubo's current state.  Each of these
-process runs asynchronously, communicating at different rates;
+displays a 3D model of the Hubo's current state.  
+This is important because it allows for simple human feedback and diagonostics.
+
+All of the above process runs asynchronously, communicating at different rates;
 however, {\tt hubo-ach-daemon} maintains its $200 \hertz$ cycle,
 ensuring phase lock with the embedded controllers.  This control loop
 effectively integrates real-time IPC and control under Hubo-Ach with
@@ -219,10 +225,8 @@ the non-real-time ROS environment.
 % \textbf{aFeedforward} Ach channel where the Hubo-Ach daemon can read
 % it and command the Hubo.
 
-Hubo-Ach is in use for numerous projects at several research labs.
-Users include include groups at MIT, WPI, Ohio State, Purdue,
-Swarthmore College, Georgia Tech, and Drexel University.  These
-projects primarily revolve around the DARPA Robot Challenge
+Hubo-Ach is being verified and validated through use in numerous projects at several research labs.
+In addition it is getting real-world validation by being the projects primarily revolve around the DARPA Robot Challenge
 (DRC)\footnote{DARPA Robot Challenge:
   http://www.theroboticschallenge.org/} team
 DRC-Hubo\footnote{DRC-Hubo Homepage: http://drc-hubo.com/}.  The DRC
