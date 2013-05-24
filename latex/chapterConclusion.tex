@@ -1,2 +1,43 @@
 \chapter{Conclusion}\label{sec:conclusion}
-This section disscusses the results of the work kand the future of the system.
+This work shows the successful creation of a \textit{Unified Algorithmic Framework for High Degree of Freedom Complex Systems and Humanoid Robots}.
+It was shown that the Hubo-Ach system works as the unifying algorithmic framework for the three tier infrastructure described in Section~\ref{sec:threeTier}.
+This means Hubo-Ach works with all three tiers including:
+\begin{itemize}
+\item Rapid Prototype (RP) phase with zero cost to entry (OpenHubo Platform Section~\ref{sec:openhubo})
+\item Test and Evaluation (T\&E) phase with low cost to entry (Mini-Hubo Platform Section~\ref{sec:mini-hubo})
+\item Verify and Validate (V\&V) phase with lease-time cost to entry (Hubo Platform Section~\ref{sec:hubo})
+\end{itemize}
+
+The three tier infrastructure was used to enable the robot to throw a ball.
+This resulted in a unique algorithm for end-effector velocity control called Sparse Reachable Maps (SRM)(Section~\ref{sec:sec:srm}).
+One end-effector velocity control method was used in a live throwing experiment at a baseball game (Section~\ref{sec:finalDesign}).
+The challenges from this successful experiment was answered by the creation of the following controllers.
+\begin{itemize}
+	\item \textit{Challenge: Aiming the throw:} Answer: Visual seroving while performing full body locomotive task (Section~\ref{sec:visuralServoing})
+	\item \textit{Challenge: Safely landing when throwing:} Answer:Active damping via force-torque feedback (Section~\ref{sec:activedamping})
+\end{itemize}
+
+
+The Hubo-Ach system was verified under many circumstances including:
+\begin{itemize}
+	\item Real-time closed form inverse kinematic controller (Section~\ref{sec:hubo-ach-kinimatics})
+	\item Full body locomotive task of turning a valve (Section~\ref{sec:valve})
+	\item Full body locomotive task of walking (Section~\ref{sec:OpenHuboWalking})
+\end{itemize}
+
+Hubo-Ach was independently validated by other researcher through the examples of:
+\begin{itemize}
+	\item Door opening (Section~\ref{sec:hubo-achVerification})
+	\item Dynamic walking (Section~\ref{sec:dynamicWalking})
+\end{itemize}
+
+A study/survey done on how well the Hubo-Ach system performs as a \textit{unifying algorithmic framework} returned positive results (Section~\ref{sec:hubo-achSurvey}).
+The result is the creation of a truly \textit{Unified Algorithmic Framework for High Degree of Freedom Complex Systems and Humanoid Robots}.
+
+\section{Future Work}
+Future work includes applying the framework to the DRC-Hubo for the DARPA Robot Challenge.
+In addition an over arching goal is to implement Hubo-Ach on other high DOF robots such as HRP-2, Baxter etc. thus creating a truly \textit{Unified Algorithmic Framework for High Degree of Freedom Complex Systems and Humanoid Robots}.
+This will allow for a greater ease of controller sharing and increase positive research output.
+
+
+
