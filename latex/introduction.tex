@@ -1,7 +1,7 @@
 The degrees of freedom (DOF) of robots and complex systems have been increasing increasing exponentially since the early 20$^{th}$ century.
 Today it is common place for complex control systems to have 40 DOF. 
-This number is projected to be 70 DOF by the year 2020.
-Robots with high DOF allows for complex tasks such as tool manipulation\cite{lofaroRAM2013,lofaroTePRA2013HuboAch,lofaroTePRA2013Valve,gtechIK}, greater human-robot interaction such as perform music\cite{lofaroEURASIP2011, 6094987,lofaroIASTED2011,5686847} and agile full-body locomotion\cite{lofaroHumanoids2012,lofaroGamesRobot,tepraLadder2013}.
+This number is projected to be 70 DOF by the year 2020 (see Section~\ref{sec:numdof}).
+Robots with high DOF allows for complex tasks such as tool manipulation\cite{lofaroRAM2013,lofaroTePRA2013HuboAch,lofaroTePRA2013Valve,gtechIK}, greater human-robot interaction such as music performances\cite{lofaroEURASIP2011, 6094987,lofaroIASTED2011,5686847} and agile full-body locomotion\cite{lofaroHumanoids2012,lofaroGamesRobot,tepraLadder2013}.
 More DOF require greater attention to:
 \begin{itemize}
 \item local communication delays
@@ -10,9 +10,9 @@ More DOF require greater attention to:
 \item stability.
 \end{itemize}
 In addition different tasks being performed by separate parts of the robot in tandem bring on greater issues including controller timing and priorities.
-The increase in DOF on single system requires that the traditional methods of controller design be re-examined.
+The increase in DOF on a single system requires that the traditional methods of controller design be re-examined.
 
-Due to the large entry cost of high DOF robots the controller should be able to be tested on no/low cost to entry systems.
+Due to the high entry cost for high DOF robots the controller should be able to be tested on low/no \textit{cost to entry} systems.
 This means the controller must be compatible with:
 \begin{itemize}
 \item virtual/simulated robot
@@ -33,20 +33,19 @@ The unifying algorithmic framework called \textit{Hubo-Ach}\cite{lofaroRAM2013} 
 
 This work demonstrates that a multi-process, multi-rate control structure coupled with the proper timing mechanisms is conducive to creating this unified algorithmic framework.
 Through verification and validation Hubo-Ach is shown to be a viable unifying algorithmic framework conducive to collaborative work.  
-
 A road map of how this work began is shown in Section~\ref{sec:roadmap}.
 
 An example of the three tier infrastructure being used to enable a high DOF robot to throw a ball is given in Section~\ref{sec:baseball}.
-The methods used include a unique algorithm for end-effector velocity control called Sparse Reachable Maps (SRM)(Section~\ref{sec:sec:srm}).
-One end-effector velocity control method is used in a live throwing experiment at a baseball game (Section~\ref{sec:finalDesign}).
+The methods used include a unique algorithm for end-effector velocity control called Sparse Reachable Maps (SRM) is explained in Section~\ref{sec:sec:srm}.
+In addition an end-effector velocity control method is used in a live throwing experiment at a baseball game and described in Section~\ref{sec:finalDesign}.
 
 The Hubo-Ach system is verified under many circumstances including:
 \begin{itemize}
 	\item Real-time closed form inverse kinematic controller (Section~\ref{sec:hubo-ach-kinimatics})
 	\item Full body locomotive task of turning a valve (Section~\ref{sec:valve})
 	\item Full body locomotive task of walking (Section~\ref{sec:OpenHuboWalking})
-	\item \textit{Challenge: Aiming the throw:} Answer: Visual seroving while performing full body locomotive task (Section~\ref{sec:visuralServoing})
-	\item \textit{Challenge: Safely landing when throwing:} Answer:Active damping via force-torque feedback (Section~\ref{sec:activedamping})
+	\item Visual seroving while performing full body locomotive task (Section~\ref{sec:visuralServoing})
+	\item Active damping via force-torque feedback (Section~\ref{sec:activedamping})
 \end{itemize}
 
 
