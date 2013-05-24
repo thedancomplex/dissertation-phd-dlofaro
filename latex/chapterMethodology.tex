@@ -29,4 +29,27 @@
 		\input{srm/priorwork.tex}
 		\input{srm/methodology.tex}
 		%% split trapozoidal motion profile into another section example
+
+
+\section{Final Design}\label{sec:finalDesign}
+	\input{pitch/finalDesign.tex}
+
+\section{Conclusion}\label{sec:throw:conclusion}
+	Throwing using the key-frame based method was the most reliable and successful.  
+	The system was open-loop in respect to the location where it would throw the ball.
+	This is why it over threw the ball during the real pitch, see Fig.~\ref{fig:hubo-throw-test}.
+	The lessons learned when performing the throwing task is that
+	\begin{enumerate}
+		\item A unified algorithmic framework is needed for three tier testing
+		\item Using such a framework the loop has to be closed on the ball's final location
+	\end{enumerate}
+
+	Section~\ref{sec:hubo-ach} describes the unified framework that answer \#1 above.
+	As stated before throwing is a full body locomotive task. 
+	Section~\ref{sec:visuralServoing} closes the loop using visual methods.
+	This shows how the unified algorithmic architecture can be used for visual servoing a full body locomotive tasks.
+	This visual servoing example answer \#2 above.
+
+
+
 		

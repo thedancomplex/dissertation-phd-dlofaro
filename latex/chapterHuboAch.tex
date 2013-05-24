@@ -1,9 +1,18 @@
 %\chapter{Control System for Complete Complex Autonomous Systems: Hubo-Ach}\label{sec:hubo-ach}
 %\chapter{Thesis: Hubo-Ach - A Control System for Complete Complex Autonomous Systems}\label{sec:hubo-ach}
-\chapter{Hubo-Ach: Control System for Complete Complex Autonomous Systems}\label{sec:hubo-ach}
+%\chapter{Hubo-Ach: Control System for Complete Complex Autonomous Systems}\label{sec:hubo-ach}
+\chapter{Hubo-Ach: A Unified Algorithmic Framework for High DOF Robots}\label{sec:hubo-ach}
+
+
+This section describes in detain the \textit{unified algorithmic framework for high degree of freedom complex systems and humanoid robots}.
+An overview of the system is given in Section~\ref{sec:ach:overview}.
+Timing and system testing is given in Section~\ref{sec:timing}
+Validation examples are given in Section~\ref{sec:simpleExamples}, \ref{sec:hubo-ach-kinimatics} and \ref{sec:valve}.
+Verification of Hubo-Ach from independent parties is given in Section~\ref{sec:hubo-achVerification} and results from surveys about the system is given in Section~\ref{sec:hubo-achSurvey}.
+
 
 %% Hubo-Ach Inspiration
-\section{Overview}
+\section{Overview}\label{sec:ach:overview}
 
 %% Hubo-Ach explanation
 %% workign wth ros and other software that exists, why in C
@@ -54,7 +63,7 @@ This section shows how we calculate the inverse kinematics (IK) for the Hubo's r
 \section{Verification: Door Opening}\label{sec:hubo-achVerification}
 	\input{examples/hubo-ach-door-open.tex}
 
-\section{Validation: Peer Survey on Hubo-Ach}
+\section{Validation: Peer Survey on Hubo-Ach}\label{sec:hubo-achSurvey}
 	This section shows the peer survey taken by users of Hubo-Ach.
 	Thirteen independent users were surveyed.
 	The overwhelming conclusion was that the system is useful, was the unifying algorithmic framework as advertised and helped with development.
