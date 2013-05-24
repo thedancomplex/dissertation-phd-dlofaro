@@ -10,7 +10,7 @@
 
 
 \input{hubo-ach/hubo-ach-intro.tex}
-\section{Inter Process Comunication Comparision}
+\section{Inter Process Comunication Comparision}\label{sec:ipc}
 	\input{hubo-ach/hubo-ach-ipc-comp.tex}
 \section{Timing}\label{sec:timing}
 	\input{hubo-ach/hubo-ach-timing.tex}
@@ -29,7 +29,7 @@ All controllers are implimented using the multiple processes approach and includ
 	\subsection{Joint Space Step Response with Feedback Filtering}\label{sec:singlejointEnc}
 		\input{examples/example-singlejontEnc.tex}
 
-\section{Kinimatics}
+\section{Kinimatics}\label{sec:hubo-ach-kinimatics}
 Kinimatic planning is a key focus of the Hubo-Ach controller.
 This section provides two published examples of the Hubo-Ach controller being used for inverse kinimatics and control.
 Section~\ref{sec:valve} shows the work of Lofaro et. al. \cite{lofaroTePRA2013Valve} using Constrained BiDirectional Rapidly-exploring Random Tree (CBiRRT) to provide a statically stable joint space trajectory allowing the robot to turn a valve.
@@ -50,3 +50,6 @@ This section shows how we calculate the inverse kinimatics (IK) for the Hubo's r
 		\input{examples/example-6dofFKsolution.tex}
 	\subsection{Inverse Kinematics}\label{sec:ik}
 			\input{examples/example-6dofIKsolution.tex}
+
+\section{Verification: Door Opening}\label{sec:hubo-achVerification}
+	\input{examples/hubo-ach-door-open.tex}

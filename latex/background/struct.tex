@@ -1,0 +1,38 @@
+The traditional single loop control structure that is used in robot control software such as Orocos\cite{orocos-gadeyne-ijrr2005}, Microsoft Robot Studio\cite{microsoftRobot4437755}, RobotC\cite{robotc}, and LabVIEW\cite{labview} are not suited for high DOF robots.
+Due to the nature of these highly redundant complex electrical mechanical system it is common to desire multiple different controllers running in tandem.  
+Different controllers are needed when the system is in different states or doing different tasks or performing multiple tasks at the same time.
+Combining these controllers is a problem in complex system.
+This problem is hard when each controller has different loop rates that are not even multiples of on another, timing requirements (asynchronous vs. synchronous).
+
+Multi-threaded approaches using shared memory allow for compatibility of multiple loop rates such as in Lee et. al.\cite{multi-thread-robot-5602743} with multi-threaded controllers on their humanoids, Rai et. al.\cite{multi-thread-snake-1541141} with multi-threaded controllers on their snake robots and Zheng et. al.\cite{multi-thread-5524083} with multi-threaded controllers on their under water robots.
+The multi-threaded approach still has an inherent flaw.
+If the parent or one of the other controller threads crashes it is difficult or impossible to restart the controller and still have access the the shared memory.
+
+By using a multi process approach allows controllers to fault and restart with minimal effect on the other controllers.
+Typical ways of communicating between different processes is via UDP or TCP/IP such as OpenHRP\cite{openHRP} with their server based control platform for the HRP humanoid robot; Aramaki et. al.\cite{multiPC-arch-1185243} and Lofaro et. al.\cite{lofaroIASTED2011} with their multi-computer based control methods and the popular Robot Operating System (ROS)\cite{ros} by Willow Garage.
+
+Communicating via TCP/IP sockets, such as in OpenHRP and ROS, guarantee that the data is received but it does not guarantee a arrival time.
+This means if the checksum fails the message will be sent again increasing the latency of the message.
+This does not work well if a real-time control loop is required.
+Using UDP does not resend if the checksum fails.
+This keeps the latency low and is better for real-time applications such as in the work of Lofaro.
+Both UDP and TCP/IP require that the buffer is read before new data is read.
+This means that you must read the older data before newer data.
+This is called head of line blocking or HOL\cite{ach}.
+
+Newer state information is preferred by robots that work in the physical world over older data.  
+Thus it is desired that HOL is eliminated.
+This can be done with some forms of inter-process communication (IPC).
+
+OpenHRP and Webots\cite{Webots} are two of the very short list of systems that have simulators that use the same controller as the hardware platforms.
+However at this time to the best of our knowledge there is no system that:
+\begin{itemize}
+\item uses the same controller with the software and hardware systems
+\item is inhreently robust by using a multi-process approach
+\item uses low-latency methods for controller communications 
+\end{itemize}
+
+
+
+
+

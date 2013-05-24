@@ -8,15 +8,10 @@ The fingers are open-loop PWM controlled.
 The sensing capability consists of a three axis force-torque (FT) sensor on each leg between the end of the ankle and the foot as well as between the arm where it connects to the hand.
 Additionally it has an inertial measurement unit (IMU) at the center of mass and accelerometers on each foot.
 The reference commands for all of the joints are sent from the primary control computer (x86) to the individual motor controllers via two Controller Area Network (CAN) buses.
-This is the same communications bus found in most modern motor vehicles.
 There are currently eight Hubo's functioning in the United States as of December 2012.
-Four reside at Drexel University and one at Georgia Tech, Purdue, Ohio State and MIT.
 Jaemi Hubo is the oldest of the Hubos in America and has been at the Drexel Autonomous Systems Lab\footnote{Drexel Autonomous Systems Lab: http://dasl.mem.drexel.edu/} (DASL) since 2008 \cite{jaemiHuboSRM}.
-The name Jaemi Hubo comes from the phrase \textit{jaemi-gyopo} which means American born Korean.
-Thus Jaemi Hubo means American Born Hubo or American Hubo.  
-In addition Jaemi is an androgonous name in english and thus can be taken as either male or female. 
-This is our social experiment see who call Jaemi, he, she or it.
 Fig.~\ref{fig:hubo} shows the major dimensions of Hubo.
+Table~\ref{table:huboSensors} shows the other attributes of the Hubo.
 %(휴보) 
 
 A full-scale safe testing environment designed for experiments with Jaemi Hubo was created using DASL's Systems Integrated Sensor Test Rig (SISTR)~\cite{5686325}.  
@@ -25,9 +20,43 @@ Additionally all algorithms are able to be tested on miniature and virtual versi
 \begin{figure}[thpb]
   \centering
 \includegraphics[width=0.37\columnwidth]{./background/pix/huboReal.png}\includegraphics[width=0.63\columnwidth]{./pix/huboSkel.pdf}
-  \caption{Hubo2 Plus platform: 38 DOF, 130 $cm$ tall full-size humanoid robot weighing 37 $kg$.}
+  \caption{Hubo2 Plus platform: 40 DOF, 130 $cm$ tall full-size humanoid robot weighing 37 $kg$.}
   \label{fig:hubo}
 \end{figure}
+
+
+\begin{table}
+\centering
+\caption{Hubo2 Plus (Hubo) Platform Specifications}
+\begin{tabular}{| l || l |}
+\hline
+Height      		& $130~cm$			\\
+\hline
+Weight			& $37~kg$			\\
+\hline
+DOF			& 40				\\
+\hline
+Joint Control Type	& High-Gain PID Position	\\
+\hline
+Computer		& $1.6~Ghz$ Atom		\\
+			& $1~Gb$ DDR3 RAM		\\
+\hline
+Operating System	& Debian Linux			\\
+			& Windows			\\
+\hline
+Battery			& $54V$ $7.5~Ah$ $40C$ LiPo	\\
+\hline
+Sensors			& 1x 4 Axis IMU			\\
+			& 4x 3 Axis Force Torque	\\
+			& 2x 2 Axis Tilt		\\
+\hline
+Vision			& Stereo			\\
+			& Monocular			\\
+			& RGBD				\\
+\hline
+\end{tabular}
+\label{table:huboSensors}
+\end{table}
 
 
 

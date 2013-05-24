@@ -4,21 +4,103 @@ This number is projected to be 70 DOF by the year 2020 (see Section~\ref{sec:num
 \textit{The increase in DOF on single system requires that the traditional methods of controller design needs to be re-examined}.
 High DOF complex system, or robots, allow for complex tasks such as using human tools and interfaces \cite{lofaroRAM2013,lofaroTePRA2013HuboAch,lofaroTePRA2013Valve,gtechIK}, playing music \cite{lofaroEURASIP2011, 6094987,lofaroIASTED2011,5686847} and other complex tasks \cite{lofaroHumanoids2012,lofaroGamesRobot,tepraLadder2013}.
 
-\cite{orocos-gadeyne-ijrr2005}
-\cite{multiPC-arch-1185243}
-\cite{multi-thread-robot-5602743}
-\cite{multi-thread-snake-1541141}
-\cite{multi-thread-5524083}
-\cite{openHRP}
-\cite{Webots}
+Controllers commanding high DOF robots need to take into consideration:
+\begin{itemize}
+\item Communication delays
+\item Bandwidth
+\item System configuration
+\item System stability
+\end{itemize}.
+more then lower controllers because of their complexity and larger inherent restrictions.
+
+Due to the large entry cost of high DOF robots the controller should be able to be tested on no/low cost to entry systems.
+This means the controller must be compatible with:
+\begin{itemize}
+\item virtual/simulated robot
+\item kinematicly scaled robot
+\item full-size robot
+\end{itemize}
+
+It is evident that the critical gap is needing a \textit{unified algorithmic framework for high degree of freedom robots that allows for development on multiple platforms}.
+This unified algorithmic framework connects the three robots above in the \textit{Three Tier Infrastructure}\cite{threeTier} for complex system development as described in Section~\ref{sec:threeTier}.
+The unified algorithmic framework called \textit{Hubo-Ach}\cite{lofaroRAM2013} is described in Section~\ref{sec:hubo-ach}.
 
 
 
 
-Due to the nature of these highly redundant complex electrical mechanical system it is common to have multiple different controllers running in tandem.  
-Different controllers are needed when the system is in different states or doing different tasks or performing multiple tasks at the same time.
-Combining these controllers is a problem in complex system.
-This problem is hard when each controller has different frequencies, timing requirements (asyncronous vs. syncronous), latency restrictions, newest state data ie smore important then older state data and most basic of all languages the controller is written in.
+
+
+
+
+
+
+
+
+
+
+
+This work demonstrates that a multi-process control structure coupled with the proper timing mechanisms is conducive to creating this unified algorithmic framework.
+Through verification and validation Hubo-Ach is shown to be a viable unified algorithmic framework and still be conducive to collaborative work.  
+
+A road map of how my research has taken me to my thesis is shown in Section~\ref{sec:roadmap}.
+As proof of viability I show the basic structure of my system \textit{Hubo-Ach} in Section~\ref{sec:hubo-ach}.  
+I give step by step examples in Section~\ref{sec:simpleExamples}.
+Section~\ref{sec:simulator} shows how we can move from real-time to using a simulated version of the platform in simulation time without having to change the controller.
+Section~\ref{sec:task} describes the experiment which consists of making the robot preform an advanced task that pulls together visual, kinematic, path planning and other controllers together using this one system.
+The techniques used stem from my contributions in Section~\ref{sec:contributions}.
+Section~\ref{sec:results} shows the results of the experiment thus show the viability of the system.
+Lastly Section~\ref{sec:conclusion} discusses the results of the work and the future of this system.
+
+Before I continue it is important to note that my work has already been validated by my pears because:
+\begin{itemize}
+\item It was chosen to be the primary control system for the DARPA Robotics Challenge Track-A Team DRC-Hubo, Section~\ref{sec:drc}.
+\item It is being used in the NSF-MIRR project\footnote{NSF-MIRR: Major Research Infrastructure Recovery and Reinvestment (MIRR) \#CNS-0960061 sponsored by the the U.S. National Science Foundation (NSF)}.
+\item It is currently being used by MIT, WPI, Purdue, Ohio State, Swarthmore College, Georgia Tech, and Drexel University.
+\end{itemize}
+
+For the remainder of this document the complete and complex autonomous systems that I will be referring to are robots.
+The majority of examples given will be in reference to humanoid robotics and the Hubo2+ (KHR-4+) platform.
+The Hubo platform is described in Section~\ref{sec:hubo}.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+This problem is hard when each controller has different frequencies, timing requirements (asyncronous vs. syncronous), latency restrictions, newest state data is more important then older state data and most basic of all languages the controller is written in.
 This is especially true for complete and complex autonomous systems.
 I define a complete and complex autonomous system as an electro mechanical mechanism with high degree of freedom (DOF) that is capable of making its own decisions through the use of sensor data processed by its artificial intelligence (AI).
 The combination of high DOF and the requirement for autonomy makes the work space broad and controllers complex.
@@ -54,30 +136,6 @@ User survey shows methodology is sound, useful, and practical.
 
 
 
-
-My Thesis shows is that a multi-process control structure coupled with the proper timing mechanisms is conducive to answering these questions.
-It is shown with physical experiments and the creation of Hubo-Ach\cite{lofaroRAM2013}; a fully functional Sim-Time and Real-Time control system for complete and complex autonomous systems.
-
-Through experimentation I prove my control system is a viable way of controlling complete and complex autonomous system and still be conducive to collaborative work.  
-A road map of how my research has taken me to my thesis is shown in Section~\ref{sec:roadmap}.
-As proof of viability I show the basic structure of my system \textit{Hubo-Ach} in Section~\ref{sec:hubo-ach}.  
-I give step by step examples in Section~\ref{sec:simpleExamples}.
-Section~\ref{sec:simulator} shows how we can move from real-time to using a simulated version of the platform in simulation time without having to change the controller.
-Section~\ref{sec:task} describes the experiment which consists of making the robot preform an advanced task that pulls together visual, kinematic, path planning and other controllers together using this one system.
-The techniques used stem from my contributions in Section~\ref{sec:contributions}.
-Section~\ref{sec:results} shows the results of the experiment thus show the viability of the system.
-Lastly Section~\ref{sec:conclusion} discusses the results of the work and the future of this system.
-
-Before I continue it is important to note that my work has already been validated by my pears because:
-\begin{itemize}
-\item It was chosen to be the primary control system for the DARPA Robotics Challenge Track-A Team DRC-Hubo, Section~\ref{sec:drc}.
-\item It is being used in the NSF-MIRR project\footnote{NSF-MIRR: Major Research Infrastructure Recovery and Reinvestment (MIRR) \#CNS-0960061 sponsored by the the U.S. National Science Foundation (NSF)}.
-\item It is currently being used by MIT, WPI, Purdue, Ohio State, Swarthmore College, Georgia Tech, and Drexel University.
-\end{itemize}
-
-For the remainder of this document the complete and complex autonomous systems that I will be referring to are robots.
-The majority of examples given will be in reference to humanoid robotics and the Hubo2+ (KHR-4+) platform.
-The Hubo platform is described in Section~\ref{sec:hubo}.
 
 
 
