@@ -26,17 +26,56 @@ Feedback    & $\theta_a$ & Actual position of joint as   & JMC        & $rad$ \\
 
 \begin{figure}[thpb]
   \centering
-\includegraphics[width=0.8\columnwidth]{./examples/pix/RSP-Zp4-step-step-real-crop.pdf}
-  \caption{The commanded reference plotted against the actual reference recorded via Hubo-Ach and ground truth via CAN analyzing utilities.  In this plot the commanded reference is not automatically filtered by Hubo-Ach.  The commanded joint is the right shoulder pitch.}
+\includegraphics[width=0.8\columnwidth]{./throwGraph/RSP-Zp4-step-step-real2.pdf}
+  \caption{The commanded reference plotted against the actual reference recorded via Hubo-Ach and ground truth via CAN analyzing utilities.  In this plot the commanded reference is not automatically filtered by Hubo-Ach.  The commanded joint is the right shoulder pitch.  The model of the joint $G(s)$ is also plotted.  The resulting bandwidth is $45.79~\frac{rad}{sec}$ or $7.29~hz$.}
   \label{fig:singleJointStep}
 \end{figure}
 
-Fig.~\ref{fig:singleJointStep} shows the results when a step input is applied and Hubo-Ach is in \textit{HUBO\_REF\_MODE\_REF\_FILTER} also know as pass-through mode.
+
+
+
+
+
+Fig.~\ref{fig:singleJointStep} shows the results when a step input is applied and Hubo-Ach is in \textit{HUBO\_REF\_MODE\_REF} also know as pass-through mode.
 This sets the what the desired reference on the \textbf{FeedForward} Hubo-Ach channel to the actuator's reference, i.e.:
 
 \begin{equation}\label{eq:refrefmode}
  \theta_c(N) = \theta_r(N)
 \end{equation}
+
+From the results of Fig.~\ref{fig.singleJointStep} a 2$^{nd}$ order model $G(s)$ of the joint can be made.
+
+\begin{equation}
+G(s) = \frac{1120}{s^2 + 85 s + 2800}
+\end{equation}
+
+From the bandwidth can be determined to be $45.79~\frac{rad}{sec}$ or $7.29~hz$.
+The control loop is over an order of magnitude greater then the actuator's bandwidth thus the control rate is acceptable.
+
+Have knowledge this specific system, it is known that the acceleration is artificially limited in the controller when starting from rest on this model of Hubo motor driver.
+Thus the system is non-linear.
+If the initial rate limiting is not taken into account and a focus is put to matching the slope of the middle 
+The new model $G^*(s)$ is:
+
+
+\begin{equation}
+G^*(s) = \frac{2200}{s^2 + 115 s + 5500}
+\end{equation}
+
+It now has a bandwidth of $66.98~\frac{rad}{sec}$ or $10.66~hz$.
+This is still well within the Hubo-Ach bandwidth.
+The step response of $G^*(s)$ can be found in Fig.~\ref{fig:singleJointStep2}.
+
+
+\begin{figure}[thpb]
+  \centering
+\includegraphics[width=0.8\columnwidth]{./throwGraph/RSP-Zp4-step-step-real2Fast.pdf}
+  \caption{The commanded reference plotted against the actual reference recorded via Hubo-Ach and ground truth via CAN analyzing utilities.  In this plot the commanded reference is not automatically filtered by Hubo-Ach.  The commanded joint is the right shoulder pitch.  The model of the joint $G^*(s)$ is also plotted.  The resulting bandwidth is $66.98~\frac{rad}{sec}$ or $10.66~hz$.}
+  \label{fig:singleJointStep2}
+\end{figure}
+
+
+
 
 Fig.~\ref{fig:hubo-ach-feedforward} shows the block diagram of the control setup.
 

@@ -1,17 +1,16 @@
-The number of degrees of freedom (DOF) of control systems are increasing exponentially since the early 20$^{th}$ century.
+The degrees of freedom (DOF) of robots and complex systems have been increasing increasing exponentially since the early 20$^{th}$ century.
 Today it is common place for complex control systems to have 40 DOF. 
-This number is projected to be 70 DOF by the year 2020 (see Section~\ref{sec:numdof}).
-\textit{The increase in DOF on single system requires that the traditional methods of controller design needs to be re-examined}.
-High DOF complex system, or robots, allow for complex tasks such as using human tools and interfaces \cite{lofaroRAM2013,lofaroTePRA2013HuboAch,lofaroTePRA2013Valve,gtechIK}, playing music \cite{lofaroEURASIP2011, 6094987,lofaroIASTED2011,5686847} and other complex tasks \cite{lofaroHumanoids2012,lofaroGamesRobot,tepraLadder2013}.
-
-Controllers commanding high DOF robots need to take into consideration:
+This number is projected to be 70 DOF by the year 2020.
+Robots with high DOF allows for complex tasks such as tool manipulation\cite{lofaroRAM2013,lofaroTePRA2013HuboAch,lofaroTePRA2013Valve,gtechIK}, greater human-robot interaction such as perform music\cite{lofaroEURASIP2011, 6094987,lofaroIASTED2011,5686847} and agile full-body locomotion\cite{lofaroHumanoids2012,lofaroGamesRobot,tepraLadder2013}.
+More DOF require greater attention to:
 \begin{itemize}
-\item Communication delays
-\item Bandwidth
-\item System configuration
-\item System stability
-\end{itemize}.
-more then lower controllers because of their complexity and larger inherent restrictions.
+\item local communication delays
+\item bandwidth
+\item system configuration
+\item stability.
+\end{itemize}
+In addition different tasks being performed by separate parts of the robot in tandem bring on greater issues including controller timing and priorities.
+The increase in DOF on single system requires that the traditional methods of controller design be re-examined.
 
 Due to the large entry cost of high DOF robots the controller should be able to be tested on no/low cost to entry systems.
 This means the controller must be compatible with:
@@ -23,44 +22,58 @@ This means the controller must be compatible with:
 
 It is evident that the critical gap is needing a \textit{unified algorithmic framework for high degree of freedom robots that allows for development on multiple platforms}.
 This unified algorithmic framework connects the three robots above in the \textit{Three Tier Infrastructure}\cite{threeTier} for complex system development as described in Section~\ref{sec:threeTier}.
-The unified algorithmic framework called \textit{Hubo-Ach}\cite{lofaroRAM2013} is described in Section~\ref{sec:hubo-ach}.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-This work demonstrates that a multi-process control structure coupled with the proper timing mechanisms is conducive to creating this unified algorithmic framework.
-Through verification and validation Hubo-Ach is shown to be a viable unified algorithmic framework and still be conducive to collaborative work.  
-
-A road map of how my research has taken me to my thesis is shown in Section~\ref{sec:roadmap}.
-As proof of viability I show the basic structure of my system \textit{Hubo-Ach} in Section~\ref{sec:hubo-ach}.  
-I give step by step examples in Section~\ref{sec:simpleExamples}.
-Section~\ref{sec:simulator} shows how we can move from real-time to using a simulated version of the platform in simulation time without having to change the controller.
-Section~\ref{sec:task} describes the experiment which consists of making the robot preform an advanced task that pulls together visual, kinematic, path planning and other controllers together using this one system.
-The techniques used stem from my contributions in Section~\ref{sec:contributions}.
-Section~\ref{sec:results} shows the results of the experiment thus show the viability of the system.
-Lastly Section~\ref{sec:conclusion} discusses the results of the work and the future of this system.
-
-Before I continue it is important to note that my work has already been validated by my pears because:
+The three tiers include:
 \begin{itemize}
-\item It was chosen to be the primary control system for the DARPA Robotics Challenge Track-A Team DRC-Hubo, Section~\ref{sec:drc}.
-\item It is being used in the NSF-MIRR project\footnote{NSF-MIRR: Major Research Infrastructure Recovery and Reinvestment (MIRR) \#CNS-0960061 sponsored by the the U.S. National Science Foundation (NSF)}.
-\item It is currently being used by MIT, WPI, Purdue, Ohio State, Swarthmore College, Georgia Tech, and Drexel University.
+\item Rapid Prototype (RP) phase with zero cost to entry (OpenHubo Platform Section~\ref{sec:openhubo})
+\item Test and Evaluation (T\&E) phase with low cost to entry (Mini-Hubo Platform Section~\ref{sec:mini-hubo})
+\item Verify and Validate (V\&V) phase with lease-time cost to entry (Hubo Platform Section~\ref{sec:hubo})
+\end{itemize}
+The unifying algorithmic framework called \textit{Hubo-Ach}\cite{lofaroRAM2013} is described in Section~\ref{sec:hubo-ach}.
+
+
+This work demonstrates that a multi-process, multi-rate control structure coupled with the proper timing mechanisms is conducive to creating this unified algorithmic framework.
+Through verification and validation Hubo-Ach is shown to be a viable unifying algorithmic framework conducive to collaborative work.  
+
+A road map of how this work began is shown in Section~\ref{sec:roadmap}.
+
+An example of the three tier infrastructure being used to enable a high DOF robot to throw a ball is given in Section~\ref{sec:baseball}.
+The methods used include a unique algorithm for end-effector velocity control called Sparse Reachable Maps (SRM)(Section~\ref{sec:sec:srm}).
+One end-effector velocity control method is used in a live throwing experiment at a baseball game (Section~\ref{sec:finalDesign}).
+
+The Hubo-Ach system is verified under many circumstances including:
+\begin{itemize}
+	\item Real-time closed form inverse kinematic controller (Section~\ref{sec:hubo-ach-kinimatics})
+	\item Full body locomotive task of turning a valve (Section~\ref{sec:valve})
+	\item Full body locomotive task of walking (Section~\ref{sec:OpenHuboWalking})
+	\item \textit{Challenge: Aiming the throw:} Answer: Visual seroving while performing full body locomotive task (Section~\ref{sec:visuralServoing})
+	\item \textit{Challenge: Safely landing when throwing:} Answer:Active damping via force-torque feedback (Section~\ref{sec:activedamping})
 \end{itemize}
 
-For the remainder of this document the complete and complex autonomous systems that I will be referring to are robots.
-The majority of examples given will be in reference to humanoid robotics and the Hubo2+ (KHR-4+) platform.
-The Hubo platform is described in Section~\ref{sec:hubo}.
+
+
+
+Hubo-Ach is then independently validated by other researcher through the examples of:
+\begin{itemize}
+	\item Door opening (Section~\ref{sec:hubo-achVerification})
+	\item Dynamic walking (Section~\ref{sec:dynamicWalking})
+\end{itemize}
+
+
+A study/survey about how well the Hubo-Ach system performs as a \textit{unifying algorithmic framework} is given.  
+Results and the questions are given in Section~\ref{sec:hubo-achSurvey}.
+
+Lastly Section~\ref{sec:conclusion} discusses the results of the work and the future of this system.
+
+\noindent \textit{Note:} This work has already been validated by pears in the field through:
+\begin{itemize}
+\item Use as the primary control system for the DARPA Robotics Challenge Track-A Team DRC-Hubo, Section~\ref{sec:drc}.
+\item Used in the NSF-MIRR project\footnote{NSF-MIRR: Major Research Infrastructure Recovery and Reinvestment (MIRR) \#CNS-0960061 sponsored by the the U.S. National Science Foundation (NSF)}.
+\item Various research being conducted using Hubo-Ach at MIT, WPI, Purdue, Ohio State, Swarthmore College, Georgia Tech, and Drexel University.
+\end{itemize}
+
+For the remainder of this document the will focus on implementing this Unifying Algorithmic Framework on the different platforms of the three tier infrastructure.
+These platforms are Hubo, Mini-Hubo, and OpenHubo.  
+Detailed description of each of these robots are available in Section~\ref{sec:robots}.
 
 
 
