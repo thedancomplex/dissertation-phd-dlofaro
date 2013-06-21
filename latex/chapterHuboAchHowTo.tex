@@ -1,0 +1,560 @@
+\chapter{Hubo-Ach Manual}
+
+\section{Prerequisites}
+
+The following items are needed to run Hubo-Ach on a Hubo:
+\begin{itemize}
+\item Hubo2+ or OpenHubo (Virtual Hubo)
+\item SocketCAN compatible CAN card
+\item Debian based linux install - tested with Ubuntu 12.04 LTS
+\item Ach IPC installed
+\end{itemize}
+
+
+
+
+\section{Installation}
+\subsection{From Hubo-Ach Dep (Recommended)}
+
+\subsubsection{Updates to latest release:}
+\begin{code}
+$ hubo-ach update
+\end{code}
+
+\subsubsection{Updates to latest develop:}
+\begin{code}
+$ hubo-ach update develop
+\end{code}
+
+\subsubsection{From Repo:}
+(1) Add one of the two lines to \textit{/etc/apt/sources.list}
+\begin{code}
+deb http://www.repo.danlofaro.com/release precise main \# Development
+deb http://www.drc-hubo.com/release precise main \# Stable Release 
+\end{code}
+
+(2) Install via apt-get:
+\begin{code}
+$ sudo apt-get update
+$ sudo apt-get install hubo-ach hubo-dev
+\end{code}
+or
+\begin{code}
+$ hubo-ach update apt-get
+\end{code}
+
+\subsection{From Source}
+\subsubsection{Install from source}
+Download the source and install
+\begin{code}
+$ git clone https://github.com/hubo/hubo-ach.git
+$ cd hubo-ach
+$ autoreconf -i
+$ ./hubo-ach-install.sh
+\end{code}
+
+\subsubsection{Uninstall/Clean Hubo-Ach}
+Removed all Hubo-Ach version from deb, apt-get and source
+\begin{code}
+$ hubo-ach clean
+\end{code}
+
+
+
+
+
+
+
+
+
+
+
+\section{Usage}
+
+Starting Hubo-Ach will automatically start the interface between hubo and the user called hubo-console
+\subsection{Hubo-Ach Main Interface}
+
+\subsubsection{Available commands}
+\begin{code}
+$ hubo-ach
+\end{code}
+
+Start Hubo-Ach on Hubo
+\begin{code}
+$ hubo-ach start
+\end{code}
+
+
+
+
+\subsubsection{Start Hubo-Ach on OpenHubo (Virtual Hubo)}
+\begin{code}
+$ hubo-ach virtual
+\end{code}
+
+
+
+\subsection{Update Hubo-Ach}
+\subsubsection{Updates to latest release:}
+\begin{code}
+$ hubo-ach update
+\end{code}
+
+
+
+\subsubsection{Updates to latest develop:}
+\begin{code}
+$ hubo-ach update develop
+\end{code}
+
+\subsubsection{Updates via apt-get}
+Dependent on your apt-get entry in \textit{/etc/apt/source.list}:
+\begin{code}
+deb http://www.repo.danlofaro.com/release precise main # Develop
+deb http://www.drc-hubo.com/release precise main # Stable
+\end{code}
+
+\begin{code}
+$ hubo-ach update apt-get
+\end{code}
+
+
+\subsubsection{Remove Hubo-Ach}
+Removed all installed versions of Hubo-Ach including from source.
+\begin{code}
+$ hubo-ach clean
+\end{code}
+
+
+
+
+\subsubsection{Start Hubo-Ach Console}
+\begin{code}
+$ hubo-ach console
+\end{code}
+
+
+
+\subsubsection{Start Hubo-Ach Read Tool}
+\begin{code}
+$ hubo-ach read
+\end{code}
+
+
+\subsubsection{Start Remote Connection}
+Connection is made from the client to the server where the robot is the server. The robot's has an IP address of xxx.xxx.xxx.xxx and is the hubo-ach computer. Note: you have to have to enable the network daemon via the process described here: http://golems.github.com/ach/manual/\#AEN399
+\begin{code}
+$ hubo-ach remote xxx-xxx-xxx-xxx
+\end{code}
+
+
+
+Kill Remote Connection
+\begin{code}
+$ hubo-ach remote kill
+\end{code}
+
+
+
+\subsubsection{Make Ach Channes}
+Creates Ach channels for Hubo-Ach without starting the Hubo-Ach Daemon
+\begin{code}
+$ hubo-ach make
+\end{code}
+
+
+
+\subsection{Hubo-Console}
+Hubo-Console is a basic user interface between the Hubo and the user. It allows you to do the following:
+\begin{itemize}
+\item Home a single joint
+\item Home all joints at once
+\item Reset joint errors
+\item Initialize sensors
+\end{itemize}
+Note: In all examples below XXX stands for the standard joint naming i.e. RHP, RHR, LSP, LSR, etc.
+Hubo-Console will start automatically when you type:
+\begin{code}
+$ hubo-ach start
+\end{code}
+
+
+If Hubo-Ach is already started you can start hubo-console by:
+\begin{code}
+$ hubo-ach console
+\end{code}
+
+
+
+
+Once Hubo-Console has started you will be able to:
+
+
+\subsubsection{Home Joint XXX}
+This will make the joint move to find the limit switch then goto its predefined offset. The reference will be set to zero.
+\begin{code}
+>> hubo-ach: home XXX
+\end{code}
+
+
+
+
+\subsubsection{Home All Joints}
+This will make all of the joints move to find their respective limit switches and goto their predefined offsets at the same. The reference to all joints are set to zero. Note: All joints will move at the same time. The rotbot should not be on the ground when this is done.
+\begin{code}
+>> hubo-ach: homeAll
+\end{code}
+
+
+
+\subsubsection{Initialize All Sensors}
+This will initialize all sensors including the IMU and FT sensors. The robot should be off the ground and not moving.
+
+\begin{code}
+>> hubo-ach: iniSensors
+\end{code}
+
+
+
+\subsubsection{Initialize All joints}
+This will initialize all joints. Note: They will maintain the current control mode. If they were inactive they will be active and able to read back encoder values at this point.
+\begin{code}
+>> hubo-ach: initializeAll
+\end{code}
+
+\subsubsection{Clear Errors on Joint XXX}
+This will clear the following errors on joint XXX.
+\begin{itemize}
+\item Big Error
+\item Encoder Error
+\item Homing Error
+\end{itemize}
+
+\begin{code}
+>> hubo-ach: reset XXX
+\end{code}
+
+
+
+\subsubsection{Clear Errors on All Joints}
+This is the same as reset but will clear errors on all active joints
+\begin{code}
+>> hubo-ach: resetAll
+\end{code}
+
+
+
+\subsubsection{Joint XXX goto position}
+Commands joint XXX to goto position YYY (in radians)
+\begin{code}
+>> hubo-ach: goto XXX YYY
+\end{code}
+
+\subsubsection{Turn on/off Joint XXX Controller}
+This will turn on or off the controller for joint XXX.
+Note: Y represents the desired state
+\begin{itemize}
+\item 1 = on
+\item 0 = off
+\end{itemize}
+
+\begin{code}
+>> hubo-ach: ctrl XXX Y
+\end{code}
+
+
+
+
+
+
+\subsubsection{Turn on/off All Joint Controllers}
+This is the same as Turn on/off Joint XXX Controller but it applies to all joints:
+
+\begin{code}
+>> hubo-ach: ctrlAll Y
+\end{code}
+
+
+
+
+\subsubsection{Check Status of Joint XXX}
+Check the status of joint XXX
+\begin{code}
+>> hubo-ach: status XXX
+\end{code}
+
+
+\subsection{Hubo-Read}
+Hubo-Read is a simple tool that prints out the reference and state channels to the console.
+You can start Hubo-Read in one of two ways:
+\subsubsection{Method 1}
+\begin{code}
+$ hubo-ach read
+\end{code}
+
+\subsubsection{Method 2}
+Note: the sudo is needed because it uses RT permissions for the loop.
+
+\begin{code}
+$ sudo hubo-read
+\end{code}
+
+What you will see
+
+\scriptsize
+\begin{code}
+t = 1363724430.086347873
+WST : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+NKY : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+NK1 : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+NKP : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+LSP : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+LSR : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+LSY : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+LEB : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+LWY : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+LWR : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+LWP : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+RSP : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+RSR : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+RSY : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+REB : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+RWY : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+RWR : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+RWP : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+LHY : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+LHR : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+LHP : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+LKN : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+LAP : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+LAR : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+RHY : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+RHR : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+RHP : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+RKN : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+RAP : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+RAR : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+RF1 : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+RF2 : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+RF3 : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+RF4 : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+RF5 : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+LF1 : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+LF2 : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+LF3 : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+LF4 : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+LF5 : Cmd = 0.000000      Ref = 0.000000     Enc = 0.000000     Cur = 0.000000     Tmp = 0.000000    
+    : Mx = 0.000000     My = 0.000000     Fz = 0.000000    
+    : Mx = 0.000000     My = 0.000000     Fz = 0.000000    
+    : Mx = 0.000000     My = 0.000000     Fz = 0.000000    
+    : Mx = 0.000000     My = 0.000000     Fz = 0.000000    
+    : Ax = 0.000000     Ay = 0.000000     Az = 0.000000    
+    : Ax = 0.000000     Ay = 0.000000     Az = 0.000000    
+    : Ax = 0.000000     Ay = 0.000000     Wx = 0.000000     Wy = 0.000000
+\end{code}
+\normalsize
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Simulator}
+
+This section shows how to run a Hubo simulator in conjunction with Hubo-Ach. Note: The simulator is a full 3D simulator and is recomended to run on a computer other the Hubo body computer. It will work on it but it will be slow.
+\subsection{Prerequisites}
+
+\subsubsection{OpenHubo}
+To install OpenHubo follow the directions here: 
+\begin{itemize}
+\item http://dasl.mem.drexel.edu/drcwiki/index.php/OpenHubo\_Introduction
+\end{itemize}
+
+Assuming you have all of the prerequisites you can simply do the following to install OpenHubo:
+\begin{code}
+$ git clone --recursive https://github.com/hubo/openHubo.git
+$ cd openHubbo
+$ ./setup
+\end{code}
+
+\subsection{Using the Simulator}
+Once OpenHubo is installed you can run run the simulator. The simulator at the moment is restricted to kinimatic output. Dynamics do not run in real-time. This simulator creates two models overlaid on each-other. The green model is the commanded reference sent to the actuator. The solid model is the actual position as read from the encoders. Note: if the robot is not on this will stay zero but the green reference will move.
+To run the simulator:
+
+\subsubsection{With No Physics (fast):}
+Starts OpenHubo running with no physics. This is good for watching what the robot is doing live or to preview trajectories.
+\begin{code}
+$ hubo-ach sim openhubo nophysics
+\end{code}
+
+\subsubsection{With Physics:}
+Starts OpenHubo running with physics. This runs at about 35\% real time (on an i7 processor). The simulator and hubo-ach are synced via triggering from newly received messaged on the following Ach channels:
+
+\begin{itemize}
+\item HUBO\_CHAN\_VIRTUAL\_TO\_SIM\_NAME
+\item HUBO\_CHAN\_VIRTUAL\_FROM\_SIM\_NAME 
+\end{itemize} 
+
+Please note that the state channel will have simulation time NOT real time.
+
+\begin{code}
+$ hubo-ach sim openhubo physics
+\end{code}
+
+\subsection{Run Visualizer}
+You can use OpenHubo as a real-time (live) visualizer of our state data on your computer in which you login to the Hubo from. This will show the OpenHubo model using no physics. The green shows what the joints are commanded to and the grey show where the joints are. This will run with little to no lag/latency on an i5 or i7 processor.
+In order to do this start hubo-ach normally on the hubo:
+
+\begin{code}
+(hubo@xxx.xxx.xxx.xxx) $ hubo-ach start
+\end{code}
+
+On your control computer (not the hubo) start the simulator with remote
+\begin{code}
+(i5 or i7) $ hubo-ach sim openhubo nophysics remote xxx.xxx.xxx.xxx
+\end{code}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Programming}
+
+This section will show quick examples of how to program using Hubo-Ach in C/C++ and Python
+\subsection{C/C++}
+The C/C++ Example is available below. This is bare bones for you to:
+
+\begin{itemize}
+\item Get the latest feed-back (state) channel information.
+\item Set the feed-forward (reference) information.
+\end{itemize}
+
+
+\footnotesize
+\noindent \textbf{C/C++ Example}
+\vspace{-6mm}
+\begin{code}
+/* Standard Stuff */
+#include <string.h>
+#include <stdio.h>
+
+/* Required Hubo Headers */
+#include <hubo.h>
+
+/* For Ach IPC */
+#include <errno.h>
+#include <fcntl.h>
+#include <assert.h>
+#include <unistd.h>
+#include <pthread.h>
+#include <ctype.h>
+#include <stdbool.h>
+#include <math.h>
+#include <inttypes.h>
+#include "ach.h"
+
+
+/* Ach Channel IDs */
+ach_channel_t chan_hubo_ref;      // Feed-Forward (Reference)
+ach_channel_t chan_hubo_state;    // Feed-Back (State)
+
+int main(int argc, char **argv) {
+
+    /* Open Ach Channel */
+    int r = ach_open(&chan_hubo_ref, HUBO_CHAN_REF_NAME , NULL);
+    assert( ACH_OK == r );
+
+    r = ach_open(&chan_hubo_state, HUBO_CHAN_STATE_NAME , NULL);
+    assert( ACH_OK == r );
+
+
+
+    /* Create initial structures to read and write from */
+    struct hubo_ref H_ref;
+    struct hubo_state H_state;
+    memset( &H_ref,   0, sizeof(H_ref));
+    memset( &H_state, 0, sizeof(H_state));
+
+    /* for size check */
+    size_t fs;
+
+    /* Get the current feed-forward (state) */
+    r=ach_get(&chan_hubo_state, &H_state, sizeof(H_state), &fs, NULL, ACH_O_LAST);
+    if(ACH_OK != r) {
+        assert( sizeof(H_state) == fs );
+    }
+
+    /* Set Left Elbow Bend (LEB) and Right Shoulder Pitch (RSP) */
+    /* to  -0.2 rad and 0.1 rad respectively */
+    H_ref.ref[LEB] = -0.2;
+    H_ref.ref[RSP] = 0.1;
+
+    /* Print out the actual position of the LEB */
+    double posLEB = H_state.joint[LEB].pos;
+    printf("Joint = %f\r\n",posLEB);
+
+    /* Print out the Left foot torque in X */
+    double mxLeftFT = H_state.ft[HUBO_FT_L_FOOT].m_x;
+    printf("Mx = %f\r\n", mxLeftFT);
+
+    /* Write to the feed-forward channel */
+    ach_put( &chan_hubo_ref, &H_ref, sizeof(H_ref));
+
+}
+
+\end{code}
+\normalsize
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Python}
+The Python Example is available here. This is bare bones for you to:
+Get the latest feed-back (state) channel information
+Set the feed-forward (reference) information
+\begin{itemize}
+\item Note 1: Must use Hubo-Ach >= 0.0.20130319 
+\item Note 2: The Ach python bindings must be installed. You can install via PIP (see below)
+\end{itemize}
+
+\begin{code}
+$ sudo apt-get install python-pip
+$ sudo pip install http://code.golems.org/src/ach/py_ach-latest.tar.gz
+\end{code}

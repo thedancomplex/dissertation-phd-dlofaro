@@ -60,6 +60,16 @@
 
 
 
+\usepackage{framed,color,verbatim}
+\definecolor{shadecolor}{rgb}{.9, .9, .9}
+
+\newenvironment{code}%
+   {\snugshade\verbatim}%
+   {\endverbatim\endsnugshade}
+
+
+
+
 \tolerance=300
 
 \author{Daniel Marc Lofaro}
@@ -119,6 +129,7 @@
 	\include{chapterBackground}
 %	\include{chapterMethodology}
 	\include{chapterHuboAch}
+	\include{chapterHuboAchHowTo}
 	\include{chapterExperiment}
 %	\include{chapterResults}
 	\include{chapterConclusion}
@@ -139,6 +150,7 @@
 	\include{appendixKinimaticPlanningBackground}
 	\include{appendixThrowing}
 	\include{appendixSRM}
+	\include{appendixSurvey}
 %	\include{survey/q1}
 %	\include{survey/q2}
 %	\include{survey/q3}
