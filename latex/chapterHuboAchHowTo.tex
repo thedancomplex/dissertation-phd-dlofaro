@@ -450,7 +450,7 @@ On your control computer (not the hubo) start the simulator with remote
 \section{Programming}
 
 This section will show quick examples of how to program using Hubo-Ach in C/C++ and Python
-\subsection{C/C++}
+\subsection{C/C++}\label{sec:ccppExample}
 The C/C++ Example is available below. This is bare bones for you to:
 
 \begin{itemize}
@@ -460,7 +460,7 @@ The C/C++ Example is available below. This is bare bones for you to:
 
 
 \footnotesize
-\noindent \textbf{C/C++ Example}
+\noindent \textbf{C/C++ Example (hubo-simple-demo.c)}
 \vspace{-6mm}
 \begin{code}
 /* Standard Stuff */
@@ -535,6 +535,41 @@ int main(int argc, char **argv) {
 \normalsize
 
 
+Where the default \textbf{MakeFile} is:
+
+\footnotesize
+\noindent \textbf{C/C++ Default MakeFile}
+\vspace{-6mm}
+\begin{code}
+default: all
+
+CFLAGS := -I./include -g --std=gnu99
+CC := gcc
+
+BINARIES := hubo-simple-demo
+all : $(BINARIES)
+
+LIBS := -lach 
+
+hubo-simple-demo: src/hubo-simple-demo.o
+	gcc -o $@ $< $(LIBS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+clean:
+	rm -f $(BINARIES) src/*.o
+\end{code}
+\normalsize
+
+\subsubsection{Run the example}
+The C/C++ example uses the MakeFile seen in Section~\ref{sec:ccppExample}. You just need to make and run
+
+\begin{code}
+$ make clean
+$ make 
+$ ./hubo-simple-demo
+\end{code}
 
 
 
@@ -546,15 +581,295 @@ int main(int argc, char **argv) {
 
 
 \subsection{Python}
-The Python Example is available here. This is bare bones for you to:
-Get the latest feed-back (state) channel information
-Set the feed-forward (reference) information
+The Python Example is available below. This is bare bones for you to:
 \begin{itemize}
-\item Note 1: Must use Hubo-Ach >= 0.0.20130319 
-\item Note 2: The Ach python bindings must be installed. You can install via PIP (see below)
+\item Get the latest feed-back (state) channel information
+\item Set the feed-forward (reference) information
+\end{itemize}
+
+Please note that:
+\begin{itemize}
+\item Must use Hubo-Ach >= 0.0.20130319 
+\item The Ach python bindings must be installed. You can install via PIP (see below)
 \end{itemize}
 
 \begin{code}
 $ sudo apt-get install python-pip
 $ sudo pip install http://code.golems.org/src/ach/py_ach-latest.tar.gz
+\end{code}
+
+
+
+\footnotesize
+\noindent \textbf{Python Example (hubo-simple-demo.py)}
+\vspace{-6mm}
+\begin{code}
+#!/usr/bin/env python
+# /* -*-  indent-tabs-mode:t; tab-width: 8; c-basic-offset: 8  -*- */
+
+import hubo_ach as ha
+import ach
+import sys
+import time
+from ctypes import *
+
+# Open Hubo-Ach feed-forward and feed-back (reference and state) channels
+s = ach.Channel(ha.HUBO_CHAN_STATE_NAME)
+r = ach.Channel(ha.HUBO_CHAN_REF_NAME)
+s.flush()
+r.flush()
+
+# feed-forward will now be refered to as "state"
+state = ha.HUBO_STATE()
+
+# feed-back will now be refered to as "ref"
+ref = ha.HUBO_REF()
+
+# Get the current feed-forward (state) 
+[statuss, framesizes] = s.get(state, wait=False, last=False)
+
+# Set Left Elbow Bend (LEB) and Right Shoulder Pitch (RSP) 
+# to  -0.2 rad and 0.1 rad respectively
+ref.ref[ha.LEB] = -0.2
+ref.ref[ha.RSP] = 0.1
+
+# Print out the actual position of the LEB
+print "Joint = ", state.joint[ha.LEB].pos
+
+# Print out the Left foot torque in X
+print "Mx = ", state.ft[ha.HUBO_FT_L_FOOT].m_x
+
+# Write to the feed-forward channel
+r.put(ref)
+
+# Close the connection to the channels
+r.close()
+s.close()
+\end{code}
+\normalsize
+
+\subsubsection{Run the example}
+The python example can be run via:
+
+\begin{code}
+$ python ./hubo-simple-demo.py
+\end{code}
+
+
+
+
+\section{Connecting a Simulator to Hubo-Ach}
+This is a brief example of how to connect a simulator to Hubo-Ach. In this example we will be running hubo-ach in simtime mode. This makes hubo-ach wait for a trigger from the simulator. This trigger tells hubo-ach that it has updated the state data with the simulated state data. Hubo-ach will then run and will send a trigger to the simulator telling it that it can do its next calculation.
+
+\subsection{Setup}
+
+\subsubsection{Step 1: Start Hubo-Ach in SimTime mode}
+
+This mode makes hubo-ach wait for a trigger from the simulator. This trigger is when the HUBO\_CHAN\_VIRTUAL\_FROM\_SIM\_NAME channel has been updated.
+\begin{code}
+$ hubo-ach sim
+\end{code}
+
+
+\subsubsection{Step 2: Run your simulator}
+
+Run your simulator. The simulator must do the following in this order
+
+
+\footnotesize
+\noindent \textbf{(Sudo Code)}
+\vspace{-6mm}
+\begin{code}
+Open all needed Channels
+Write to HUBO_CHAN_VIRTUAL_FROM_SIM_NAME channel
+Loop:
+    Wait for HUBO_CHAN_VIRTUAL_TO_SIM_NAME channel update
+    Set feed forward data from H_state.joint[jnt].ref to your simulator
+    Do simulation
+    Populate state data to H_state struct
+        H_state.joint[jnt].pos
+        H_state.imu[i].*
+        H_state.ft[i].*
+    Write H_state to HUBO_CHAN_STATE_NAME
+    Write to HUBO_CHAN_VIRTUAL_FROM_SIM_NAME channel
+    Goto Loop
+\end{code}
+\normalsize
+
+
+
+
+\subsubsection{Step 3: Run a Hubo-Ach controller of your choosing}
+
+You can now run any hubo-ach controller with no modification required. Note: If you want to take into account the simtime then it must either:
+\begin{itemize}
+	\item Watch the state time H\_state.time
+	\item Wait for the following triggers:
+	\begin{itemize}
+		\item HUBO\_CHAN\_VIRTUAL\_FROM\_SIM\_NAME
+		\item HUBO\_CHAN\_VIRTUAL\_TO\_SIM\_NAME
+	\end{itemize}
+\end{itemize}
+
+
+
+\subsection{C/C++ Simulation Example}
+
+This example code shows the basics of connecting to Hubo-Ach using simtime mode with triggering. The example can be found on the hubo group on github in the example/simtime branch:
+
+\begin{code}
+$ git clone https://github.com/hubo/hubo-simple-demo.git
+$ cd hubo-simple-demo
+$ git checkout example/simtime
+\end{code}
+
+
+
+
+
+\footnotesize
+\noindent \textbf{C/C++ Simulation Example (hubo-simple-demo.c) - simtime branch}
+\vspace{-6mm}
+\begin{code}
+/* Standard Stuff */
+#include <string.h>
+#include <stdio.h>
+
+/* Required Hubo Headers */
+#include <hubo.h>
+
+/* For Ach IPC */
+#include <errno.h>
+#include <fcntl.h>
+#include <assert.h>
+#include <unistd.h>
+#include <pthread.h>
+#include <ctype.h>
+#include <stdbool.h>
+#include <math.h>
+#include <inttypes.h>
+#include "ach.h"
+
+/* Ach Channel IDs */
+ach_channel_t chan_hubo_ref;      // Feed-Forward (Reference)
+ach_channel_t chan_hubo_state;    // Feed-Back (State)
+ach_channel_t chan_hubo_to_sim;    // To Sim
+ach_channel_t chan_hubo_from_sim;    // From Sim
+
+int main(int argc, char **argv) {
+    
+    int i = 0;
+
+    /* Open Ach Channel */
+    int r = ach_open(&chan_hubo_ref, HUBO_CHAN_REF_NAME , NULL);
+    assert( ACH_OK == r );
+
+    r = ach_open(&chan_hubo_state, HUBO_CHAN_STATE_NAME , NULL);
+    assert( ACH_OK == r );
+
+    /* Create initial structures to read and write from */
+    struct hubo_ref H_ref;
+    /* this is a place holder for what ever */
+    /* way your store your sim ref data     */
+    struct hubo_ref H_ref_your_sim;  
+    /* this is a place holder for what ever */
+    /* way your store your sim state data   */
+    struct hubo_state H_state_your_sim; 
+    struct hubo_state H_state;
+    struct hubo_virtual H_sim;
+    memset( &H_ref,   0, sizeof(H_ref));
+    memset( &H_ref,   0, sizeof(H_ref_your_sim));
+    memset( &H_state, 0, sizeof(H_state));
+    memset( &H_state, 0, sizeof(H_state_your_sim));
+    memset( &H_sim, 0, sizeof(H_sim));
+
+    /* for size check */
+    size_t fs;
+
+    /* Flush old messages */
+    ach_flush(&chan_hubo_to_sim);
+    ach_flush(&chan_hubo_from_sim);
+
+    /* send the from sim trigger */
+    ach_put( &chan_hubo_from_sim, &H_sim, sizeof(H_sim));
+
+    /* Start the sim time loop */
+    while(1) {
+        /* Waits for hubo-ach trigger */
+        r = ach_get( &chan_hubo_to_sim, &H_sim, sizeof(H_sim), &fs, NULL, ACH_O_WAIT );
+        if(ACH_OK != r) {
+            assert( sizeof(H_sim) == fs );
+        }
+
+        /* Get the current feed-forward (state) */
+        r = ach_get( &chan_hubo_state, &H_state, sizeof(H_state), &fs, NULL, ACH_O_LAST );
+        if(ACH_OK != r) {
+            assert( sizeof(H_state) == fs );
+        }
+        
+        /* Sets the commanded joint value to your simulators feed forward */
+        for( i = 0; i < HUBO_JOINT_COUNT; i++){
+	    H_ref_your_sim.ref[i] = H_state.joint[i].ref;		
+        }
+
+       /* ----------------------------- */
+       /* run your simulator stuff here */
+       /* ----------------------------- */
+       /* Note1: you can run multiple itterations of your      */
+       /*       sim here before you post the data from the sim */
+       /*       i.e. if you want to run your sim at 1khz then  */
+       /*       step your sim N times                          */
+       /*       where N = ceil(1000/HUBO_LOOP_PERIOD)   */
+       /*       HUBO_LOOP_PERIOD is defigned in hubo.h  */
+       /* Note2: Hubo-Ach updates the time via the H_sim.time. */
+
+       /* Set time to simtime */
+       /* H_sim.time = Time from your simulation in seconds*/
+
+        /* set your state data to the hubo-ach state data */
+        /* Joint pos*/
+        for( i = 0; i < HUBO_JOINT_COUNT; i++){
+            // actual joint position from simulator
+            H_state.joint[i].pos = H_state_your_sim.joint[i].pos;  
+        }
+
+        /* FT */
+        // force torque from sim  note: 4 will soon be changed to HUBO_FT_COUNT
+        for( i = 0; i < 4; i++){        
+            H_state.ft[i].m_x = H_state_your_sim.ft[i].m_x;
+            H_state.ft[i].m_y = H_state_your_sim.ft[i].m_y;
+            H_state.ft[i].f_z = H_state_your_sim.ft[i].f_z;
+        }
+
+        for( i = 0; i < HUBO_IMU_COUNT; i++){        // IMU Data from your sim
+            H_state.imu[i].a_x = H_state_your_sim.imu[i].a_x;
+            H_state.imu[i].a_y = H_state_your_sim.imu[i].a_y;
+            H_state.imu[i].a_z = H_state_your_sim.imu[i].a_z;
+            H_state.imu[i].w_x = H_state_your_sim.imu[i].w_x;
+            H_state.imu[i].w_y = H_state_your_sim.imu[i].w_y;
+            H_state.imu[i].w_z = H_state_your_sim.imu[i].w_z;
+       }
+
+       /* at this point hubo-ach has been waiting for the sim to be done */
+       /* now that all of the sim data has been set to the state you can */
+       /* tell hubo-ach that it can resume.  This is done by giving it the */
+       /* from_sim trigger */
+
+       /* Push new state data */
+       ach_put( &chan_hubo_state, &H_state, sizeof(H_state));
+
+       /* send the from sim trigger */
+       ach_put( &chan_hubo_from_sim, &H_sim, sizeof(H_sim));
+    }
+}
+\end{code}
+\normalsize
+
+\subsubsection{Run the example}
+The simulation example uses the same make file from the hubo-simple-demo in Section~\ref{sec:ccppExample}. You just need to make and run
+
+\begin{code}
+$ make clean
+$ make 
+$ ./hubo-simple-demo
 \end{code}
