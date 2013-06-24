@@ -12,7 +12,25 @@ More DOF require greater attention to:
 In addition different tasks being performed by separate parts of the robot in tandem bring on greater issues including controller timing and priorities.
 The increase in DOF on a single system requires that the traditional methods of controller design be re-examined.
 
-Due to the high entry cost for high DOF robots the controller should be able to be tested on low/no \textit{cost to entry} systems.
+This work discribes the creation of a controller architecture for high DOF robots that has the following key attributes: 
+\begin{itemize}
+\item Real-Time Performance
+\item Inherently robust controller integration via multi-process architecture 
+\item Non-Head of Line Blocking scheme (newest data first)
+\item Low CPU suage (\textit{lean and mean}, written in C)
+\item Compatible with almost any simulator
+\item C/C++, Python and Matlab bindings
+\item Built-in real-time networking support (up to 1khz)
+\item Maximum limiting bus bandwidth
+\end{itemize}
+
+The controller that achieves all of the above is called Hubo-Ach. 
+Hubo-Ach is verified via comprehensive experiments.
+It is validated via third party implementation. 
+
+
+
+Due to the high entry cost for high DOF robots the Hubo-Ach controller should be able to be tested on low/no \textit{cost to entry} systems.
 This means the controller must be compatible with:
 \begin{itemize}
 \item virtual/simulated robot
@@ -22,6 +40,8 @@ This means the controller must be compatible with:
 
 It is evident that the critical gap is needing a \textit{unified algorithmic framework for high degree of freedom robots that allows for development on multiple platforms}.
 This unified algorithmic framework connects the three robots above in the \textit{Three Tier Infrastructure}\cite{threeTier} for complex system development as described in Section~\ref{sec:threeTier}.
+The idea for this infrastructure was first realized by a Partnerships for International Research and Education (PIRE) grant #0730206, sponsored by the the U.S. National Science Foundation (NSF).
+This is the same grant in which this work is sponsored.
 The three tiers include:
 \begin{itemize}
 \item Rapid Prototype (RP) phase with zero cost to entry (OpenHubo Platform Section~\ref{sec:openhubo})
@@ -31,13 +51,13 @@ The three tiers include:
 The unifying algorithmic framework called \textit{Hubo-Ach}\cite{lofaroRAM2013} is described in Section~\ref{sec:hubo-ach}.
 
 
-This work demonstrates that a multi-process, multi-rate control structure coupled with the proper timing mechanisms is conducive to creating this unified algorithmic framework.
+As described above this work demonstrates that a multi-process, multi-rate control structure coupled with the proper timing mechanisms is conducive to creating this unified algorithmic framework.
 Through verification and validation Hubo-Ach is shown to be a viable unifying algorithmic framework conducive to collaborative work.  
 A road map of how this work began is shown in Section~\ref{sec:roadmap}.
 
-An example of the three tier infrastructure being used to enable a high DOF robot to throw a ball is given in Section~\ref{sec:baseball}.
-The methods used include a unique algorithm for end-effector velocity control called Sparse Reachable Maps (SRM) is explained in Section~\ref{sec:sec:srm}.
-In addition an end-effector velocity control method is used in a live throwing experiment at a baseball game and described in Section~\ref{sec:finalDesign}.
+An example of the three tier infrastructure being used to enable a high DOF robot to throw a ball is given in Appendix~\ref{sec:baseball}.
+The methods used include a unique algorithm for end-effector velocity control called Sparse Reachable Maps (SRM) is explained in Appendix~\ref{sec:sec:srm}.
+In addition an end-effector velocity control method is used in a live throwing experiment at a baseball game and described in Appendix~\ref{sec:finalDesign}.
 
 The Hubo-Ach system is verified under many circumstances including:
 \begin{itemize}

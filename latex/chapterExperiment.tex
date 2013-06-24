@@ -30,31 +30,33 @@
 %%%\end{itemize}
 
 
+This section gives examples of the Hubo-Ach system being used on the physical and simulated systems.  Examples include: a walking controller implementation on the physical robot and in simulation; visual servoing while walking using the physical robot; and active damping implementation using the physical robot.
 
 
-
-\section{Simulator}\label{sec:simulator}
-	\input{examples/example-sim.tex}
+%%\section{Simulator}\label{sec:simulator}
+%%	\input{examples/example-sim.tex}
 	%% show balance in simulator too
 
 
 
 
-
+\section{Walking}\label{sec:walking:example}
+	%% Sim walking too
+	\input{examples/example-walking.tex}
 
 
 
 %% Advanced Examples: Maybe add the title :advanced examples or somethign like that			
 \section{Visual Serving Example}\label{sec:visuralServoing}
-This section uses visual feedback using an RGB-D (Red Green Blue - Depth) camera and the 6-DOF IK example from Section~\ref{sec:6dofik}.
+This section uses visual feedback using an RGB-D (Red Green Blue - Depth) camera and the walking trajectories given in Section~\ref{sec:walking:example}.
+The goal of this experiment is to have the robot visually track an object, walk towards the object, and stop when it is within $0.2~m$ of it.
+
 	\subsection{Tracking Using Vision}\label{sec:visTracking}
 		\input{examples/example-servoing.tex}
 	\subsection{Visual servoing during full-body locomotion task}
 		\input{examples/example-visualservoing.tex}
 		
-\section{Walking}\label{sec:walking:example}
-	%% Sim walking too
-	\input{examples/example-walking.tex}
+
 
 \section{Active Damping}\label{sec:activedamping}
 	\input{examples/example-activedamping.tex}

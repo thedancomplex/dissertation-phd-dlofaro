@@ -1,7 +1,37 @@
-This section discribes how to intergrate color tracking the 6-DOF IK controller derived in Section~\ref{sec:6dofik}.
-\input{examples/block-SingleJointFilteredIKServoing.tex}
 
-Using a simple HSV (Hue Saturation Value) 
+
+
+\input{examples/block-SingleJointFilteredWalkingServoing.tex}
+
+Using a the well know HSV (Hue Saturation Value) tracking algorithm.  
+HSV tracking was implemented via the use of built in libraries in OpenCV\cite{opencv}.
+
+Fig.~\ref{fig:hubo-ach-walkingVservoing} shows the block diagram of the full system. 
+The $(x,y,z)$ work space position of the objet is found via HSV tracking.  
+The rotation error $\theta_e$ and distance of the object from the projection of the robot onto the ground $X_e$ is sent to the \textit{walking planner}.  
+The walking planner decides if it has to turn or walk forwards. 
+The robot will stop when it is within $0.2~m$ of the object and facing it within an error of $\pm 0.02~rad$.
+The \textit{walking planner} is a state machine with the following characteristics:
+
+\begin{equation}
+f(\theta_e,X_e) = \left\{
+     \begin{array}{ccl}
+       \theta_e > 0.3~rad  & THEN & turn~0.3~rad\\
+       \hline
+       \theta_e < -0.3 & THEN & turn~-0.3~rad\\
+       \hline
+       0.3~rad > \theta_e > 0.02~rad && \\
+       OR & THEN & turn~\theta_e~rad\\ 
+       -0.02 < \theta_e < -0.3~rad & & \\
+       \hline
+        -0.02 < \theta_e < 0.02~rad &  &\\
+        AND & THEN & step~forward~0.1~m\\
+         X_e > 0.2~m &  &  \\
+         \hline
+        else & THEN & stop
+     \end{array}
+   \right.
+\end{equation}
 
 
 

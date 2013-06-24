@@ -1,4 +1,5 @@
 \chapter{Hubo-Ach Manual}
+This section gives the prerequisites for the Hubo-Ach system, shows the user how to install/un-install the system, and how to use the built in tools.  Programming examples in C/C++ and Python are also given.
 
 \section{Prerequisites}
 
@@ -659,7 +660,14 @@ $ python ./hubo-simple-demo.py
 
 
 \section{Connecting a Simulator to Hubo-Ach}
-This is a brief example of how to connect a simulator to Hubo-Ach. In this example we will be running hubo-ach in simtime mode. This makes hubo-ach wait for a trigger from the simulator. This trigger tells hubo-ach that it has updated the state data with the simulated state data. Hubo-ach will then run and will send a trigger to the simulator telling it that it can do its next calculation.
+This is a brief example of how to connect a simulator to Hubo-Ach. In this example we will be running Hubo-Ach in simtime mode. This makes Hubo-Ach wait for a trigger from the simulator. This trigger tells Hubo-Ach that it has updated the state data with the simulated state data. Hubo-Ach will then run and send a trigger to the simulator telling it that it can do its next calculation.
+
+Hubo-Ach is simulator agnostic. The examples is given in this section uses the OpenHubo simulator described in Section~\ref{sec:simulator}
+
+\subsection{Simulator}\label{sec:simulator}
+	\input{examples/example-sim.tex}
+	
+	
 
 \subsection{Setup}
 
