@@ -1,10 +1,12 @@
 Giving a step input to a high-gain PID position controlled actuator can cause an over current fault, burn out motor drivers, strip gears due to the \textit{jerk} etc.  
 To reduce this effect Hubo-Ach has multiple modes of on-board filtering.
 These modes are:
+\begin{multicols}{2}
 \begin{itemize}
 \item Reference Input Filtering
 \item Compliance Amplification 
 \end{itemize}
+\end{multicols}
 
 This section talks about \textit{reference input filtering} as a method to apply a step input each joint in joint space and limit the jerk.
 It is important to note that the obvious answer is to reduce the PID gains to make the robot \textit{more complaint} however the goal of this work is to make a fully functional system that does not require modification of the robot.
