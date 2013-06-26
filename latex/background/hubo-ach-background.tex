@@ -5,6 +5,7 @@ Section~\ref{sec:hubo-ach} give this background in greater detail.
 The idea for a Control Architecture for High DOF robots stems from a gap in physical implementation of control algorithms for robot hardware.
 The simplest approach to developing robot software is to integrate all functionality in one program.  
 This functionality includes the following controllers:
+\begin{multicols}{2}
 \begin{itemize}
 \item Hardware Control
 \item Perception
@@ -12,6 +13,7 @@ This functionality includes the following controllers:
 \item Kinematics
 \item etc.
 \end{itemize}
+\end{multicols}{2}
 
 If all of this functionality is in one process then it has the benefit of freedom of inter process communication latency.
 However being in one process also means that if one of the controllers lags or faults it cause the entire controller to lag or fault.

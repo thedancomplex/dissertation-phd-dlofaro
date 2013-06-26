@@ -1,0 +1,81 @@
+
+
+Due to the high entry cost for high DOF robots the Hubo-Ach controller should be able to be tested on low/no \textit{cost to entry} systems.
+This means the controller must be compatible with:
+
+\begin{multicols}{2}
+\begin{itemize}
+\item virtual/simulated robot
+\item kinematicly scaled robot
+\item full-size robot
+\end{itemize}
+\end{multicols}
+
+
+
+
+
+It is evident that the critical gap is needing a \textit{unified algorithmic framework for high degree of freedom robots that allows for development on multiple platforms}.
+This unified algorithmic framework connects the three robots above in the \textit{Three Tier Infrastructure}\cite{threeTier} for complex system development as described in Section~\ref{sec:threeTier}.
+The idea for this infrastructure was first realized by a Partnerships for International Research and Education (PIRE) grant \#0730206, sponsored by the the U.S. National Science Foundation (NSF).
+This is the same grant in which this work is sponsored.
+The three tiers include:
+\begin{itemize}
+\item Rapid Prototype (RP) phase with zero cost to entry (OpenHubo Platform Section~\ref{sec:openhubo})
+\item Test and Evaluation (T\&E) phase with low cost to entry (Mini-Hubo Platform Section~\ref{sec:mini-hubo})
+\item Verify and Validate (V\&V) phase with lease-time cost to entry (Hubo Platform Section~\ref{sec:hubo})
+\end{itemize}
+The unifying algorithmic framework called \textit{Hubo-Ach}\cite{lofaroRAM2013} is described in Section~\ref{sec:hubo-ach}.
+
+
+As described above this work demonstrates that a multi-process, multi-rate control structure coupled with the proper timing mechanisms is conducive to creating this unified algorithmic framework.
+Through verification and validation Hubo-Ach is shown to be a viable unifying algorithmic framework conducive to collaborative work.  
+A road map of how this work began is shown in Section~\ref{sec:roadmap}.
+
+An example of the three tier infrastructure being used to enable a high DOF robot to throw a ball is given in Section~\ref{sec:baseball}.
+The methods used include a unique algorithm for end-effector velocity control called Sparse Reachable Maps (SRM) is explained in Section~\ref{sec:sec:srm}.
+In addition an end-effector velocity control method is used in a live throwing experiment at a baseball game and described in Section~\ref{sec:finalDesign}.
+
+The Hubo-Ach system is verified under many circumstances including:
+\begin{itemize}
+	\item Real-time closed form inverse kinematic controller (Section~\ref{sec:hubo-ach-kinimatics})
+	\item Full body locomotive task of turning a valve (Section~\ref{sec:valve})
+	\item Full body locomotive task of walking (Section~\ref{sec:OpenHuboWalking})
+	\item Visual seroving while performing full body locomotive task (Section~\ref{sec:visuralServoing})
+	\item Active damping via force-torque feedback (Section~\ref{sec:activedamping})
+\end{itemize}
+
+
+
+
+Hubo-Ach is then independently validated by other researcher through the examples of:
+\begin{multicols}{2}
+\begin{itemize}
+	\item Door opening (Section~\ref{sec:hubo-achVerification})
+	\item Dynamic walking (Section~\ref{sec:dynamicWalking})
+\end{itemize}
+\end{multicols}
+
+A study/survey about how well the Hubo-Ach system performs as a \textit{unifying algorithmic framework} is given.  
+Results and the questions are given in Section~\ref{sec:hubo-achSurvey}.
+
+Lastly Section~\ref{sec:conclusion} discusses the results of the work and the future of this system.
+
+\noindent \textit{Note:} This work has already been validated by pears in the field through:
+\begin{itemize}
+\item Use as the primary control system for the DARPA Robotics Challenge Track-A Team DRC-Hubo, Section~\ref{sec:drc}.
+\item Used in the NSF-PIRE\footnote{NSF-PIRE: Partnerships for International Research
+and Education (PIRE) \#0730206, sponsored by the the U.S. National
+Science Foundation (NSF)} and NSF-MIRR\footnote{NSF-MIRR: Major Research Infrastructure Recovery and Reinvestment (MIRR) \#CNS-0960061 sponsored by the the U.S. National Science Foundation (NSF)} projects.
+\item Various research being conducted using Hubo-Ach at MIT, WPI, Purdue, Ohio State, Swarthmore College, Georgia Tech, and Drexel University.
+\end{itemize}
+\noindent In addition more information on \textit{why this problem is hard} is in Section~\ref{sec:challenges}.
+
+For the remainder of this document the focus will be on implementing this Unifying Algorithmic Framework on the different platforms of the three tier infrastructure.
+These platforms are Hubo, Mini-Hubo, and OpenHubo.  
+Detailed description of each of these robots are available in Section~\ref{sec:robots}.
+
+
+
+
+

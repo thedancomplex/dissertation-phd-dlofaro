@@ -1,10 +1,30 @@
-\chapter{Background}\label{sec:background}
+\chapter{Background and Results from Preliminary Experiments}\label{sec:background}
 
-This section gives brief background of the methods used for my these.
+This section gives brief background and results from preliminary experiments of the methods used to complete the Hubo-Ach system.
+The motivation and timeline of experiments is given in Section~\ref{sec:roadmap}.
+
 Section~\ref{sec:back:hubo-ach} describes why inter-process communication (IPC) is used for the Hubo-Ach control system and a brief background of different IPC methods.
 Section~\ref{sec:hubo-ach} give this background in greater detail.
+
+
+%%------ Path To Ph.D. -------%%	
+	\section{Motivation}\label{sec:roadmap}	
+		\input{background/pathToThesis.tex}
+		
 
 		\section{Control System Structures}\label{sec:back:struct}
 			\input{background/struct.tex}	
 		\section{Multi-Process and Interprocess Comunication}\label{sec:back:hubo-ach}
 	    		\input{background/hubo-ach-background.tex}
+	    		
+	    		
+	%%------ About Hubo -------%%
+	\section{Platforms}\label{sec:robots}
+	This section describes the different platforms that are focused on in this document.
+		\subsection{Hubo2 Plus}\label{sec:hubo}
+			\input{hubo-ach/hubo.tex}
+		\subsection{Mini-Hubo}\label{sec:mini-hubo}
+			\input{background/mini-hubo.tex}
+		\subsection{OpenHubo}\label{sec:openhubo}
+			\input{background/openhubo.tex}
+		
